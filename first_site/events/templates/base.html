@@ -74,10 +74,14 @@
         <form action="", method="POST">
             {% csrf_token %}
 
-            <h1 id="stay-up-to-date">Stay up to Date:</h1>
+            <h2 id="stay-up-to-date">Stay up to Date</h2>
+
             <div id="subscribe-form">
                 {{ form }}
-                <input type="submit" name="Subscribe" id="subscribe-btn">
+              </div>
+
+              <div id="subscribe-button">
+                <input type="submit" name="Subscribe" class="btn btn-secondary" value="Subscribe">
             </div>
 
 

@@ -10,4 +10,6 @@ class SubListForm(ModelForm):
     class Meta:
         model = SubList
         fields = "__all__"
+        labels = {'email': ''}
+        widgets = {'email': forms.TextInput(attrs={'class': 'email-form', 'placeholder': 'Email Address'})}
      
