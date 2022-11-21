@@ -4,11 +4,17 @@
 {% block content %}
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
 
+{% if submitted %}
+    <h1 id="email-added-succesfully">Your Email Was Added Succefully!!!</h1>
 
-<h1 id="lol">Hello {{ first_name }}</h1>
-<h1>The Current Year is {{ current_year }}</h1>
+{% else %}
+<h1 id="he">Hello</h1>
+<h1>Hello 2</h1>
+
+{% endif %}
+
 
 
 {% endblock %}

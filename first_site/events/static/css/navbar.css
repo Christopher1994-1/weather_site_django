@@ -1,3 +1,14 @@
-#navbar {
+.myfieldclass {
+    color: blue;
+    border: 2px solid black;
+    margin: auto;
+}
+
+
+#subscribe-form {
+    border: 2px solid black;
+}
+
+#subscribe-form form {
     border: 2px solid black;
 }
