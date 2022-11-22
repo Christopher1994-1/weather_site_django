@@ -7,11 +7,75 @@
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
 
 {% if submitted %}
-    <h1 id="email-added-succesfully">Your Email Was Added Succefully!!!</h1>
+{% if messages %}
+    {% for message in messages %}
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Here i am</h2>
+            <a class="close" href="{% url 'home' %}">&times;</a>
+            <div class="content">
+                Thank to pop me out of that button, but now i'm done so you can close this window.
+            </div>
+        </div>
+    </div>
+    
+    <form action="{% url 'searched' %}" method="POST">
+        {% csrf_token %}
+        <div class="searched-container">
+    
+            <div class="searched-box-box">
+                <input type="search" name="searched-location" id="" placeholder="Find Your Loctation">
+            </div>
+    
+            <div class="searched-button-btn">
+                <input type="submit" name="" id="" value="Find">
+            </div>
+        </div>
+    </form>
+    
+
+    {% endfor %}
+{% endif %}
+
 
 {% else %}
-<h1 id="he">Hello</h1>
-<h1>Hello 2</h1>
+
+<form action="{% url 'searched' %}" method="POST">
+    {% csrf_token %}
+    <div class="searched-container">
+
+        <div class="searched-box-box">
+            <input type="search" name="searched-location" id="" placeholder="Find Your Loctation...">
+        </div>
+
+        <div class="searched-button-btn">
+            <input type="submit" name="" id="" value="Find">
+        </div>
+    </div>
+</form>
+
+
+
+
+<div class="main-weather-output-container">
+
+    <div class="rainy-weather-box">
+
+        <div class="weather-city">
+            <h1>29°c</h1>
+
+        </div>
+
+
+        <div class="weather-day">
+            <h1>{{ day_of_the_week }}: {{ now }}</h1>
+        </div>
+
+    </div>
+
+
+
+</div>
 
 {% endif %}
 

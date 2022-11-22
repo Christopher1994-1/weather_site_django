@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+    
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+
+
+
+
+
+{% if searched_location %}
+<h1>You searched for {{ searched_location }}</h1>
+
+{% else %} 
+<h1>No Search results</h1>
+
+{% endif %}
+
+
+<div class="main-weather-output-container">
+
+
+
+</div>
+
+
+
+{% endblock %}

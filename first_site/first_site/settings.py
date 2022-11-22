@@ -10,10 +10,10 @@ print(BASE_DIR)
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zmplu!w2y8w7&du4tcfpqj1^+dz*p&&ks)d0@^fpz04h=nbj+x'
+# SECRET_KEY = 'django-insecure-zmplu!w2y8w7&du4tcfpqj1^+dz*p&&ks)d0@^fpz04h=nbj+x'
 
 # TODO delete top one
-# SECRET_KEY = os.evrion.get('django_key')
+SECRET_KEY = os.environ.get('django_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

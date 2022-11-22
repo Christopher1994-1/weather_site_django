@@ -8,7 +8,7 @@
     <title>Weather Site</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/lighModeV.ico' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/darkModeV.ico' %}">
 
     </head>
   <body>
@@ -76,13 +76,17 @@
 
             <h2 id="stay-up-to-date">Stay up to Date</h2>
 
+
+            <div class="subscribe-form-and-button">
             <div id="subscribe-form">
                 {{ form }}
               </div>
 
               <div id="subscribe-button">
-                <input type="submit" name="Subscribe" class="btn btn-secondary" value="Subscribe">
+                <input type="submit" name="Subscribe" class="subscribe-btn" value="Subscribe">
             </div>
+
+          </div>
 
 
         </form>
