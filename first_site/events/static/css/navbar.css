@@ -252,24 +252,52 @@ body{
 }
 
 
+/* Weather date, day and time conatiner and itself */
 
 .weather-day {
     /* Weather day inside first container */
-    border: 2px solid black;
-    width: 300px;
+    width: 215px;
     text-align: center;
+    position: relative;
+    border-radius: 20px;
+    top: 100px;
+    background: white;
+    padding: 5px;
+    left: 5px;
+    background: rgba(252, 249, 249, 0.4);
 }
 
 .weather-day h1 {
-    /* Weather day inside date itself */
-    font-size: 15px;
-    border: 2px solid black;
-    width: 180px;
-    color: white;
+    /* Weather day inside DATE itself */
+    font-size: 20px;
+    width: 200px;
+    position: relative;
+    top: 4px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+/* End weather date, day and time conatiner and itself */
+
+
+
+/* Start of weather degrees and container */
+
+.actual-weather-degrees {
+    /* Weather degrees container */
+    background: rgba(252, 249, 249, 0.4);
+    border-radius: 20px;
+    position: relative;
+    top: 80px;
+    width: 170px;
 }
 
 
+.actual-weather-degrees h1 {
+    font-size: 80px;
+}
 
+/* End of weather degrees and container */
 
 
 
