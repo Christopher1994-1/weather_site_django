@@ -5,6 +5,15 @@ body{
 
  /* Email Form at Footer */
 
+ .powered-by-footer p a{
+    color:white;
+    text-decoration: none;
+ }
+
+ .powered-by-footer p a:hover{
+    color:rgb(93, 86, 133);
+    text-decoration: underline;
+ }
 
  /* Start of subscribe button itself */
 
@@ -288,13 +297,15 @@ body{
     background: rgba(252, 249, 249, 0.4);
     border-radius: 20px;
     position: relative;
-    top: 80px;
+    top: 100px;
+    left: 25px;
     width: 170px;
 }
 
 
 .actual-weather-degrees h1 {
     font-size: 80px;
+    color: black;
 }
 
 /* End of weather degrees and container */
@@ -305,6 +316,14 @@ body{
 
 
 
+
+/* Start of side weather box container  */
+
+.side-weather-part {
+     /* Side weather box container */
+     border: 2px solid black;
+
+}
 
 
 
