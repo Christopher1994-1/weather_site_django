@@ -11,15 +11,13 @@ import json
 
 
 
-def get_current_day_day(year, month, day):
-    date = pd.Timesstamp()
+def get_current_day_day(date):
+    date = pd.Timestamp(date)
+    print(date)
     
     
-year = "2022"
-monthh = "11"
-dayy = "24"
-
-get_current_day_day(int(year), int(monthh), int(dayy))
+date3 = "2022-24-11"
+get_current_day_day(date3)
 
 
 
