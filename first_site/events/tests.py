@@ -4,62 +4,54 @@ from calendar import *
 from os import environ
 import requests
 import time
-import pandas as pd
 import json
 
 # Create your tests here.
 
 
 
-def get_current_day_day(date):
-    date = pd.Timestamp(date)
-    print(date)
+def get_next_day():
     
+    now = datetime.now()
+    current_weekday = now.weekday()
+
+    weekdays = {
+        0 : 'Monday', 
+        1 : 'Tuesday', 
+        2 : 'Wednesday',
+        3 : 'Thursday',
+        4 : 'Friday',
+        5 : 'Saturday',
+        6 : 'Sunday'
+    }
+
+    next_day = weekdays[current_weekday]
     
-date3 = "2022-24-11"
-get_current_day_day(date3)
+    if next_day == "Monday":
+        next_five_days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        
+    elif next_day == "Tuesday":
+        next_five_days = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"]
+        
+    elif next_day == "Wednesday":
+        next_five_days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"]
+        
+    elif next_day == "Thursday":
+        next_five_days = ["Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"]
+
+    elif next_day == "Friday":
+        next_five_days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
+        
+    elif next_day == "Saturday":
+        next_five_days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+        
+    elif next_day == "Sunday":
+        next_five_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        
+    return next_five_days, next_day
+        
 
 
-
-
-
-now = datetime.now()
-
-current_year = now.year
-current_day = now.day
-current_month = now.month
-current_weekday = now.weekday()
-
-weekdays = {
-    0 : 'Monday', 
-    1 : 'Tuesday', 
-    2 : 'Wednesday',
-    3 : 'Thursday',
-    4 : 'Friday',
-    5 : 'Saturday',
-    6 : 'Sunday'
-}
-
-print("Today's Date: " + weekdays[current_weekday])
-
-print()
-
-list_weekdays = []
-for day in weekdays.values():
-    list_weekdays.append(day)
-    
-day = int(current_weekday) + 1
-next5days = list_weekdays[day:7]
-
-# print(next5days)
-
-# next_day1 = next5days[0]
-# next_day2 = next5days[1]
-# next_day3 = next5days[2]
-# next_day4 = next5days[3]
-# next_day5 = next5days[4]
-
-# print(next_day1, next_day2, next_day3, next_day4, next_day5)
 
 
 
@@ -121,13 +113,13 @@ def get_current_day_weather(city="Arlington", units="imperial"):
     else:
         LON = str(response1["coord"]["lon"])[0:6]
         
+    current_date = get_next_day()[1]
         
         
-    return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT
         
-    
-    
-    
+    return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date
+        
+
     
     
     
@@ -197,6 +189,7 @@ def coming_days(lat, lon, units="imperial"):
     tomorrow_max_temp = str(current_day_plus_1['main']['temp_max']).split('.')[0]
     tomorrow_weather = str(current_day_plus_1['weather'][0]['description'])
     tomorrows_date = str(current_day_plus_1['dt_txt'])
+    tomorrows_day = get_next_day()[0][0]
 
         
     # Two days from current dates forcast
@@ -205,6 +198,7 @@ def coming_days(lat, lon, units="imperial"):
     day2_max_temp = str(current_day_plus_2['main']['temp_max']).split('.')[0]
     day2_weather = str(current_day_plus_2['weather'][0]['description'])
     day2_date = str(current_day_plus_2['dt_txt'])
+    day2_day = get_next_day()[0][1]
     
     
     # Three days from current dates forcast
@@ -213,6 +207,7 @@ def coming_days(lat, lon, units="imperial"):
     day3_max_temp = str(current_day_plus_3['main']['temp_max']).split('.')[0]
     day3_weather = str(current_day_plus_3['weather'][0]['description'])
     day3_date = str(current_day_plus_3['dt_txt'])
+    day3_day = get_next_day()[0][2]
     
     
     # Four days from current dates forcast
@@ -221,6 +216,7 @@ def coming_days(lat, lon, units="imperial"):
     day4_max_temp = str(current_day_plus_4['main']['temp_max']).split('.')[0]
     day4_weather = str(current_day_plus_4['weather'][0]['description'])
     day4_date = str(current_day_plus_4['dt_txt'])
+    day4_day = get_next_day()[0][3]
     
     
     # Five days from current dates forcast
@@ -229,18 +225,20 @@ def coming_days(lat, lon, units="imperial"):
     day5_max_temp = str(current_day_plus_5['main']['temp_max']).split('.')[0]
     day5_weather = str(current_day_plus_5['weather'][0]['description'])
     day5_date = str(current_day_plus_5['dt_txt'])
+    day5_day = get_next_day()[0][4]
     
     return {
-        "day1": [tomorrow_weather, tomorrow_max_temp, tomorrow_min_temp, tomorrows_date],
-        "day2": [day2_weather, day2_max_temp, day2_min_temp, day2_date],
-        "day3": [day3_weather, day3_max_temp, day3_min_temp, day3_date],
-        "day4": [day4_weather, day4_max_temp, day4_min_temp, day4_date],
-        "day5": [day5_weather, day5_max_temp, day5_min_temp, day5_date],
+        "day1": [tomorrow_weather, tomorrow_max_temp, tomorrow_min_temp, tomorrows_date, tomorrows_day],
+        "day2": [day2_weather, day2_max_temp, day2_min_temp, day2_date, day2_day],
+        "day3": [day3_weather, day3_max_temp, day3_min_temp, day3_date, day3_day],
+        "day4": [day4_weather, day4_max_temp, day4_min_temp, day4_date, day4_day],
+        "day5": [day5_weather, day5_max_temp, day5_min_temp, day5_date, day5_day],
         }
     
 
 
 
-j = coming_days(cc_lat, cc_lon, units)
+k =weather_next_few_hours(cc_lat, cc_lon, units)
 
-print(j)
+
+print(k)
