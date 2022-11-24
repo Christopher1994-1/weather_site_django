@@ -120,8 +120,9 @@ def get_current_day_weather(city="Arlington", units="imperial"):
     return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date
         
 
-    
-    
+k = get_current_day_weather()
+print(k)    
+
     
 def weather_next_few_hours(lat, lon, units="imperial"):
     api_key = environ.get("CEJ_Weather_API")
@@ -238,7 +239,7 @@ def coming_days(lat, lon, units="imperial"):
 
 
 
-k =weather_next_few_hours(cc_lat, cc_lon, units)
+# k =weather_next_few_hours(cc_lat, cc_lon, units)
 
 
-print(k)
+# print(k)

@@ -331,9 +331,21 @@ body{
 
 
 
+/* switch buttons */
 
+.switch-btns {
+    border: 2px solid black;
+    width: 300px;
+    margin: auto;
+}
 
+.first-switch-btn {
+    display: inline-block;
+}
 
+.second-switch-btn {
+    display: inline-block;
+}
 
 
 

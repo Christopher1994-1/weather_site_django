@@ -6,39 +6,8 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
 
-{% if submitted %}
-{% if messages %}
-    {% for message in messages %}
-    <div id="popup1" class="overlay">
-        <div class="popup">
-            <h2>Here i am</h2>
-            <a class="close" href="{% url 'home' %}">&times;</a>
-            <div class="content">
-                Thank to pop me out of that button, but now i'm done so you can close this window.
-            </div>
-        </div>
-    </div>
-    
-    <form action="{% url 'searched' %}" method="POST">
-        {% csrf_token %}
-        <div class="searched-container">
-    
-            <div class="searched-box-box">
-                <input type="search" name="searched-location" id="" placeholder="Find Your Loctation">
-            </div>
-    
-            <div class="searched-button-btn">
-                <input type="submit" name="" id="" value="Find">
-            </div>
-        </div>
-    </form>
-    
 
-    {% endfor %}
-{% endif %}
-
-
-{% else %}
+<!-- Search bar and button -->
 
 <form action="{% url 'searched' %}" method="POST">
     {% csrf_token %}
@@ -55,8 +24,35 @@
 </form>
 
 
+
+ <!-- Switch buttons -->
+<div class="switch-btns">
+
+    <div class="first-switch-btn">
+        <form action="{% url 'metric_button' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" name="metric" value="0">Metric</button>
+        </form>
+    </div>
+
+
+    <div class="second-switch-btn">
+        <form action="{% url 'imperial_button' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" name="imperial" value="1">Imperial</button>
+        </form>
+    </div>
+
+</div>
+
+
+
+
 <!-- I am thinking about putting both the current weather widget and the daily ones on same line -->
 
+
+
+{% if unit_value == '0' %}
 <div class="main-weather-output-container">
 
     <div class="rainy-weather-box">
@@ -71,7 +67,37 @@
 
 
         <div class="actual-weather-degrees">
-            <h1>29°c</h1>
+            <h1>{{ current_weather }}°f</h1>
+
+        </div>
+
+
+        <div class="weather-day">
+            <h1>{{ day_of_the_week }}: {{ now }}</h1>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+{% else %}
+<div class="main-weather-output-container">
+
+    <div class="rainy-weather-box">
+
+        <div class="side-weather-part">
+            <div class="side-weather-first-row">
+                <h1></h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="actual-weather-degrees">
+            <h1>{{ to_celsius }}°c</h1>
 
         </div>
 
@@ -86,7 +112,5 @@
 </div>
 
 {% endif %}
-
-
 
 {% endblock %}

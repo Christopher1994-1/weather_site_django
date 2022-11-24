@@ -12,5 +12,7 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('<str:location>', views.home, name="home"),
     path('<slug:location>', views.home, name="home"),
-    path('searched/', views.searched, name="searched")
+    path('searched/', views.searched, name="searched"),
+    path('metric_button', views.metric_button, name="metric_button"),
+    path('imperial_button', views.imperial_button, name="imperial_button"),
 ]
