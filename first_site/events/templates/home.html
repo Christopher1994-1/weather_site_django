@@ -5,6 +5,7 @@
 
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
 
 
 <!-- Search bar and button -->
@@ -53,27 +54,99 @@
 
 
 {% if unit_value == '0' %}
-<div class="main-weather-output-container">
 
-    <div class="rainy-weather-box">
+    {% if weather_main_report == 'Clouds' %}
+        <div class="main-weather-output-container-cloudy">
 
-        <div class="side-weather-part">
-            <div class="side-weather-first-row">
-                <h1></h1>
+            <div class="cloudy-weather-box">
 
+                <!-- city name and location divs widget -->
+                <div class="city-name-location-icon-contain-cloudy">
+
+                    <div class="location-icon">
+                        <img src="{% static 'images/location-icon-white.png' %}" alt="location icon" width="25" height="25">
+                    </div>
+
+
+                    <div class="city-name">
+                        <h1>{{ city_name }}</h1>
+                    </div>
+
+                </div>
+
+
+
+            <!-- Main weather description and weather icon widget -->
+            <div class="weather-d-container-cloudy">
+
+                <div class="weather-description-cloudy">
+                    <h1>{{ weather_main_report }}</h1>
+                </div>
+
+                <div class="weather-d-icon-cloudy">
+                    <img src="{% static 'images/cloudy2-white.png' %}" alt="" height="50" width="65">
+
+                </div>
+
+            </div>
+
+        
+        <!-- Actual weather description widget -->
+        <div class="actual-weather-dcloudy">
+            <h1>{{ weather_description }}</h1>
+        </div>
+
+
+        <!-- Current weather in fahrenheit widget -->
+        <div class="actual-weather-degrees-cloudy">
+            <h1>{{ current_weather }}°f</h1>
+        </div>
+
+
+
+        <!-- Current time and date widget -->
+        <div class="weather-day-cloudy">
+            <h1>{{ day_of_the_week }}: {{ now }}</h1>
+        </div>
+
+
+
+        <div class="max-min-temp-div-cloudy">
+            <h1>Max Temp: {{ max_temp }}</h1>
+            <h1>Min Temp: {{ min_temp }}</h1>
+        </div>
+
+
+        <div class="humidty-cloudy">
+            <h1>Humidity</h1>
+            <h2>{{ humidity }}</h2>
+        </div>
+
+
+        <div class="wind-speed-cloudy">
+            <div class="wind-speed-icon">
+                <img src="{% static 'images/wind-icon-white.png' %}" alt="" width="50" height="50">
+            </div>
+            <div class="wind-speed-speed">
+                <h1>{{ wind_speed }} mph: {{ wind_dir }}</h1>
+            </div>
+        </div>
+
+
+        <div class="visibility-container">
+
+            <div class="visibility-icon-cloudy">
+                <img src="{% static 'images/visual-icon-white.png' %}" alt="" width="60" height="65">
+            </div>
+
+            <div class="visibility-visibility">
+                <h1>{{ visual }} miles</h1>
             </div>
 
         </div>
 
-
-        <div class="actual-weather-degrees">
-            <h1>{{ current_weather }}°f</h1>
-
-        </div>
-
-
-        <div class="weather-day">
-            <h1>{{ day_of_the_week }}: {{ now }}</h1>
+        <div class="span-popup">
+            <h1 class="tooltipp" data-text="OpenWeatherAPI has a max limit visibility of 10000 meters. So this number could be more.">?</h1>
         </div>
 
 
@@ -81,25 +154,43 @@
 
 </div>
 
+{% elif weather_main_report == 'Rain' %}
+<h1>This</h1>
+
+{% endif %}
+
 
 {% else %}
 <div class="main-weather-output-container">
 
     <div class="rainy-weather-box">
 
-        <div class="side-weather-part">
-            <div class="side-weather-first-row">
-                <h1></h1>
 
+        <div class="city-name-location-icon-contain">
+
+            <div class="city-name">
+                <h1>{{ city_name }}</h1>
             </div>
 
         </div>
 
 
-        <div class="actual-weather-degrees">
-            <h1>{{ to_celsius }}°c</h1>
+
+        <div class="weather-d-container">
+
+            <div class="weather-description">
+                <h1>{{ weather_description }}</h1>
+            </div>
 
         </div>
+
+
+
+        <div class="actual-weather-degrees">
+            <h1>{{ to_celsius }}°c</h1>
+        </div>
+
+
 
 
         <div class="weather-day">

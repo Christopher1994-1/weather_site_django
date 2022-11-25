@@ -66,14 +66,15 @@ def get_current_day_weather(city="Arlington", units="imperial"):
     response1 = requests.get(first_api_call).json()
     response1_prettyprint = json.dumps(response1, indent=3)
     
-    get_weather_report = response1["weather"][0]["main"] # Clouds
+    get_weather_report = response1["weather"][0]["description"] # Clouds
     current_temp = response1["main"]['temp'] # current temperature
     min_temp = response1["main"]["temp_min"] # temperature low
     max_temp = response1["main"]["temp_max"] # temperature high
     humidity = response1["main"]["humidity"] # humidity
     wind_speed = str(response1["wind"]["speed"]).split(".")[0] # wind speed
     wind_direction = int(response1["wind"]["deg"]) # wind direction in degrees, pass into calculate_wind()
-    
+    city_name = response1["name"]
+    visual = response1["visibility"]
     
     sector = {
         1 : "North",
@@ -117,11 +118,11 @@ def get_current_day_weather(city="Arlington", units="imperial"):
         
         
         
-    return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date
+    return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date, visual
         
 
-k = get_current_day_weather()
-print(k)    
+# k = get_current_day_weather()
+# print(k)    
 
     
 def weather_next_few_hours(lat, lon, units="imperial"):
@@ -243,3 +244,8 @@ def coming_days(lat, lon, units="imperial"):
 
 
 # print(k)
+
+
+timeNow = datetime.now()
+
+print(timeNow)

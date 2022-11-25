@@ -3,6 +3,7 @@ from datetime import *
 from .forms import SubListForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from string import capwords
 import calendar
 import json
 from os import environ
@@ -72,26 +73,29 @@ def get_current_day_weather(city="Arlington", units="imperial"):
     humidity = response1["main"]["humidity"] # humidity
     wind_speed = str(response1["wind"]["speed"]).split(".")[0] # wind speed
     wind_direction = int(response1["wind"]["deg"]) # wind direction in degrees, pass into calculate_wind()
+    city_name = response1["name"]
+    wd = response1["weather"][0]["description"]
+    visual = response1["visibility"]
     
     
     sector = {
-        1 : "North",
-        2 : "North North East",
-        3 : "North East",
-        4 : "East North East",
-        5 : "East",
-        6 : "East South East",
-        7 : "South East",
-        8 : "South South East",
-        9 : "South",
-        10 : "South South West",
-        11 : "South West",
-        12 : "West South West",
-        13 : "West",
-        14 : "West North West",
-        15 : "North West",
-        16 : "North North West",
-        17 : "North",        
+        1 : "N",
+        2 : "NNE",
+        3 : "NE",
+        4 : "ENE",
+        5 : "E",
+        6 : "ESE",
+        7 : "SE",
+        8 : "SSE",
+        9 : "S",
+        10 : "SSW",
+        11 : "SW",
+        12 : "WSW",
+        13 : "W",
+        14 : "WNW",
+        15 : "NW",
+        16 : "NNW",
+        17 : "N",        
         }
     degrees = wind_direction
     Index = int(degrees) % 360
@@ -116,7 +120,7 @@ def get_current_day_weather(city="Arlington", units="imperial"):
         
         
         
-    return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date
+    return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date, city_name, wd, visual
         
 
 
@@ -237,11 +241,24 @@ def home(request, location="arlington"):
     cw_int = (int(current_weather) - 32) * 5/9
     cw_int = str(cw_int).split('.')[0]
     
+    city_name = str(get_current_day_weather()[10])
+    weather_main_report = str(get_current_day_weather()[0])
+    # weather_main_report = 'Clouds'
+    weather_description = str(get_current_day_weather()[11])
+    min_temp = str(get_current_day_weather()[2]).split(".")[0]
+    max_temp = str(get_current_day_weather()[3]).split(".")[0]
+    humidity = str(get_current_day_weather()[4]) + "%"
+    wind_speed = str(get_current_day_weather()[5])
+    wind_dir = str(get_current_day_weather()[6])
+    visual = str(get_current_day_weather()[12])
+    convert_wind = int(visual) // 1609
+    visual = str(convert_wind)
+    
+    
     
     
     
     units_value = '0'
-    
     imperial_value = request.POST.get('imperial')
     metric_value = request.POST.get('metric')
     
@@ -290,6 +307,18 @@ def home(request, location="arlington"):
         "current_weather": current_weather,
         "unit_value": units_value,
         'to_celsius': cw_int,
+        "city_name" : city_name,
+        "weather_main_report" : weather_main_report,
+        "weather_description" : weather_description,
+        "min_temp" : min_temp,
+        "visual" : visual,
+        "max_temp" : max_temp,
+        "humidity" : humidity,
+        "wind_speed" : wind_speed,
+        "wind_dir" : wind_dir,
+        
+        
+        
     })
 
 

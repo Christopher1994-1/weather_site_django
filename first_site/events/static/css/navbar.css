@@ -15,6 +15,12 @@ body{
     text-decoration: underline;
  }
 
+
+
+
+
+
+
  /* Start of subscribe button itself */
 
 .subscribe-btn {
@@ -248,84 +254,48 @@ body{
 }
 
 
-
+/* If weather_main_report == 'Rain' */
 .rainy-weather-box {
     /* first container for the first weather output box */
-    border: 2px solid black;
     width: 500px;
     background: url("https://images.pexels.com/photos/68357/pexels-photo-68357.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     padding: 10px;
     border-radius: 20px;
-    height: 300px;
+    height: 340px;
     margin: auto;
 }
 
 
-/* Weather date, day and time conatiner and itself */
 
-.weather-day {
-    /* Weather day inside first container */
-    width: 215px;
-    text-align: center;
+
+/* City name and location icon stuff */
+.city-name-location-icon-contain {
+    /* city name and loctation icon main container div */
+    border: 2px solid black;
     position: relative;
+    margin-bottom: 5px;
+    width: 240px;
+    background: rgba(34, 34, 34, 0.4);
     border-radius: 20px;
-    top: 100px;
-    background: white;
-    padding: 5px;
-    left: 5px;
-    background: rgba(252, 249, 249, 0.4);
 }
-
-.weather-day h1 {
-    /* Weather day inside DATE itself */
-    font-size: 20px;
-    width: 200px;
-    position: relative;
-    top: 4px;
+.city-name {
+    /* City name inside container */
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    border: 2px solid rgba(0, 0, 0, 0);
     font-weight: bold;
-    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px black;
 }
-
-/* End weather date, day and time conatiner and itself */
-
-
-
-/* Start of weather degrees and container */
-
-.actual-weather-degrees {
-    /* Weather degrees container */
-    background: rgba(252, 249, 249, 0.4);
-    border-radius: 20px;
+.location-icon {
+    /* Location icon inside container */
+    display: inline-block;
+    border: 2px solid rgba(0, 0, 0, 0);
     position: relative;
-    top: 100px;
-    left: 25px;
-    width: 170px;
+    bottom: 10px;
+    color: white;
+    left: 5px;
 }
-
-
-.actual-weather-degrees h1 {
-    font-size: 80px;
-    color: black;
-}
-
-/* End of weather degrees and container */
-
-
-
-
-
-
-
-
-/* Start of side weather box container  */
-
-.side-weather-part {
-     /* Side weather box container */
-     border: 2px solid black;
-
-}
-
-
+/* End of city name and location icon stuff */
 
 
 
