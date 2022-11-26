@@ -2,14 +2,12 @@
 
 /* If weather_main_report == 'Clouds' */
 
-
-
 .main-weather-output-container-cloudy {
     /* Main container for weather output box */
-    width: 1000px;
-    margin: auto;
+    width: 600px;
+    position: relative;
+    left:200px;
 }
-
 
 /* If weather_main_report == 'Clouds' */
 .cloudy-weather-box {
@@ -22,16 +20,13 @@
     margin: auto;
 }
 
-
-
-
+/* City name and location icon container  */
 .city-name-location-icon-contain-cloudy {
     /* city name and loctation icon main container div */
     position: relative;
     margin-bottom: 5px;
     width: 240px;
 }
-
 
 /* Weather description and icon container */
 .weather-d-container-cloudy {
@@ -65,12 +60,6 @@
     font-size: 20px;
 }
 
-
-
-
-
-
-
 .actual-weather-degrees-cloudy {
     /* Weather degrees container */
     background: rgba(252, 249, 249, 0.4);
@@ -81,17 +70,11 @@
     width: 170px;
 }
 
-
 .actual-weather-degrees-cloudy h1 {
     font-size: 80px;
     color: black;
     text-shadow: 2px 2px white;
 }
-
-
-
-
-
 
 /* Weather date, day and time conatiner and itself */
 
@@ -120,13 +103,6 @@
 /* End weather date, day and time conatiner and itself */
 
 
-
-
-
-
-
-
-
 .max-min-temp-div-cloudy {
     width: 230px;
     text-align: center;
@@ -135,21 +111,11 @@
     left: 250px;
 }
 
-
 .max-min-temp-div-cloudy h1 {
     font-size: 15px;
     text-shadow: 2px 2px black;
     color: rgb(255, 255, 255);
 }
-
-
-
-
-
-
-
-
-
 
 
 .humidty-cloudy {
@@ -175,19 +141,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .wind-speed-cloudy {
     width: 210px;
     text-align: center;
@@ -211,11 +164,6 @@
 .wind-speed-icon {
     display: inline-block;
 }
-
-
-
-
-
 
 
 .visibility-container {
@@ -245,6 +193,58 @@
     text-shadow: 2px 2px black;
     color: white;
 }
+/* end of first weather box container */
+
+
+
+
+/* Start of side weather next few hours container box */
+
+
+/* Side weather for next few hours */
+.next-hours-weather-cloudy {
+    /* Main container for next hours weather box */
+    border: 2px solid black;
+    position: absolute;
+    border-radius: 20px;
+    bottom: 400px;
+    padding: 15px;
+    background: black;
+    left: 750px;
+}
+
+
+.next-hours-weather-cloudy h1 {
+    color: white;
+    font-size: 20px;
+}
+
+
+.next-hours-weather-cloudy hr {
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

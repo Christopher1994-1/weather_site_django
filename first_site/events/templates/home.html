@@ -146,16 +146,38 @@
         </div>
 
         <div class="span-popup">
-            <h1 class="tooltipp" data-text="OpenWeatherAPI has a max limit visibility of 10000 meters. So this number could be more.">?</h1>
+            <h1 class="tooltipp" data-text="OpenWeatherAPI has a max limit visibility of 10000 meters which is around 6 miles. Max visibility is 6 miles">?</h1>
         </div>
+
+
+    </div>
+
+
+</div>
+
+<div class="next-hours-weather-cloudy">
+
+    <h1>Next Few Hours</h1>
+    <hr>
+
+    <div class="icon-and-min-max-container">
+        <!-- TODO Do jinja logic to determine what weather icon needs to be shown  -->
 
 
     </div>
 
 </div>
 
+
+<div>
+    <h1>Something else</h1>
+</div>
+
+
+
+
 {% elif weather_main_report == 'Rain' %}
-<h1>This</h1>
+<h1>Rain</h1>
 
 {% endif %}
 
