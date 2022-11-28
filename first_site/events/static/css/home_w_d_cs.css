@@ -232,12 +232,31 @@
 
 
 
+.icon-and-min-max-container {
+    border: 2px solid white;
+    padding: 10px;
+}
 
 
 
+.min-max-side-hour {
+    display: inline-block;
+}
+.min-max-side-hour h1{
+    font-size: 20px;
+}
 
 
 
+.side-hour-icon {
+    display: inline-block;
+    position: relative;
+    bottom: 20px;
+}
+
+.side-hour-time {
+    text-align: center;
+}
 
 
 

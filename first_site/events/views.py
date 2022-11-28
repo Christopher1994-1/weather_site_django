@@ -198,7 +198,6 @@ def weather_next_few_hours(lat, lon, units="imperial"):
             [dt_9pm_month, dt_9pm_day, convert_dt9, today_9pm_max_temp, today_9pm_min_temp, today_9pm_weather],]
 
 
-
 def coming_days(lat, lon, units="imperial"):
     api_key = environ.get("CEJ_Weather_API")
     LAT = lat
@@ -289,7 +288,7 @@ def home(request, location="arlington"):
     # weather_main_report = str(get_current_day_weather()[0])
     weather_main_report = 'Clouds'
     # weather_description = str(get_current_day_weather()[11])
-    weather_description = "mostly cloudy"
+    weather_description = "clear sky"
     # min_temp = str(get_current_day_weather()[2]).split(".")[0]
     min_temp = "58"
     # max_temp = str(get_current_day_weather()[3]).split(".")[0]
@@ -309,11 +308,14 @@ def home(request, location="arlington"):
     cc_lon = get_current_day_weather()[7]
     cc_lat = get_current_day_weather()[8]
     
-    
+    side_forecast_month = weather_next_few_hours(cc_lat, cc_lon)[0][0]
+    side_forecast_day = weather_next_few_hours(cc_lat, cc_lon)[0][1]
+    first_hour_time = weather_next_few_hours(cc_lat, cc_lon)[0][2]
+    first_hour_max = weather_next_few_hours(cc_lat, cc_lon)[0][3]
+    first_hour_min = weather_next_few_hours(cc_lat, cc_lon)[0][4]
     
     # next few hour calls
-    
-    next_hours = weather_next_few_hours(cc_lat, cc_lon)
+
     
     
     
@@ -377,9 +379,11 @@ def home(request, location="arlington"):
         "humidity" : humidity,
         "wind_speed" : wind_speed,
         "wind_dir" : wind_dir,
-        
-        
-        
+        "side_forecast_month" : side_forecast_month,
+        "side_forecast_day" : side_forecast_day,
+        "first_hour_time" : first_hour_time,
+        "first_hour_max" : first_hour_max,
+        "first_hour_min" : first_hour_min,
     })
 
 

@@ -280,15 +280,16 @@ def coming_days(lat, lon, units="imperial"):
         "day5": [day5_weather, day5_max_temp, day5_min_temp, day5_date, day5_day],
         }
     
+# import pytz
+# from datetime import datetime
+# from astral import Astral
+# a = Astral()
+# city = a['Arlington'] # Replace with your city
+# now = datetime.now(pytz.utc)
+# sun = city.sun(date=now, local=True)
+# if now >= sun['dusk'] or now <= sun['dawn']:
+#     print("It's dark outside")
 
 
 
-k =weather_next_few_hours(cc_lat, cc_lon, units)
 
-
-print(k)
-
-
-timeNow = datetime.now()
-
-print(timeNow)

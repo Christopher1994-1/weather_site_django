@@ -157,14 +157,43 @@
 
 <div class="next-hours-weather-cloudy">
 
-    <h1>Next Few Hours</h1>
+    <h1>Hourly Forecast</h1>
     <hr>
 
+    {% if weather_description == 'clear sky' %}
+    <!-- First hour -->
     <div class="icon-and-min-max-container">
-        <!-- TODO Do jinja logic to determine what weather icon needs to be shown  -->
 
+
+        <div class="side-hour-date">
+            <h1>{{ side_forecast_month }}/{{ side_forecast_day }}: {{ day_of_the_week }}</h1>
+
+        </div>
+
+
+        <div class="min-max-side-hour">
+            <h1>Max: {{ first_hour_max }}</h1>
+            <h1>Min: {{ first_hour_min }}</h1>
+        </div>
+
+
+        <div class="side-hour-icon">
+            <img src="{% static 'images/clear-night-white.png' %}" alt="" width="60" height="60">
+        </div>
+
+
+        <div class="side-hour-time">
+            <h1>{{ first_hour_time }}</h1>
+    
+        </div>
 
     </div>
+
+
+    {% elif weather_description != 'clear sky' %}
+    <h1>This</h1>
+
+    {% endif %}
 
 </div>
 
