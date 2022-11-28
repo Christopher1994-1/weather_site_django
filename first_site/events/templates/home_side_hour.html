@@ -1,0 +1,121 @@
+{% block content%}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
+
+
+
+
+
+<div class="next-hours-weather-cloudy">
+    <!-- First hour -->
+    <div class="icon-and-min-max-container">
+
+
+        <div class="side-hour-date">
+            <h1>{{ side_forecast_month }}/{{ side_forecast_day }}: Wednesday</h1>
+        </div>
+
+
+        {% include 'home_icon_h1.html' %}
+
+        <div class="side-hour-max-min">
+            <h1>Max: 104</h1>
+            <h1>Min: 87</h1>
+        </div>
+
+        <div class="side-hour-weather-d">
+            <h1>clear sky</h1>
+        </div>
+
+        <div class="side-hour-time">
+            <h1>13:00:pm</h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="next-hours-weather-cloudy2">
+    <!-- Second Hour -->
+    <!-- <div class="icon-and-min-max-container2">
+
+        <div class="side-hour-date2">
+            <h1>{{ side_forecast_month }}/{{ side_forecast_day }}: Thursday</h1>
+        </div> -->
+
+
+
+
+        <!-- <div class="side-hour-max-min2">
+            <h1>Max: 104</h1>
+            <h1>Min: 87</h1>
+        </div>
+
+        <div class="side-hour-weather-d2">
+            <h1>light snow and rain</h1>
+        </div>
+
+        <div class="side-hour-time2">
+            <h1>13:00:pm</h1>
+        </div>
+
+    </div> -->
+</div>
+
+
+
+
+<div class="next-hours-weather-cloudy3">
+
+    <!-- Third Hour -->
+    <div class="icon-and-min-max-container3">
+
+        <!-- <div class="side-hour-date2">
+            <h1>{{ side_forecast_month }}/{{ side_forecast_day }}: Wendsday</h1>
+        </div>
+
+
+        <div class="side-hour-icon2">
+            <img src="{% static 'images/sunny-white.png' %}" alt="" width="65" height="60">
+        </div>
+
+        <div class="side-hour-max-min2">
+            <h1>Max: 104</h1>
+            <h1>Min: 87</h1>
+        </div>
+
+        <div class="side-hour-weather-d2">
+            <h1>clear sky</h1>
+        </div>
+
+        <div class="side-hour-time2">
+            <h1>13:00:pm</h1>
+        </div> -->
+
+    </div>
+</div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

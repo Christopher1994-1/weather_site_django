@@ -1,0 +1,104 @@
+{% block content%}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
+
+
+<!-- Checking if clear sky and time of day is morning/afternoon -->
+{% if first_hour_d == 'clear sky' and time_of_day == True %} <!-- day == True means day -->
+
+    <div class="side-hour-icon">
+        <img src="{% static 'images/sunny-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+<!-- Checking if clear sky and time of day is evening/night -->
+{% elif first_hour_d == 'clear sky' and time_of_day == False %} <!-- day == False means night -->
+    <div class="side-hour-icon">
+        <img src="{% static 'images/clear-night-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+
+<!-- Checking if light clouds  -->
+{% elif first_hour_d == 'overcast clouds' or first_hour_d == 'broken clouds' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/cloudy2.png' %}" alt="" width="55" height="50">
+    </div>
+    
+
+<!-- Checking if heavy clouds  -->
+{% elif first_hour_d == 'few clouds' or first_hour_d == 'scattered clouds' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/few-clouds-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+
+<!-- Checking if light rain  -->
+{% elif first_hour_d == 'light rain' or first_hour_d == 'moderate rain' or first_hour_d == 'light intensity shower rain' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/light-rain-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+
+<!-- Checking if drizzle -->
+{% elif first_hour_d == 'light intensity drizzle' or first_hour_d == 'drizzle' or first_hour_d == 'heavy intensity drizzle' or first_hour_d == 'light intensity drizzle rain' or first_hour_d == 'drizzle rain' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/light-rain-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+
+<!-- Checking if drizzle 2 -->
+{% elif first_hour_d == 'heavy intensity drizzle rain' or first_hour_d == 'shower rain and drizzle' or first_hour_d == 'heavy shower rain and drizzle' or first_hour_d == 'shower drizzle' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/light-rain-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+
+
+<!-- Checking if freezing rain  -->
+{% elif first_hour_d == 'freezing rain' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/freezing-rain.png' %}" alt="" width="55" height="50">
+    </div>
+
+    
+<!-- Checking if heavy rain  -->
+{% elif first_hour_d == 'heavy intensity rain' or first_hour_d == 'very heavy rain' or first_hour_d == 'very heavy rain' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/heavy-rain-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+<!-- Checking if heavy rain 2 -->
+{% elif first_hour_d == 'extreme rain' or first_hour_d == 'shower rain' or first_hour_d == 'heavy intensity shower rain' or first_hour_d == 'ragged shower rain' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/heavy-rain-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+
+<!-- Checking if light snow -->
+{% elif first_hour_d == 'light snow' or first_hour_d == 'snow' or first_hour_d == 'Light shower snow' or first_hour_d == 'shower sleet' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/light-snow.png' %}" alt="" width="55" height="50">
+    </div>
+
+
+<!-- Checking if sleet snow -->
+{% elif first_hour_d == 'sleet' or first_hour_d == 'light rain and snow' or first_hour_d == 'rain and snow' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/sleet.png' %}" alt="" width="50" height="45">
+    </div>
+
+
+<!-- Checking if heavy snow -->
+{% elif first_hour_d == 'heavy snow' or first_hour_d == 'shower sleet' or first_hour_d == 'shower snow' or first_hour_d == 'heavy shower snow' %}
+    <div class="side-hour-icon">
+        <img src="{% static 'images/heavy-snow-black.png' %}" alt="" width="55" height="50">
+    </div>
+
+
+
+{% endif %}
+
+
+
+{% endblock %}

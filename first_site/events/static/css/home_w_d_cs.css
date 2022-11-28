@@ -198,64 +198,169 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Start of side weather next few hours container box */
 
 
 /* Side weather for next few hours */
 .next-hours-weather-cloudy {
     /* Main container for next hours weather box */
-    border: 2px solid black;
     position: absolute;
     border-radius: 20px;
-    bottom: 400px;
+    bottom: 380px;
+    height: 110px;
+    width: 300px;
     padding: 15px;
-    background: black;
-    left: 750px;
+    background: rgba(252, 249, 249, 0.4);
+    left: 760px;
 }
 
 
 .next-hours-weather-cloudy h1 {
-    color: white;
     font-size: 20px;
+    color: black;
 }
-
-
-.next-hours-weather-cloudy hr {
-    color: white;
-}
-
-
-
-
-
-
-
 
 
 .icon-and-min-max-container {
-    border: 2px solid white;
     padding: 10px;
 }
 
-
-
-.min-max-side-hour {
-    display: inline-block;
+.side-hour-date {
+    position: absolute;
+    bottom: 70px;
+    left: 10px;
 }
-.min-max-side-hour h1{
-    font-size: 20px;
-}
-
-
 
 .side-hour-icon {
     display: inline-block;
     position: relative;
-    bottom: 20px;
+    left: 120px;
 }
+
+
+.side-hour-max-min {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    left: 140px;
+}
+
+.side-hour-max-min h1{
+    font-size: 13px;
+}
+
+
+.side-hour-weather-d {
+    position: relative;
+    left: 160px;
+}
+
+.side-hour-weather-d h1{
+    font-size: 12px;
+}
+
 
 .side-hour-time {
-    text-align: center;
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+}
+
+.side-hour-time h1 {
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+.next-hours-weather-cloudy2 {
+    /* Main container for next hours weather box */
+    position: absolute;
+    border-radius: 20px;
+    bottom: 265px;
+    height: 110px;
+    width: 300px;
+    padding: 15px;
+    background: rgba(252, 249, 249, 0.4);
+    left: 760px;
+}
+
+
+.next-hours-weather-cloudy2 h1 {
+    font-size: 20px;
+    color: black
+}
+
+
+.icon-and-min-max-container2 {
+    padding: 10px;
+}
+
+.side-hour-date2 {
+    position: absolute;
+    bottom: 70px;
+    left: 10px;
+}
+
+.side-hour-icon2 {
+    display: inline-block;
+    position: relative;
+    left: 120px;
+}
+
+
+.side-hour-max-min2 {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    left: 140px;
+}
+
+.side-hour-max-min2 h1{
+    font-size: 13px;
+}
+
+
+.side-hour-weather-d2 {
+    position: relative;
+    left: 160px;
+}
+
+.side-hour-weather-d2 h1{
+    font-size: 12px;
+}
+
+
+.side-hour-time2 {
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+}
+
+.side-hour-time2 h1 {
+    font-size: 30px;
 }
 
 
@@ -271,6 +376,69 @@
 
 
 
+
+.next-hours-weather-cloudy3 {
+    /* Main container for next hours weather box */
+    position: absolute;
+    border-radius: 20px;
+    bottom: 150px;
+    height: 110px;
+    width: 300px;
+    padding: 15px;
+    background: rgba(252, 249, 249, 0.4);
+    left: 760px;
+}
+
+
+
+.icon-and-min-max-container3 {
+    padding: 10px;
+    color:black;
+}
+
+.side-hour-date3 {
+    position: absolute;
+    bottom: 80px;
+}
+
+.side-hour-icon3 {
+    display: inline-block;
+    position: relative;
+    left: 140px;
+}
+
+
+.side-hour-max-min3 {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    left: 140px;
+}
+
+.side-hour-max-min3 h1{
+    font-size: 13px;
+}
+
+
+.side-hour-weather-d3 {
+    position: absolute;
+    left: 200px;
+}
+
+.side-hour-weather-d3 h1{
+    font-size: 13px;
+}
+
+
+.side-hour-time3 {
+    position: absolute;
+    bottom: 30px;
+    left: 30ps;
+}
+
+.side-hour-time3 h1 {
+    font-size: 30px;
+}
 
 
 
@@ -329,3 +497,13 @@
   .tooltipp:hover:before {
     display:block;
   } 
+
+
+  #hourly-weather {
+    position: absolute;  
+    bottom: 485px;
+    left: 760px;
+    color: white;
+    text-shadow: 2px 2px black;
+
+}

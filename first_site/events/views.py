@@ -10,7 +10,15 @@ from os import environ
 import requests
 
 
-
+def get_time_of_day(time):
+    if time < 12:
+        return "Morning"
+    elif time < 16:
+        return "Afternoon"
+    elif time < 19:
+        return "Evening"
+    else:
+        return "Night"
 
 
 def get_next_day():
@@ -279,7 +287,8 @@ def imperial_button(request):
 
 def home(request, location="arlington"):
     # weather calls 
-    current_weather = str(get_current_day_weather()[1]).split(".")[0]
+    # current_weather = str(get_current_day_weather()[1]).split(".")[0]
+    current_weather = "56"
     cw_int = (int(current_weather) - 32) * 5/9
     cw_int = str(cw_int).split('.')[0]
     
@@ -313,11 +322,11 @@ def home(request, location="arlington"):
     first_hour_time = weather_next_few_hours(cc_lat, cc_lon)[0][2]
     first_hour_max = weather_next_few_hours(cc_lat, cc_lon)[0][3]
     first_hour_min = weather_next_few_hours(cc_lat, cc_lon)[0][4]
+    # first_hour_d = weather_next_few_hours(cc_lat, cc_lon)[0][5]
+    first_hour_d = 'heavy snow'
     
     # next few hour calls
 
-    
-    
     
     
     
@@ -349,6 +358,13 @@ def home(request, location="arlington"):
     current_day = now.day
     current_month = now.month
     current_weekday = now.weekday()
+    day = None
+    time_of_day = get_time_of_day((now.hour))
+    
+    if time_of_day == 'Morning' or 'Afternoon':
+        day = True
+    else:
+        day = False
 
     weekdays = {
         0 : 'Monday', 
@@ -384,6 +400,8 @@ def home(request, location="arlington"):
         "first_hour_time" : first_hour_time,
         "first_hour_max" : first_hour_max,
         "first_hour_min" : first_hour_min,
+        "time_of_day" : day,
+        "first_hour_d" : first_hour_d,
     })
 
 

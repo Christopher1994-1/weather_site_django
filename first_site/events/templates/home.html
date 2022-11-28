@@ -155,13 +155,25 @@
 
 </div>
 
+
+
+<h1 id="hourly-weather">Hourly Forecast:</h1>
+
+{% include 'home_side_hour.html' %}
+
+
+
+
+
+<!-- 
+
 <div class="next-hours-weather-cloudy">
 
     <h1>Hourly Forecast</h1>
     <hr>
 
-    {% if weather_description == 'clear sky' %}
-    <!-- First hour -->
+    {% if weather_description == 'clear sky' and time_of_day == True %} day == True means day
+
     <div class="icon-and-min-max-container">
 
 
@@ -178,7 +190,7 @@
 
 
         <div class="side-hour-icon">
-            <img src="{% static 'images/clear-night-white.png' %}" alt="" width="60" height="60">
+            <img src="{% static 'images/sunny-white.png' %}" alt="" width="65" height="60">
         </div>
 
 
@@ -189,18 +201,37 @@
 
     </div>
 
+    
 
-    {% elif weather_description != 'clear sky' %}
+
+    {% elif weather_description != 'clear sky' and time_of_day == False %} day == False means night
     <h1>This</h1>
 
     {% endif %}
 
-</div>
+</div> -->
 
 
 <div>
     <h1>Something else</h1>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
