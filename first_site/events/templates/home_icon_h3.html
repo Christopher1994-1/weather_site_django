@@ -6,49 +6,49 @@
 
 
 <!-- Checking if clear sky and time of day is morning/afternoon -->
-{% if first_hour_d == 'clear sky' and time_of_day == True %} <!-- day == True means day -->
+{% if third_hour_d == 'clear sky' and time_of_day == True %} <!-- day == True means day -->
 
     <div class="side-hour-icon">
         <img src="{% static 'images/sunny-black.png' %}" alt="" width="55" height="50">
     </div>
 
 <!-- Checking if clear sky and time of day is evening/night -->
-{% elif first_hour_d == 'clear sky' and time_of_day == False %} <!-- day == False means night -->
+{% elif third_hour_d == 'clear sky' and time_of_day == False %} <!-- day == False means night -->
     <div class="side-hour-icon">
         <img src="{% static 'images/clear-night-black.png' %}" alt="" width="55" height="50">
     </div>
 
 
 <!-- Checking if light clouds  -->
-{% elif first_hour_d == 'overcast clouds' or first_hour_d == 'broken clouds' %}
+{% elif third_hour_d == 'overcast clouds' or third_hour_d == 'broken clouds' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/cloudy2.png' %}" alt="" width="55" height="50">
     </div>
     
 
 <!-- Checking if heavy clouds  -->
-{% elif first_hour_d == 'few clouds' or first_hour_d == 'scattered clouds' %}
+{% elif third_hour_d == 'few clouds' or third_hour_d == 'scattered clouds' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/few-clouds-black.png' %}" alt="" width="55" height="50">
     </div>
 
 
 <!-- Checking if light rain  -->
-{% elif first_hour_d == 'light rain' or first_hour_d == 'moderate rain' or first_hour_d == 'light intensity shower rain' %}
+{% elif third_hour_d == 'light rain' or third_hour_d == 'moderate rain' or third_hour_d == 'light intensity shower rain' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/light-rain-black.png' %}" alt="" width="55" height="50">
     </div>
 
 
 <!-- Checking if drizzle -->
-{% elif first_hour_d == 'light intensity drizzle' or first_hour_d == 'drizzle' or first_hour_d == 'heavy intensity drizzle' or first_hour_d == 'light intensity drizzle rain' or first_hour_d == 'drizzle rain' %}
+{% elif third_hour_d == 'light intensity drizzle' or third_hour_d == 'drizzle' or third_hour_d == 'heavy intensity drizzle' or third_hour_d == 'light intensity drizzle rain' or third_hour_d == 'drizzle rain' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/light-rain-black.png' %}" alt="" width="55" height="50">
     </div>
 
 
 <!-- Checking if drizzle 2 -->
-{% elif first_hour_d == 'heavy intensity drizzle rain' or first_hour_d == 'shower rain and drizzle' or first_hour_d == 'heavy shower rain and drizzle' or first_hour_d == 'shower drizzle' %}
+{% elif third_hour_d == 'heavy intensity drizzle rain' or third_hour_d == 'shower rain and drizzle' or third_hour_d == 'heavy shower rain and drizzle' or third_hour_d == 'shower drizzle' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/light-rain-black.png' %}" alt="" width="55" height="50">
     </div>
@@ -56,20 +56,20 @@
 
 
 <!-- Checking if freezing rain  -->
-{% elif first_hour_d == 'freezing rain' %}
+{% elif third_hour_d == 'freezing rain' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/freezing-rain.png' %}" alt="" width="55" height="50">
     </div>
 
     
 <!-- Checking if heavy rain  -->
-{% elif first_hour_d == 'heavy intensity rain' or first_hour_d == 'very heavy rain' or first_hour_d == 'very heavy rain' %}
+{% elif third_hour_d == 'heavy intensity rain' or third_hour_d == 'very heavy rain' or third_hour_d == 'very heavy rain' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/heavy-rain-black.png' %}" alt="" width="55" height="50">
     </div>
 
 <!-- Checking if heavy rain 2 -->
-{% elif first_hour_d == 'extreme rain' or first_hour_d == 'shower rain' or first_hour_d == 'heavy intensity shower rain' or first_hour_d == 'ragged shower rain' %}
+{% elif third_hour_d == 'extreme rain' or third_hour_d == 'shower rain' or third_hour_d == 'heavy intensity shower rain' or third_hour_d == 'ragged shower rain' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/heavy-rain-black.png' %}" alt="" width="55" height="50">
     </div>
@@ -81,21 +81,21 @@
 
 
 <!-- Checking if light snow -->
-{% elif first_hour_d == 'light snow' or first_hour_d == 'snow' or first_hour_d == 'Light shower snow' or first_hour_d == 'shower sleet' %}
+{% elif third_hour_d == 'light snow' or third_hour_d == 'snow' or third_hour_d == 'Light shower snow' or third_hour_d == 'shower sleet' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/light-snow.png' %}" alt="" width="55" height="50">
     </div>
 
 
 <!-- Checking if sleet snow -->
-{% elif first_hour_d == 'sleet' or first_hour_d == 'light rain and snow' or first_hour_d == 'rain and snow' %}
+{% elif third_hour_d == 'sleet' or third_hour_d == 'light rain and snow' or third_hour_d == 'rain and snow' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/sleet.png' %}" alt="" width="50" height="45">
     </div>
 
 
 <!-- Checking if heavy snow -->
-{% elif first_hour_d == 'heavy snow' or first_hour_d == 'shower sleet' or first_hour_d == 'shower snow' or first_hour_d == 'heavy shower snow' %}
+{% elif third_hour_d == 'heavy snow' or third_hour_d == 'shower sleet' or third_hour_d == 'shower snow' or third_hour_d == 'heavy shower snow' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/heavy-snow-black.png' %}" alt="" width="55" height="50">
     </div>
@@ -109,46 +109,46 @@
 
 
 <!-- Checking if thunderstorm with rain -->
-{% elif first_hour_d == 'thunderstorm with light rain' or first_hour_d == 'thunderstorm with rain' or first_hour_d == 'thunderstorm with heavy rain' %}
+{% elif third_hour_d == 'thunderstorm with light rain' or third_hour_d == 'thunderstorm with rain' or third_hour_d == 'thunderstorm with heavy rain' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/thunderstorm-with-rain.png' %}" alt="" width="55" height="50">
     </div>
 
 
 <!-- Checking if thunderstorm with rain -->
-{% elif first_hour_d == 'thunderstorm with light drizzle' or first_hour_d == 'thunderstorm with drizzle' or first_hour_d == 'thunderstorm with heavy drizzle' %}
+{% elif third_hour_d == 'thunderstorm with light drizzle' or third_hour_d == 'thunderstorm with drizzle' or third_hour_d == 'thunderstorm with heavy drizzle' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/thunderstorm-with-rain.png' %}" alt="" width="55" height="50">
     </div>
 
 
 <!-- Checking if heavy thunderstorm -->
-{% elif first_hour_d == 'heavy thunderstorm' or first_hour_d == 'ragged thunderstorm' %}
+{% elif third_hour_d == 'heavy thunderstorm' or third_hour_d == 'ragged thunderstorm' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/heavy-thunder-black.png' %}" alt="" width="55" height="50">
     </div>
 
 
 <!-- Checking if light thunderstorm -->
-{% elif first_hour_d == 'light thunderstorm' or first_hour_d == 'thunderstorm' %}
+{% elif third_hour_d == 'light thunderstorm' or third_hour_d == 'thunderstorm' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/light-thunder-black.png' %}" alt="" width="55" height="50">
     </div>
 
 <!-- Checking if Atmosphere -->
-{% elif first_hour_d == 'mist' or first_hour_d == 'Smoke' or first_hour_d == 'Haze' or first_hour_d == 'sand/ dust whirls' %}
+{% elif third_hour_d == 'mist' or third_hour_d == 'Smoke' or third_hour_d == 'Haze' or third_hour_d == 'sand/ dust whirls' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/mist.png' %}" alt="" width="55" height="50">
     </div>
 
 <!-- Checking if Atmosphere 2 -->
-{% elif first_hour_d == 'fog' or first_hour_d == 'sand' or first_hour_d == 'dust' or first_hour_d == 'volcanic ash' %}
+{% elif third_hour_d == 'fog' or third_hour_d == 'sand' or third_hour_d == 'dust' or third_hour_d == 'volcanic ash' %}
 <div class="side-hour-icon">
     <img src="{% static 'images/mist.png' %}" alt="" width="55" height="50">
 </div>
 
 <!-- Checking if  Atmosphere 3 -->
-{% elif first_hour_d == 'squalls' or first_hour_d == 'tornado' %}
+{% elif third_hour_d == 'squalls' or third_hour_d == 'tornado' %}
     <div class="side-hour-icon">
         <img src="{% static 'images/torando.png' %}" alt="" width="55" height="50">
     </div>

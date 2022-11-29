@@ -193,12 +193,11 @@ def weather_next_few_hours(lat, lon, units="imperial"):
     today_9pm_min_temp = str(today_9pm['main']['temp_min']).split('.')[0]
     today_9pm_max_temp = str(today_9pm['main']['temp_max']).split('.')[0]
     today_9pm_weather = str(today_9pm['weather'][0]['description'])
+
     
-    return today_3pm
-    
-    # return [[dt_3pm_month, dt_3pm_day, convert_dt3, today_3pm_max_temp, today_3pm_min_temp, today_3pm_weather],
-    #         [dt_6pm_month, dt_6pm_day, convert_dt6, today_6pm_max_temp, today_6pm_min_temp, today_6pm_weather],
-    #         [dt_9pm_month, dt_9pm_day, convert_dt9, today_9pm_max_temp, today_9pm_min_temp, today_9pm_weather],]
+    return [[dt_3pm_month, dt_3pm_day, convert_dt3, today_3pm_max_temp, today_3pm_min_temp, today_3pm_weather],
+            [dt_6pm_month, dt_6pm_day, convert_dt6, today_6pm_max_temp, today_6pm_min_temp, today_6pm_weather],
+            [dt_9pm_month, dt_9pm_day, convert_dt9, today_9pm_max_temp, today_9pm_min_temp, today_9pm_weather],]
 
 
 
@@ -288,5 +287,6 @@ def coming_days(lat, lon, units="imperial"):
 
 
 
-l = weather_next_few_hours(cc_lat, cc_lon)
-print(l)
+
+
+

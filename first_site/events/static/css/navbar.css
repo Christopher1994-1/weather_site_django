@@ -18,8 +18,15 @@ body{
 
 
 
-
-
+#good-morning-header {
+    position: absolute;
+    color: white;
+    left: 20px;
+    text-shadow: 2px 2px black;
+    font-size: 30px;
+    left: 335px;
+    bottom: 483px;
+}
 
  /* Start of subscribe button itself */
 
@@ -88,63 +95,6 @@ body{
 }
 
  /* End Email Form at Footer */
-
-
-
-
-
-
-/* Start of popup message for email subscribing */
-.popup {
-    margin: 70px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    border: 2px solid black;
-    width: 30%;
-    position: absolute;
-    transition: all 5s ease-in-out;
-  }
-  
-.popup h2 {
-    margin-top: 0;
-    color: #333;
-    font-family: Tahoma, Arial, sans-serif;
-}
-
-.popup .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    transition: all 200ms;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-}
-
-
-.popup .close:hover {
-    color: #06D85F;
-}
-
-.popup .content {
-    max-height: 30%;
-    overflow: auto;
-}
-/* End of popup message for email subscribing */
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -272,7 +222,7 @@ body{
 .city-name-location-icon-contain {
     /* city name and loctation icon main container div */
     border: 2px solid black;
-    position: relative;
+    position: absolute;
     margin-bottom: 5px;
     width: 240px;
     background: rgba(34, 34, 34, 0.4);
@@ -286,6 +236,10 @@ body{
     font-weight: bold;
     text-shadow: 2px 2px black;
 }
+.city-name h1 {
+    font-size: 20px;
+}
+
 .location-icon {
     /* Location icon inside container */
     display: inline-block;
@@ -294,6 +248,10 @@ body{
     bottom: 10px;
     color: white;
     left: 5px;
+}
+.location-icon img {
+    position: relative;
+    top: 5px;
 }
 /* End of city name and location icon stuff */
 
@@ -304,8 +262,11 @@ body{
 /* switch buttons */
 
 .switch-btns {
+    /* Switch buttons main container */
     border: 2px solid black;
     width: 300px;
+    display: flex;
+    align-items: center;
     margin: auto;
 }
 
@@ -329,8 +290,7 @@ body{
 .span-popup {
     width: 10px;
     position: relative;
-    bottom: 340px;
-    left: 440px;
+    left: 200px;
 }
 
 .span-popup h1 {

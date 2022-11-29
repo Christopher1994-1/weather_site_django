@@ -131,7 +131,6 @@ def get_current_day_weather(city="Arlington", units="imperial"):
     return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date, city_name, wd, visual
         
 
-
 def weather_next_few_hours(lat, lon, units="imperial"):
     api_key = environ.get("CEJ_Weather_API")
     LAT = lat
@@ -288,24 +287,24 @@ def imperial_button(request):
 def home(request, location="arlington"):
     # weather calls 
     # current_weather = str(get_current_day_weather()[1]).split(".")[0]
-    current_weather = "56"
+    current_weather = "105"
+    length_cw = len(current_weather)
     cw_int = (int(current_weather) - 32) * 5/9
     cw_int = str(cw_int).split('.')[0]
     
     # city_name = str(get_current_day_weather()[10])
-    city_name = "Las Vegas"
-    # weather_main_report = str(get_current_day_weather()[0])
-    weather_main_report = 'Clouds'
+    city_name = "Bonadelle Ranchos-Madera Ranchos"
+    # city_name, weather_description, min_temp, max_temp, humidity, wind_speed, wind_dir, visual = get_current_day_weather()[0]
     # weather_description = str(get_current_day_weather()[11])
-    weather_description = "clear sky"
+    weather_description = "few clouds"
     # min_temp = str(get_current_day_weather()[2]).split(".")[0]
-    min_temp = "58"
+    min_temp = "105"
     # max_temp = str(get_current_day_weather()[3]).split(".")[0]
     max_temp = "58"
     # humidity = str(get_current_day_weather()[4]) + "%"
-    humidity = "45%"
+    humidity = "58%"
     # wind_speed = str(get_current_day_weather()[5])
-    wind_speed = "5"
+    wind_speed = "24"
     # wind_dir = str(get_current_day_weather()[6])
     wind_dir = "NNW"
     # visual = str(get_current_day_weather()[12])
@@ -316,14 +315,36 @@ def home(request, location="arlington"):
     
     cc_lon = get_current_day_weather()[7]
     cc_lat = get_current_day_weather()[8]
+    # API call for the main weather widget
+    # w_main, current_weather, min_temp, max_temp, humidity, wind_speed, wind_dir, cc_lon, cc_lat, current_date, city_name, wd, visual  = get_current_day_weather()[0]
     
-    side_forecast_month = weather_next_few_hours(cc_lat, cc_lon)[0][0]
-    side_forecast_day = weather_next_few_hours(cc_lat, cc_lon)[0][1]
-    first_hour_time = weather_next_few_hours(cc_lat, cc_lon)[0][2]
-    first_hour_max = weather_next_few_hours(cc_lat, cc_lon)[0][3]
-    first_hour_min = weather_next_few_hours(cc_lat, cc_lon)[0][4]
-    # first_hour_d = weather_next_few_hours(cc_lat, cc_lon)[0][5]
-    first_hour_d = 'heavy snow'
+    first_hour_d = 'light intensity shower rain'
+    
+    # API call for the first hour side weather widget
+    f_h_month, f_h_day, f_h_time, f_h_max, f_h_min, f_h_des = weather_next_few_hours(cc_lat, cc_lon)[0]
+    # API call for the second hour side weather widget
+    s_h_month, s_h_day, s_h_time, s_h_max, s_h_min, s_h_des = weather_next_few_hours(cc_lat, cc_lon)[1]
+    # API call for the third hour side weather widget
+    t_h_month, t_h_day, t_h_time, t_h_max, t_h_min, t_h_des = weather_next_few_hours(cc_lat, cc_lon)[2]
+    
+    
+    # Second Hour variables
+    # side_forecast_month = weather_next_few_hours(cc_lat, cc_lon)[1][0]
+    # side_forecast_day = weather_next_few_hours(cc_lat, cc_lon)[1][1]
+    # second_hour_time = weather_next_few_hours(cc_lat, cc_lon)[1][2]
+    # second_hour_max = weather_next_few_hours(cc_lat, cc_lon)[1][3]
+    # second_hour_min = weather_next_few_hours(cc_lat, cc_lon)[1][4]
+    # second_hour_d = weather_next_few_hours(cc_lat, cc_lon)[1][5]
+    second_hour_d = 'thunderstorm'
+    
+    # Third Hour variables
+    # side_forecast_month = weather_next_few_hours(cc_lat, cc_lon)[2][0]
+    # side_forecast_day = weather_next_few_hours(cc_lat, cc_lon)[2][1]
+    # second_hour_time = weather_next_few_hours(cc_lat, cc_lon)[2][2]
+    # second_hour_max = weather_next_few_hours(cc_lat, cc_lon)[2][3]
+    # second_hour_min = weather_next_few_hours(cc_lat, cc_lon)[2][4]
+    # second_hour_d = weather_next_few_hours(cc_lat, cc_lon)[2][5]
+    third_hour_d = 'clear sky'
     
     # next few hour calls
 
@@ -378,6 +399,7 @@ def home(request, location="arlington"):
     
     form = SubListForm    
     return render(request, 'home.html', {
+        "length_cw" : length_cw,
         "current_year": current_year,
         "form": form,
         "submitted": submitted,
@@ -387,7 +409,6 @@ def home(request, location="arlington"):
         "unit_value": units_value,
         'to_celsius': cw_int,
         "city_name" : city_name,
-        "weather_main_report" : weather_main_report,
         "weather_description" : weather_description,
         "min_temp" : min_temp,
         "visual" : visual,
@@ -395,13 +416,16 @@ def home(request, location="arlington"):
         "humidity" : humidity,
         "wind_speed" : wind_speed,
         "wind_dir" : wind_dir,
-        "side_forecast_month" : side_forecast_month,
-        "side_forecast_day" : side_forecast_day,
-        "first_hour_time" : first_hour_time,
-        "first_hour_max" : first_hour_max,
-        "first_hour_min" : first_hour_min,
+        "side_forecast_month" : f_h_month,
+        "side_forecast_day" : f_h_day,
+        "first_hour_time" : f_h_time,
+        "first_hour_max" : f_h_max,
+        "first_hour_min" : f_h_min,
         "time_of_day" : day,
+        "time_of_day2" : time_of_day,
         "first_hour_d" : first_hour_d,
+        "second_hour_d" : second_hour_d,
+        "third_hour_d" : third_hour_d,
     })
 
 

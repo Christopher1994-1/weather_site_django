@@ -52,108 +52,12 @@
 <!-- I am thinking about putting both the current weather widget and the daily ones on same line -->
 
 
+<h1 id="good-morning-header">Good {{ time_of_day2 }}!</h1>
 
-{% if unit_value == '0' %}
+{% if unit_value == '0' %} <!-- logic to figure out if its in imperial or metric -->
 
     {% if weather_main_report == 'Clouds' %}
-        <div class="main-weather-output-container-cloudy">
-
-            <div class="cloudy-weather-box">
-
-                <!-- city name and location divs widget -->
-                <div class="city-name-location-icon-contain-cloudy">
-
-                    <div class="location-icon">
-                        <img src="{% static 'images/location-icon-white.png' %}" alt="location icon" width="25" height="25">
-                    </div>
-
-
-                    <div class="city-name">
-                        <h1>{{ city_name }}</h1>
-                    </div>
-
-                </div>
-
-
-
-            <!-- Main weather description and weather icon widget -->
-            <div class="weather-d-container-cloudy">
-
-                <div class="weather-description-cloudy">
-                    <h1>{{ weather_main_report }}</h1>
-                </div>
-
-                <div class="weather-d-icon-cloudy">
-                    <img src="{% static 'images/cloudy2-white.png' %}" alt="" height="50" width="65">
-
-                </div>
-
-            </div>
-
-        
-        <!-- Actual weather description widget -->
-        <div class="actual-weather-dcloudy">
-            <h1>{{ weather_description }}</h1>
-        </div>
-
-
-        <!-- Current weather in fahrenheit widget -->
-        <div class="actual-weather-degrees-cloudy">
-            <h1>{{ current_weather }}°f</h1>
-        </div>
-
-
-
-        <!-- Current time and date widget -->
-        <div class="weather-day-cloudy">
-            <h1>{{ day_of_the_week }}: {{ now }}</h1>
-        </div>
-
-
-
-        <div class="max-min-temp-div-cloudy">
-            <h1>Max Temp: {{ max_temp }}</h1>
-            <h1>Min Temp: {{ min_temp }}</h1>
-        </div>
-
-
-        <div class="humidty-cloudy">
-            <h1>Humidity</h1>
-            <h2>{{ humidity }}</h2>
-        </div>
-
-
-        <div class="wind-speed-cloudy">
-            <div class="wind-speed-icon">
-                <img src="{% static 'images/wind-icon-white.png' %}" alt="" width="50" height="50">
-            </div>
-            <div class="wind-speed-speed">
-                <h1>{{ wind_speed }} mph: {{ wind_dir }}</h1>
-            </div>
-        </div>
-
-
-        <div class="visibility-container">
-
-            <div class="visibility-icon-cloudy">
-                <img src="{% static 'images/visual-icon-white.png' %}" alt="" width="60" height="65">
-            </div>
-
-            <div class="visibility-visibility">
-                <h1>{{ visual }} miles</h1>
-            </div>
-
-        </div>
-
-        <div class="span-popup">
-            <h1 class="tooltipp" data-text="OpenWeatherAPI has a max limit visibility of 10000 meters which is around 6 miles. Max visibility is 6 miles">?</h1>
-        </div>
-
-
-    </div>
-
-
-</div>
+        {% include 'home_weather_conditions.html' %}
 
 
 
@@ -164,85 +68,13 @@
 
 
 
-
-<!-- 
-
-<div class="next-hours-weather-cloudy">
-
-    <h1>Hourly Forecast</h1>
-    <hr>
-
-    {% if weather_description == 'clear sky' and time_of_day == True %} day == True means day
-
-    <div class="icon-and-min-max-container">
-
-
-        <div class="side-hour-date">
-            <h1>{{ side_forecast_month }}/{{ side_forecast_day }}: {{ day_of_the_week }}</h1>
-
-        </div>
-
-
-        <div class="min-max-side-hour">
-            <h1>Max: {{ first_hour_max }}</h1>
-            <h1>Min: {{ first_hour_min }}</h1>
-        </div>
-
-
-        <div class="side-hour-icon">
-            <img src="{% static 'images/sunny-white.png' %}" alt="" width="65" height="60">
-        </div>
-
-
-        <div class="side-hour-time">
-            <h1>{{ first_hour_time }}</h1>
-    
-        </div>
-
-    </div>
-
-    
-
-
-    {% elif weather_description != 'clear sky' and time_of_day == False %} day == False means night
-    <h1>This</h1>
-
-    {% endif %}
-
-</div> -->
-
-
-<div>
-    <h1>Something else</h1>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% elif weather_main_report == 'Rain' %}
 <h1>Rain</h1>
 
 {% endif %}
 
 
-{% else %}
+{% else %} <!-- logic to figure out if its in imperial or metric -->
 <div class="main-weather-output-container">
 
     <div class="rainy-weather-box">
@@ -251,7 +83,7 @@
         <div class="city-name-location-icon-contain">
 
             <div class="city-name">
-                <h1>{{ city_name }}</h1>
+                <h1>Las Vegas</h1>
             </div>
 
         </div>
@@ -261,7 +93,7 @@
         <div class="weather-d-container">
 
             <div class="weather-description">
-                <h1>{{ weather_description }}</h1>
+                <h1>Clus</h1>
             </div>
 
         </div>
@@ -276,7 +108,7 @@
 
 
         <div class="weather-day">
-            <h1>{{ day_of_the_week }}: {{ now }}</h1>
+            <h1>Now: Now</h1>
         </div>
 
 
@@ -284,6 +116,17 @@
 
 </div>
 
-{% endif %}
+<h1 id="hourly-weather">Hourly Forecast:</h1>
 
+{% include 'home_side_hour.html' %}
+
+
+
+
+{% endif %}
+<br><br>
+
+<div class="news-container">
+    <h1>news goes here</h1>
+</div>
 {% endblock %}

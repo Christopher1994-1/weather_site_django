@@ -6,17 +6,19 @@
     /* Main container for weather output box */
     width: 600px;
     position: relative;
-    left:200px;
+    left:240px;
+    top: 40px;
 }
 
 /* If weather_main_report == 'Clouds' */
 .cloudy-weather-box {
     /* first container for the first weather output box */
-    width: 500px;
+    width: 420px;
     background: url("https://images.unsplash.com/photo-1500740516770-92bd004b996e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3VkeXxlbnwwfHwwfHw%3D&w=1000&q=80");
     padding: 10px;
     border-radius: 20px;
-    height: 380px;
+    border: 2px solid black;
+    height: 340px;
     margin: auto;
 }
 
@@ -25,26 +27,33 @@
     /* city name and loctation icon main container div */
     position: relative;
     margin-bottom: 5px;
-    width: 240px;
+    width: 100%;
 }
 
 /* Weather description and icon container */
 .weather-d-container-cloudy {
     /* weather description and weather icons main container div */
     position: relative;
-    text-align: center;
     width: 240px;
+    left: 15px;
     margin-bottom: 8px;
 }
+
 .weather-description-cloudy {
-    display: inline-block;
+    /* Weather description container */
     color: white;
     text-shadow: 2px 2px black;
 }
+.weather-d-container-cloudy h1 {
+    /* Weather description h1 itself */
+    font-size: 15px;
+}
+
+
+
 .weather-d-icon-cloudy {
-    display: inline-block;
     position: relative;
-    bottom: 8px;
+    bottom: 6px;
 }
 
 
@@ -64,17 +73,32 @@
     /* Weather degrees container */
     background: rgba(252, 249, 249, 0.4);
     border-radius: 20px;
-    position: relative;
-    top: 10px;
-    left: 35px;
-    width: 170px;
+    position: absolute;
+    top: 140px;
+    width: 190px;
 }
-
 .actual-weather-degrees-cloudy h1 {
     font-size: 80px;
     color: black;
     text-shadow: 2px 2px white;
 }
+
+/* Only active when length_cw == 2 */
+.actual-weather-degrees-cloudy-con {
+    /* Weather degrees container */
+    background: rgba(252, 249, 249, 0.4);
+    border-radius: 20px;
+    position: absolute;
+    top: 140px;
+    width: 160px;
+}
+.actual-weather-degrees-cloudy-con h1 {
+    font-size: 80px;
+    color: black;
+    text-shadow: 2px 2px white;
+}
+
+
 
 /* Weather date, day and time conatiner and itself */
 
@@ -84,9 +108,8 @@
     text-align: center;
     position: relative;
     border-radius: 20px;
-    top: 10px;
     padding: 5px;
-    left: 14px;
+    top: 110px;
     background: rgba(252, 249, 249, 0.4);
 }
 
@@ -103,12 +126,17 @@
 /* End weather date, day and time conatiner and itself */
 
 
+
+
+
+/* min and max temp div container */
 .max-min-temp-div-cloudy {
-    width: 230px;
+    width: 140px;
     text-align: center;
-    position: relative;
-    bottom: 300px;
-    left: 250px;
+    border-top: 1px solid black;
+    position: absolute;
+    bottom: 230px;
+    left: 330px;
 }
 
 .max-min-temp-div-cloudy h1 {
@@ -118,36 +146,53 @@
 }
 
 
+
+
+
+
 .humidty-cloudy {
-    width: 230px;
+    /* Main container for humidity stuff */
+    width: 160px;
     text-align: center;
-    position: relative;
-    bottom: 280px;
-    left: 250px;
+    position: absolute;
+    bottom: 170px;
+    left: 325px;
+}
+
+.humidity-img {
+    display: inline-block;
 }
 
 .humidty-cloudy h1 {
-    text-shadow: 2px 2px black;
-    color: rgb(255, 255, 255);
-}
-
-
-.humidty-cloudy h2 {
     position: relative;
-    bottom: 10px;
-    left: 5px;
+    top: 17px;
+    right: 8px;
     text-shadow: 2px 2px black;
     color: rgb(255, 255, 255);
 }
+
+#humidity-h1 {
+    position: absolute;
+    left: 380px;
+    top: 120px;
+    color: white;
+    font-weight: bold;
+    font-size: 9px;
+}
+
+.humidity-percentage {
+    display: inline-block;
+}
+
 
 
 .wind-speed-cloudy {
+    /* Main container for wind speed stuff */
     width: 210px;
     text-align: center;
     position: relative;
-    bottom: 280px;
-    border-radius: 20px;
-    left: 250px;
+    bottom: 35px;
+    left: 190px;
 }
 
 
@@ -163,28 +208,31 @@
 
 .wind-speed-icon {
     display: inline-block;
+    position: relative;
+    bottom: 20px;
+}
+
+#wind-dir-id {
+    position: relative;
+    bottom: 5px;
 }
 
 
 .visibility-container {
+    /* Main container for the visibility stuff */
     width: 210px;
     text-align: center;
-    position: relative;
-    bottom: 280px;
-    border-radius: 20px;
-    left: 250px;
+    position: absolute;
+    bottom: 0px;
+    left: 300px;
 }
 
 
-.visibility-icon-cloudy {
-    display: inline-block;
-}
 
 
 .visibility-visibility {
-    display: inline-block;
     position: relative;
-    top: 12px;
+    bottom:10px;
     left: 5px;
 }
 
@@ -269,7 +317,7 @@
 
 .side-hour-weather-d {
     position: relative;
-    left: 160px;
+    right: 10px;
 }
 
 .side-hour-weather-d h1{
@@ -345,7 +393,7 @@
 
 .side-hour-weather-d2 {
     position: relative;
-    left: 160px;
+    right: 10px;
 }
 
 .side-hour-weather-d2 h1{
@@ -389,7 +437,10 @@
     left: 760px;
 }
 
-
+.next-hours-weather-cloudy3 h1 {
+    font-size: 20px;
+    color: black
+}
 
 .icon-and-min-max-container3 {
     padding: 10px;
@@ -398,7 +449,8 @@
 
 .side-hour-date3 {
     position: absolute;
-    bottom: 80px;
+    bottom: 70px;
+    left: 10px;
 }
 
 .side-hour-icon3 {
@@ -416,13 +468,13 @@
 }
 
 .side-hour-max-min3 h1{
-    font-size: 13px;
+    font-size: 12px;
 }
 
 
 .side-hour-weather-d3 {
-    position: absolute;
-    left: 200px;
+    position: relative;
+    right: 10px;
 }
 
 .side-hour-weather-d3 h1{
@@ -433,7 +485,7 @@
 .side-hour-time3 {
     position: absolute;
     bottom: 30px;
-    left: 30ps;
+    left: 10px;
 }
 
 .side-hour-time3 h1 {
@@ -454,9 +506,10 @@
 
 .span-popup {
     width: 10px;
-    position: relative;
-    bottom: 340px;
-    left: 440px;
+    position: absolute;
+    left: 680px;
+    z-index: 1;
+    bottom: 190px;
 }
 
 .span-popup h1 {
@@ -502,8 +555,10 @@
   #hourly-weather {
     position: absolute;  
     bottom: 485px;
-    left: 760px;
+    font-size: 30px;
+    left: 800px;
     color: white;
     text-shadow: 2px 2px black;
 
 }
+

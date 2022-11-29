@@ -1,0 +1,164 @@
+{% block content%}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
+
+
+<!-- Checking if clear sky and time of day is morning/afternoon -->
+{% if weather_description == 'clear sky' and time_of_day == True %} <!-- day == True means day -->
+
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/sunny-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+<!-- Checking if clear sky and time of day is evening/night -->
+{% elif weather_description == 'clear sky' and time_of_day == False %} <!-- day == False means night -->
+
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/clear-night-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if light clouds  -->
+{% elif weather_description == 'overcast clouds' or weather_description == 'broken clouds' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/cloudy2-white.png' %}" alt="" width="75" height="70">
+    </div>
+    
+
+<!-- Checking if heavy clouds  -->
+{% elif weather_description == 'few clouds' or weather_description == 'scattered clouds' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/few-clouds-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if light rain  -->
+{% elif weather_description == 'light rain' or weather_description == 'moderate rain' or weather_description == 'light intensity shower rain' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/light-rain-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if drizzle -->
+{% elif weather_description == 'light intensity drizzle' or weather_description == 'drizzle' or weather_description == 'heavy intensity drizzle' or weather_description == 'light intensity drizzle rain' or weather_description == 'drizzle rain' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/light-rain-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if drizzle 2 -->
+{% elif weather_description == 'heavy intensity drizzle rain' or weather_description == 'shower rain and drizzle' or weather_description == 'heavy shower rain and drizzle' or weather_description == 'shower drizzle' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/light-rain-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+
+<!-- Checking if freezing rain  -->
+{% elif weather_description == 'freezing rain' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/freezing-rain.png' %}" alt="" width="75" height="70">
+    </div>
+
+    
+<!-- Checking if heavy rain  -->
+{% elif weather_description == 'heavy intensity rain' or weather_description == 'very heavy rain' or weather_description == 'very heavy rain' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/heavy-rain-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+<!-- Checking if heavy rain 2 -->
+{% elif weather_description == 'extreme rain' or weather_description == 'shower rain' or weather_description == 'heavy intensity shower rain' or weather_description == 'ragged shower rain' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/heavy-rain-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+
+
+
+
+
+<!-- Checking if light snow -->
+{% elif weather_description == 'light snow' or weather_description == 'snow' or weather_description == 'Light shower snow' or weather_description == 'shower sleet' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/light-snow.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if sleet snow -->
+{% elif weather_description == 'sleet' or weather_description == 'light rain and snow' or weather_description == 'rain and snow' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/sleet.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if heavy snow -->
+{% elif weather_description == 'heavy snow' or weather_description == 'shower sleet' or weather_description == 'shower snow' or weather_description == 'heavy shower snow' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/heavy-snow-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+
+
+
+
+
+
+
+<!-- Checking if thunderstorm with rain -->
+{% elif weather_description == 'thunderstorm with light rain' or weather_description == 'thunderstorm with rain' or weather_description == 'thunderstorm with heavy rain' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/thunderstorm-with-rain-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if thunderstorm with rain -->
+{% elif weather_description == 'thunderstorm with light drizzle' or weather_description == 'thunderstorm with drizzle' or weather_description == 'thunderstorm with heavy drizzle' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/thunderstorm-with-rain-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if heavy thunderstorm -->
+{% elif weather_description == 'heavy thunderstorm' or weather_description == 'ragged thunderstorm' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/heavy-thunder-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+<!-- Checking if light thunderstorm -->
+{% elif weather_description == 'light thunderstorm' or weather_description == 'thunderstorm' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/light-thunder-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+<!-- Checking if Atmosphere -->
+{% elif weather_description == 'mist' or weather_description == 'Smoke' or weather_description == 'Haze' or weather_description == 'sand/ dust whirls' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/mist.png' %}" alt="" width="75" height="70">
+    </div>
+
+<!-- Checking if Atmosphere 2 -->
+{% elif weather_description == 'fog' or weather_description == 'sand' or weather_description == 'dust' or weather_description == 'volcanic ash' %}
+<div class="weather-d-icon-cloudy">
+    <img src="{% static 'images/mist.png' %}" alt="" width="75" height="70">
+</div>
+
+<!-- Checking if  Atmosphere 3 -->
+{% elif weather_description == 'squalls' or weather_description == 'tornado' %}
+    <div class="weather-d-icon-cloudy">
+        <img src="{% static 'images/torando-white.png' %}" alt="" width="75" height="70">
+    </div>
+
+
+
+
+{% endif %}
+
+
+
+{% endblock %}
