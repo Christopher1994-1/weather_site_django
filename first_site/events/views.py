@@ -294,7 +294,7 @@ def home(request, location="arlington"):
     
     # city_name = str(get_current_day_weather()[10])
     city_name = "Bonadelle Ranchos-Madera Ranchos"
-    # city_name, weather_description, min_temp, max_temp, humidity, wind_speed, wind_dir, visual = get_current_day_weather()[0]
+    wd = "Clouds"
     # weather_description = str(get_current_day_weather()[11])
     weather_description = "few clouds"
     # min_temp = str(get_current_day_weather()[2]).split(".")[0]
@@ -407,6 +407,7 @@ def home(request, location="arlington"):
         "day_of_the_week": weekdays[current_weekday],
         "current_weather": current_weather,
         "unit_value": units_value,
+        "weather_main_report" : wd,
         'to_celsius': cw_int,
         "city_name" : city_name,
         "weather_description" : weather_description,
