@@ -287,14 +287,14 @@ def imperial_button(request):
 def home(request, location="arlington"):
     # weather calls 
     # current_weather = str(get_current_day_weather()[1]).split(".")[0]
-    current_weather = "105"
+    current_weather = "65"
     length_cw = len(current_weather)
     cw_int = (int(current_weather) - 32) * 5/9
     cw_int = str(cw_int).split('.')[0]
     
     # city_name = str(get_current_day_weather()[10])
     city_name = "Bonadelle Ranchos-Madera Ranchos"
-    wd = "Clouds"
+    wd = "Rain"
     # weather_description = str(get_current_day_weather()[11])
     weather_description = "few clouds"
     # min_temp = str(get_current_day_weather()[2]).split(".")[0]
@@ -304,7 +304,7 @@ def home(request, location="arlington"):
     # humidity = str(get_current_day_weather()[4]) + "%"
     humidity = "58%"
     # wind_speed = str(get_current_day_weather()[5])
-    wind_speed = "24"
+    wind_speed = "105"
     # wind_dir = str(get_current_day_weather()[6])
     wind_dir = "NNW"
     # visual = str(get_current_day_weather()[12])
@@ -313,19 +313,27 @@ def home(request, location="arlington"):
     visual = str(convert_wind)
     
     
-    cc_lon = get_current_day_weather()[7]
-    cc_lat = get_current_day_weather()[8]
+    # cc_lon = get_current_day_weather()[7]
+    cc_lon = "-97.10"
+    # cc_lat = get_current_day_weather()[8]
+    cc_lat = "32.73"
     # API call for the main weather widget
     # w_main, current_weather, min_temp, max_temp, humidity, wind_speed, wind_dir, cc_lon, cc_lat, current_date, city_name, wd, visual  = get_current_day_weather()[0]
     
     first_hour_d = 'light intensity shower rain'
     
     # API call for the first hour side weather widget
-    f_h_month, f_h_day, f_h_time, f_h_max, f_h_min, f_h_des = weather_next_few_hours(cc_lat, cc_lon)[0]
+    f_h_month = "11"
+    f_h_day = "30"
+    f_h_time = "3:00"
+    f_h_max = "58"
+    f_h_min = "34"
+    
+    # f_h_month, f_h_day, f_h_time, f_h_max, f_h_min, f_h_des = weather_next_few_hours(cc_lat, cc_lon)[0]
     # API call for the second hour side weather widget
-    s_h_month, s_h_day, s_h_time, s_h_max, s_h_min, s_h_des = weather_next_few_hours(cc_lat, cc_lon)[1]
+    # s_h_month, s_h_day, s_h_time, s_h_max, s_h_min, s_h_des = weather_next_few_hours(cc_lat, cc_lon)[1]
     # API call for the third hour side weather widget
-    t_h_month, t_h_day, t_h_time, t_h_max, t_h_min, t_h_des = weather_next_few_hours(cc_lat, cc_lon)[2]
+    # t_h_month, t_h_day, t_h_time, t_h_max, t_h_min, t_h_des = weather_next_few_hours(cc_lat, cc_lon)[2]
     
     
     # Second Hour variables

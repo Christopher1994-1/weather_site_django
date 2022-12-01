@@ -202,15 +202,15 @@ def weather_next_few_hours(lat, lon, units="imperial"):
 
 
 
-current_day_weather = get_current_day_weather()[0]
-current_day_temp = get_current_day_weather()[1]
-current_day_min_temp = get_current_day_weather()[2]
-current_day_max_temp = get_current_day_weather()[3]
-current_day_humidity = get_current_day_weather()[4]
-current_day_wind_speed = get_current_day_weather()[5]
-current_day_wind_dir = get_current_day_weather()[6]
-cc_lon = get_current_day_weather()[7]
-cc_lat = get_current_day_weather()[8]
+# current_day_weather = get_current_day_weather()[0]
+# current_day_temp = get_current_day_weather()[1]
+# current_day_min_temp = get_current_day_weather()[2]
+# current_day_max_temp = get_current_day_weather()[3]
+# current_day_humidity = get_current_day_weather()[4]
+# current_day_wind_speed = get_current_day_weather()[5]
+# current_day_wind_dir = get_current_day_weather()[6]
+# print(get_current_day_weather()[7])
+# print(get_current_day_weather()[8])
 
 units = "imperial"
 

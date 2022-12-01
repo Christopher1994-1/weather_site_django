@@ -57,21 +57,30 @@
 {% if unit_value == '0' %} <!-- logic to figure out if its in imperial or metric -->
 
     {% if weather_main_report == 'Clouds' %}
-        {% include 'home_weather_conditions.html' %}
 
+        {% include 'home_weather_cloudy.html' %}
 
+    {% elif weather_main_report == 'Rain' %}
 
-<h1 id="hourly-weather">Hourly Forecast:</h1>
-
-{% include 'home_side_hour.html' %}
-
-
-
-
-{% elif weather_main_report == 'Rain' %}
-<h1>Rain</h1>
+        {% include 'home_weather_rain.html' %}
 
 {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% else %} <!-- logic to figure out if its in imperial or metric -->
@@ -116,15 +125,16 @@
 
 </div>
 
-<h1 id="hourly-weather">Hourly Forecast:</h1>
-
-{% include 'home_side_hour.html' %}
-
 
 
 
 {% endif %}
 <br><br>
+
+<h1 id="hourly-weather">Hourly Forecast:</h1>
+
+{% include 'home_side_hour.html' %}
+
 
 <div class="news-container">
     <h1>news goes here</h1>
