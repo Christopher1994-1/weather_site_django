@@ -547,7 +547,7 @@
 }
 
 .span-popup h1 {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 20px;
 
 }
@@ -829,19 +829,20 @@
     border-radius: 10px;
     text-align: center;
     border-top: 2px solid black;
+    background: rgba(228, 225, 225, 0.4);
     position: absolute;
     bottom: 95px;
     left: 330px;
 }
 
 
-.wind-speed-speed {
+.wind-speed-speed-rain {
     display: inline-block;
-    text-shadow: 2px 2px black;
-    color: rgb(255, 255, 255);
+    text-shadow: 1px 1px rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
-.wind-speed-speed h1 {
+.wind-speed-speed-rain h1 {
     font-size: 15px;
 }
 
@@ -857,14 +858,14 @@
 }
 
 
-.visibility-container {
+.visibility-container-rain {
     /* Main container for the visibility stuff */
     width: 140px;
     text-align: center;
     border-top: 2px solid black;
     position: absolute;
     border-radius: 10px;
-    background: rgba(56, 56, 56, 0.4);
+    background: rgba(228, 225, 225, 0.4);
     height: 70px;
     bottom: 20px;
     left: 330px;
@@ -873,16 +874,16 @@
 
 
 
-.visibility-visibility {
+.visibility-visibility-rain {
     position: relative;
     bottom:10px;
     left: 5px;
 }
 
-.visibility-visibility h1 {
+.visibility-visibility-rain h1 {
     font-size: 25px;
-    text-shadow: 2px 2px black;
-    color: white;
+    text-shadow: 1px 1px rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 /* end of first weather box container */
 
@@ -903,10 +904,65 @@
 
 
 
+/* Hover popup for ? */
 
 
 
+.span-popup-rain {
+    width: 10px;
+    position: absolute;
+    left: 680px;
+    z-index: 1;
+    bottom: 190px;
+}
+
+.span-popup-rain h1 {
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+
+}
 
 
+.tooltipp {
+    position:relative; 
+    border-bottom:1px dashed #000;
+  }
 
+  .tooltipp:before {
+    content: attr(data-text);
+    position:absolute;
+    
+    top:50%;
+    transform:translateY(-20%);
+    
+
+    left:100%;
+    margin-left:15px; 
+    
+
+    width:200px;
+    padding:10px;
+    font-size: 10px;
+    border-radius:10px;
+    background:#000;
+    color: #fff;
+    text-align:center;
+  
+    display:none; 
+  }
+
+  .tooltipp:hover:before {
+    display:block;
+  } 
+
+
+  #hourly-weather {
+    position: absolute;  
+    bottom: 485px;
+    font-size: 30px;
+    left: 800px;
+    color: white;
+    text-shadow: 2px 2px black;
+
+}
 

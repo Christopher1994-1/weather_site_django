@@ -3,8 +3,6 @@ from datetime import *
 from .forms import SubListForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from string import capwords
-import calendar
 import json
 from os import environ
 import requests
@@ -294,9 +292,9 @@ def home(request, location="arlington"):
     
     # city_name = str(get_current_day_weather()[10])
     city_name = "Bonadelle Ranchos-Madera Ranchos"
-    wd = "Rain"
+    wd = "Clear Sky"
     # weather_description = str(get_current_day_weather()[11])
-    weather_description = "few clouds"
+    weather_description = "clear sky"
     # min_temp = str(get_current_day_weather()[2]).split(".")[0]
     min_temp = "105"
     # max_temp = str(get_current_day_weather()[3]).split(".")[0]
@@ -436,6 +434,11 @@ def home(request, location="arlington"):
         "second_hour_d" : second_hour_d,
         "third_hour_d" : third_hour_d,
     })
+
+
+
+
+
 
 
 

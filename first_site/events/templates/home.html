@@ -49,14 +49,33 @@
 
 
 
-<!-- I am thinking about putting both the current weather widget and the daily ones on same line -->
-
 
 <h1 id="good-morning-header">Good {{ time_of_day2 }}!</h1>
 
 {% if unit_value == '0' %} <!-- logic to figure out if its in imperial or metric -->
 
-    {% if weather_main_report == 'Clouds' %}
+    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
+
+        {% include 'home_weather_cloudy.html' %}
+
+    {% elif weather_main_report == 'Rain' %}
+
+        {% include 'home_weather_rain.html' %}
+    
+    {% elif weather_main_report == 'Clear Sky' and time_of_day == True %}
+
+        {% include 'home_weather_sunny.html' %}
+    
+    {% elif weather_main_report == 'Clear Sky' and time_of_day == False %}
+
+        {% include 'home_weather_night.html' %}
+
+    {% endif %}
+
+
+{% else %} <!-- logic to figure out if its in imperial or metric -->
+
+    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
 
         {% include 'home_weather_cloudy.html' %}
 
@@ -64,71 +83,20 @@
 
         {% include 'home_weather_rain.html' %}
 
-{% endif %}
+    {% elif weather_main_report == 'Clear Sky' and time_of_day == True %}
 
+        {% include 'home_weather_sunny.html' %}
 
+    {% elif weather_main_report == 'Clear Sky' and time_of_day == False %}
 
+        {% include 'home_weather_night.html' %}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% else %} <!-- logic to figure out if its in imperial or metric -->
-<div class="main-weather-output-container">
-
-    <div class="rainy-weather-box">
-
-
-        <div class="city-name-location-icon-contain">
-
-            <div class="city-name">
-                <h1>Las Vegas</h1>
-            </div>
-
-        </div>
-
-
-
-        <div class="weather-d-container">
-
-            <div class="weather-description">
-                <h1>Clus</h1>
-            </div>
-
-        </div>
-
-
-
-        <div class="actual-weather-degrees">
-            <h1>{{ to_celsius }}°c</h1>
-        </div>
-
-
-
-
-        <div class="weather-day">
-            <h1>Now: Now</h1>
-        </div>
-
-
-    </div>
-
-</div>
-
-
+    {% endif %}
 
 
 {% endif %}
+
+
 <br><br>
 
 <h1 id="hourly-weather">Hourly Forecast:</h1>
@@ -137,6 +105,6 @@
 
 
 <div class="news-container">
-    <h1>news goes here</h1>
+    <h1>news goes here {{ unit_value }}</h1>
 </div>
 {% endblock %}

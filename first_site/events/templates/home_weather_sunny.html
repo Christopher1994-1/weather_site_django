@@ -2,15 +2,15 @@
 
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
-<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_sunny.css' %}">
 
 {% block content %}
-<div class="main-weather-output-container-rain">
+<div class="main-weather-output-container-sunny">
 
-    <div class="rainy-weather-box">
+    <div class="sunny-weather-box">
 
         <!-- city name and location divs widget -->
-        <div class="city-name-location-icon-contain-rainy">
+        <div class="city-name-location-icon-contain-sunny">
 
             <div class="location-icon">
                 <img src="{% static 'images/location-icon-white.png' %}" alt="location icon" width="25" height="25">
@@ -26,7 +26,7 @@
 
 
         <!-- Main weather description and weather icon widget -->
-        <div class="weather-d-container-rainy">
+        <div class="weather-d-container-sunny">
 
             <div class="weather-description-cloudy">
                 <h1>{{ weather_description }}</h1>
@@ -34,30 +34,47 @@
 
         </div> 
 
-        <div class="weather-d-icon-rainy">
+        <div class="weather-d-icon-sunny">
             {% include 'home_icon_main.html' %}
         </div>
 
 
 
         {% if length_cw == 3 %}
-            <!-- Current weather in fahrenheit widget -->
-            <div class="actual-weather-degrees-rainy">
-                <h1>{{ current_weather }}°f</h1>
-            </div>
+
+            {% if unit_value == '0' %}
+                <!-- Current weather in fahrenheit widget -->
+                <div class="actual-weather-degrees-sunny">
+                    <h1>{{ current_weather }}°f</h1>
+                </div>
+            {% else %}
+                <!-- Current weather in fahrenheit widget -->
+                <div class="actual-weather-degrees-sunny">
+                    <h1>{{ to_celsius }}°c</h1>
+                </div>
+            {% endif %}
 
             <!-- Current time and date widget -->
-            <div class="weather-day-rainy">
+            <div class="weather-day-sunny">
                 <h1>{{ day_of_the_week }}: {{ now }}</h1>
             </div>
+
+
         {% else %}
-            <!-- Current weather in fahrenheit widget -->
-            <div class="actual-weather-degrees-rainy-con">
-                <h1>{{ current_weather }}°f</h1>
-            </div>
+            {% if unit_value == '0' %}
+                <!-- Current weather in fahrenheit widget -->
+                <div class="actual-weather-degrees-sunny-con">
+                    <h1>{{ current_weather }}°f</h1>
+                </div>
+            {% else %}
+                <!-- Current weather in fahrenheit widget -->
+                <div class="actual-weather-degrees-sunny-con">
+                    <h1>{{ to_celsius }}°c</h1>
+                </div>
+            {% endif %}
 
             <!-- Current time and date widget -->
-            <div class="weather-day-rainy-con">
+            <div class="weather-day-sunny-con">
                 <h1>{{ day_of_the_week }}: {{ now }}</h1>
             </div>
         {% endif %}
@@ -67,13 +84,13 @@
 
         <!-- Right side of weather widget -->
 
-        <div class="max-min-temp-div-rainy">
+        <div class="max-min-temp-div-sunny">
             <h1>Max Temp: {{ max_temp }}</h1>
             <h1>Min Temp: {{ min_temp }}</h1>
         </div>
 
 
-        <div class="humidty-rainy">
+        <div class="humidty-sunny">
 
             <div class="humidity-img">
                 <img src="{% static 'images/hum-white.png' %}" alt="location icon" width="40" height="40">
@@ -86,25 +103,25 @@
         </div>
 
     
-        <div class="wind-speed-rainy">
+        <div class="wind-speed-sunny">
             <div class="wind-speed-icon">
                 <img src="{% static 'images/wind-icon-black.png' %}" alt="" width="40" height="40">
             </div>
 
-            <div class="wind-speed-speed-rain">
+            <div class="wind-speed-speed-sunny">
                 <h1>{{ wind_speed }} mph:</h1>
                 <h1 id="wind-dir-id">{{ wind_dir }}</h1>
             </div>
         </div>
 
 
-        <div class="visibility-container-rain">
+        <div class="visibility-container-sunny">
 
-            <div class="visibility-icon-rainy">
+            <div class="visibility-icon-sunny">
                 <img src="{% static 'images/visual-icon-black.png' %}" alt="" width="40" height="45">
             </div>
 
-            <div class="visibility-visibility-rain">
+            <div class="visibility-visibility-sunny">
                 <h1>{{ visual }} miles</h1>
             </div>
 
@@ -115,7 +132,7 @@
     </div>
 </div>
 
-<div class="span-popup-rain">
+<div class="span-popup-sunny">
     <h1 class="tooltipp" data-text="OpenWeatherAPI has a max limit visibility of 10000 meters which is around 6 miles. Max visibility is 6 miles">?</h1>
 </div>
 
