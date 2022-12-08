@@ -41,7 +41,7 @@
 
 
         {% if length_cw == 3 %}
-            {% if unit_value == 1 %}
+            {% if unit_value == '0' %}
                 <!-- Current weather in fahrenheit widget -->
                 <div class="actual-weather-degrees-sunny">
                     <h1>{{ current_weather }}°f</h1>
@@ -60,7 +60,7 @@
 
 
         {% else %}
-            {% if unit_value == 1 %}
+            {% if unit_value == '0' %}
                 <!-- Current weather in fahrenheit widget -->
                 <div class="actual-weather-degrees-sunny-con">
                     <h1>{{ current_weather }}°f</h1>

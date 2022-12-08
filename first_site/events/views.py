@@ -297,18 +297,28 @@ def home(request, location="arlington"):
     weather_description = "clear sky"
     # min_temp = str(get_current_day_weather()[2]).split(".")[0]
     min_temp = "105"
+    str_minTemp = (int(min_temp) - 32) * 5/9
+    met_min_temp = str(str_minTemp).split('.')[0]
     # max_temp = str(get_current_day_weather()[3]).split(".")[0]
     max_temp = "58"
+    str_maxTemp = (int(max_temp) - 32) * 5/9
+    met_max_temp = str(str_maxTemp).split('.')[0]
     # humidity = str(get_current_day_weather()[4]) + "%"
     humidity = "58%"
     # wind_speed = str(get_current_day_weather()[5])
     wind_speed = "105"
+    str_windSpeed = (int(wind_speed) * 1.609)
+    met_windSpeed = str(str_windSpeed).split('.')[0]
     # wind_dir = str(get_current_day_weather()[6])
     wind_dir = "NNW"
     # visual = str(get_current_day_weather()[12])
     visual = "10000"
     convert_wind = int(visual) // 1609
     visual = str(convert_wind)
+    
+    str_visual = (int(visual) * 1.609)
+    met_visual = str(str_visual).split('.')[0]
+    
     
     
     # cc_lon = get_current_day_weather()[7]
@@ -390,7 +400,7 @@ def home(request, location="arlington"):
     
     if time_of_day == 'Morning' or 'Afternoon':
         day = True
-    else:
+    elif time_of_day == "Evening" or "Night":
         day = False
 
     weekdays = {
@@ -433,6 +443,10 @@ def home(request, location="arlington"):
         "first_hour_d" : first_hour_d,
         "second_hour_d" : second_hour_d,
         "third_hour_d" : third_hour_d,
+        "met_min_temp" : met_min_temp,
+        "met_max_temp" : met_max_temp,
+        "met_windSpeed" : met_windSpeed,
+        "met_visual" : met_visual,
     })
 
 

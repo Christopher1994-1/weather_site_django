@@ -41,20 +41,37 @@
 
 
         {% if length_cw == 3 %}
-            <!-- Current weather in fahrenheit widget -->
-            <div class="actual-weather-degrees-cloudy">
-                <h1>{{ current_weather }}°f</h1>
-            </div>
+
+            {% if unit_value == '0' %}
+                <!-- Current weather in fahrenheit widget -->
+                <div class="actual-weather-degrees-cloudy">
+                    <h1>{{ current_weather }}°f</h1>
+                </div>
+            {% else %}
+                <!-- Current weather in fahrenheit widget -->
+                <div class="actual-weather-degrees-cloudy">
+                    <h1>{{ to_celsius }}°c</h1>
+                </div>
+            {% endif %}
 
             <!-- Current time and date widget -->
             <div class="weather-day-cloudy">
                 <h1>{{ day_of_the_week }}: {{ now }}</h1>
             </div>
+
+
         {% else %}
-            <!-- Current weather in fahrenheit widget -->
-            <div class="actual-weather-degrees-cloudy-con">
-                <h1>{{ current_weather }}°f</h1>
-            </div>
+            {% if unit_value == '0' %}
+                <!-- Current weather in fahrenheit widget -->
+                <div class="actual-weather-degrees-cloudy-con">
+                    <h1>{{ current_weather }}°f</h1>
+                </div>
+            {% else %}
+                <!-- Current weather in fahrenheit widget -->
+                <div class="actual-weather-degrees-cloudy-con">
+                    <h1>{{ to_celsius }}°c</h1>
+                </div>
+            {% endif %}
 
             <!-- Current time and date widget -->
             <div class="weather-day-cloudy-con">
@@ -67,11 +84,18 @@
 
         <!-- Right side of weather widget -->
 
-        <div class="max-min-temp-div-cloudy">
-            <h1>Max Temp: {{ max_temp }}</h1>
-            <h1>Min Temp: {{ min_temp }}</h1>
-        </div>
 
+        {% if unit_value == '0' %}
+            <div class="max-min-temp-div-cloudy">
+                <h1>Max Temp: {{ max_temp }}</h1>
+                <h1>Min Temp: {{ min_temp }}</h1>
+            </div>
+        {% else %}
+            <div class="max-min-temp-div-cloudy">
+                <h1>Max Temp: {{ met_max_temp }}</h1>
+                <h1>Min Temp: {{ met_min_temp }}</h1>
+            </div>
+        {% endif %}
 
         <div class="humidty-cloudy">
 
@@ -91,10 +115,17 @@
                 <img src="{% static 'images/wind-icon-white.png' %}" alt="" width="40" height="40">
             </div>
 
-            <div class="wind-speed-speed">
-                <h1>{{ wind_speed }} mph:</h1>
-                <h1 id="wind-dir-id">{{ wind_dir }}</h1>
-            </div>
+            {% if unit_value == '0' %}
+                <div class="wind-speed-speed">
+                    <h1>{{ wind_speed }} mph:</h1>
+                    <h1 id="wind-dir-id">{{ wind_dir }}</h1>
+                </div>
+            {% else %}
+                <div class="wind-speed-speed">
+                    <h1>{{ met_windSpeed }} hp/h:</h1>
+                    <h1 id="wind-dir-id">{{ wind_dir }}</h1>
+                </div>
+            {% endif %}
         </div>
 
 
@@ -104,9 +135,15 @@
                 <img src="{% static 'images/visual-icon-white.png' %}" alt="" width="40" height="45">
             </div>
 
-            <div class="visibility-visibility">
-                <h1>{{ visual }} miles</h1>
-            </div>
+            {% if unit_value == '0' %}
+                <div class="visibility-visibility">
+                    <h1>{{ visual }} miles</h1>
+                </div>
+            {% else %}
+                <div class="visibility-visibility">
+                    <h1>{{ met_visual }} kms</h1>
+                </div>
+            {% endif %}
 
         </div>
 
