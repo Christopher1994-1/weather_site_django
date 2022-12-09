@@ -6,6 +6,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
 <link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
+<link rel="stylesheet" href="{% static 'css/weekly_forecast.css' %}">
 
 
 <!-- Search bar and button -->
@@ -104,7 +105,39 @@
 {% include 'home_side_hour.html' %}
 
 
+
+<!-- Div for weekly forecast container -->
+<div class="weekly-forecast-container">
+
+    <!-- Div for day one container -->
+    <div class="one-day">
+        <h1 id="day-one-h1">{{ next_day_one }}</h1>
+
+    </div>
+
+    <!-- Div for day two container -->
+    <div class="two-day">
+        <h1 id="day-one-h1">{{ next_day_two }}</h1>
+
+    </div>
+
+    <!-- Div for day three container -->
+    <div class="three-day">
+        <h1 id="day-one-h1">{{ next_day_three }}</h1>
+
+    </div>
+
+    <!-- Div for day four container -->
+    <div class="four-day">
+        <h1 id="day-one-h1">{{ next_day_four }}</h1>
+
+    </div>
+
+</div>
+
+
+
 <div class="news-container">
-    <h1>news goes here {{ time_of_day2 }}</h1>
+    <h1>news goes here {{ time_of_day2 }} //// </h1>
 </div>
 {% endblock %}

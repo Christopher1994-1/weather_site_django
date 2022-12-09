@@ -48,8 +48,7 @@ def get_next_day():
     elif next_day == "Sunday":
         next_five_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         
-    return next_five_days, next_day
-        
+    return next_five_days
 
 
 
@@ -286,7 +285,9 @@ def coming_days(lat, lon, units="imperial"):
 
 
 
+current_weekday = "Thursday"
 
 
+next_things = get_next_day()
 
-
+print(next_things)

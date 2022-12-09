@@ -116,7 +116,7 @@ body{
     text-align: center;
     position: relative;
     left: 215px;
-    bottom: 10px;
+    top: 5px;
     margin-top: 20px;
 }
 
@@ -263,24 +263,45 @@ body{
 
 .switch-btns {
     /* Switch buttons main container */
-    border: 2px solid black;
-    width: 300px;
+    border: 2px solid rgb(65, 64, 64);
+    width:170px;
     display: flex;
-    align-items: center;
+    position: relative;
+    top: 45px;
+    right: 20px;
     margin: auto;
 }
 
 .first-switch-btn {
     display: inline-block;
+    position: relative;
+    left: 40px;
+
 }
+.first-switch-btn button {
+    border-radius: 20px;
+    font-size: 13px;
+    background:rgb(65, 64, 64);
+}
+.first-switch-btn button:hover {
+    background:rgb(160, 160, 160);
+}
+
+
 
 .second-switch-btn {
     display: inline-block;
+    position: relative;
+    left: 50px;
 }
-
-
-
-
+.second-switch-btn button {
+    border-radius: 20px;
+    font-size: 13px;
+    background:rgb(65, 64, 64);
+}
+.second-switch-btn button:hover {
+    background:rgb(160, 160, 160);
+}
 
 
 /* Hover popup for ? */

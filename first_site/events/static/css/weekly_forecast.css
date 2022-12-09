@@ -1,0 +1,81 @@
+/* Main container for the weekly forecast div */
+.weekly-forecast-container {
+    border: 2px solid black;
+    width: 670px;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+}
+
+/* All of the h1's inside of the main container */
+#day-one-h1 {
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+/* DAY ONE */
+/* main container for the first day in the weekly forecast */
+.weekly-forecast-container .one-day {
+    border: 2px solid black;
+    display: inline-block;
+    margin-left: 25px;
+    width: 130px;
+}
+.weekly-forecast-container .one-day h1 {
+    border-bottom: 2px solid black;
+}
+
+
+
+
+
+
+/* DAY TWO */
+/* main container for the second day in the weekly forecast */
+.weekly-forecast-container .two-day {
+    border: 2px solid black;
+    display: inline-block;
+    margin-left: 25px;
+    width: 130px;
+}
+.weekly-forecast-container .two-day h1 {
+    border-bottom: 2px solid black;
+}
+
+
+
+
+
+
+/* DAY THREE */
+/* main container for the third day in the weekly forecast */
+.weekly-forecast-container .three-day {
+    border: 2px solid black;
+    display: inline-block;
+    margin-left: 25px;
+    width: 130px;
+}
+.weekly-forecast-container .three-day h1 {
+    border-bottom: 2px solid black;
+}
+
+
+
+
+
+/* DAY FOUR */
+/* main container for the fourth day in the weekly forecast */
+.weekly-forecast-container .four-day {
+    border: 2px solid black;
+    display: inline-block;
+    margin-left: 25px;
+    width: 130px;
+}
+.weekly-forecast-container .four-day h1 {
+    border-bottom: 2px solid black;
+}

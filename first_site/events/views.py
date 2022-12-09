@@ -8,15 +8,19 @@ from os import environ
 import requests
 
 
-def get_time_of_day(time):
-    if time < 12:
+def get_time_of_day():
+    now = datetime.now()
+    day = now.hour
+    if day < 12:
         return "Morning"
-    elif time < 16:
+    elif day < 16:
         return "Afternoon"
-    elif time < 19:
+    elif day < 19:
         return "Evening"
     else:
         return "Night"
+
+
 
 
 def get_next_day():
@@ -57,9 +61,10 @@ def get_next_day():
     elif next_day == "Sunday":
         next_five_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         
-    return next_five_days, next_day
-        
-        
+    return next_five_days
+
+
+
 
 def get_current_day_weather(city="Arlington", units="imperial"):
     BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
@@ -292,7 +297,7 @@ def home(request, location="arlington"):
     
     # city_name = str(get_current_day_weather()[10])
     city_name = "Bonadelle Ranchos-Madera Ranchos"
-    wd = "Clear Sky"
+    wd = "Rain"
     # weather_description = str(get_current_day_weather()[11])
     weather_description = "clear sky"
     # min_temp = str(get_current_day_weather()[2]).split(".")[0]
@@ -395,12 +400,14 @@ def home(request, location="arlington"):
     current_day = now.day
     current_month = now.month
     current_weekday = now.weekday()
+    time_of_day = get_time_of_day()
     day = None
-    time_of_day = get_time_of_day((now.hour))
+    days_ahead = get_next_day()
+    d1, d2, d3, d4, d5, d6 = days_ahead
     
-    if time_of_day == 'Morning' or 'Afternoon':
+    if time_of_day == "Morning" or time_of_day == "Afternoon" or time_of_day == "Evening":
         day = True
-    elif time_of_day == "Evening" or "Night":
+    else:
         day = False
 
     weekdays = {
@@ -447,6 +454,10 @@ def home(request, location="arlington"):
         "met_max_temp" : met_max_temp,
         "met_windSpeed" : met_windSpeed,
         "met_visual" : met_visual,
+        "next_day_one" : d1,
+        "next_day_two" : d2,
+        "next_day_three" : d3,
+        "next_day_four" : d4,
     })
 
 
