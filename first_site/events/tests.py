@@ -1,6 +1,8 @@
 from django.test import TestCase
 from datetime import *
+from datetime import datetime
 from calendar import *
+import datetime
 from os import environ
 import requests
 import time
@@ -299,26 +301,25 @@ current_weekday = "Thursday"
 
 # function to call to determine night or day
 def get_time_of_day():
-    epoch = time.time()
-    date_time = str(datetime.fromtimestamp(epoch)).split(" ")
-    the_date = date_time[0]
-    the_time = str(date_time[1])
+    currentDateAndTime = datetime.datetime.now()
+    datetime_convert = str(datetime.datetime.strftime(currentDateAndTime, "%I:%p:%A")).split(":")
+    day_of_the_week = datetime_convert[2]
     
-    format_data = "%Y-%m-%d"
-    date = datetime.strptime(the_date, format_data)
-    return date, the_time
+    day_cycle = ['06', '07', '08', '09', '10', '11', '12', '01', '02', '03', '04', '05']
+    
+    day = None
+    
+    if datetime_convert[1] in day_cycle and datetime_convert[2] == "pm":
+        day = True
+    else:
+        day = False
+        
+    
+    return day, day_of_the_week
 
 
 
 time_of_day = get_time_of_day()
-# day = None
-# if (time_of_day == "Morning") or (time_of_day == "Afternoon"):
-#     day = True
-# elif time_of_day == "Evening":
-#     day = True
-# else:
-#     day = False
-    
-    
-# print(day)
+
+
 print(time_of_day)
