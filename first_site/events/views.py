@@ -4,29 +4,33 @@ from .forms import SubListForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 import json
+import datetime
 from os import environ
 import requests
 
 
 # function to call to determine night or day
 def get_time_of_day():
-    now = datetime.now()
-    day = now.hour
-    if day < 12:
-        return "Morning"
-    elif day < 16:
-        return "Afternoon"
-    elif day < 19:
-        return "Evening"
+    currentDateAndTime = datetime.datetime.now()
+    datetime_convert = str(datetime.datetime.strftime(currentDateAndTime, "%I:%p:%A")).split(":")
+    day_of_the_week = datetime_convert[2]
+    
+    day_cycle = ['06', '07', '08', '09', '10', '11', '12', '01', '02', '03', '04', '05']
+    day = None
+    
+    if datetime_convert[1] in day_cycle and datetime_convert[2] == "pm":
+        day = True
     else:
-        return "Night"
-
+        day = False
+        
+    
+    return day, day_of_the_week
 
 
 # function to call to get the next few weekdays 
 def get_next_day():
     
-    now = datetime.now()
+    now = datetime.datetime.now()
     current_weekday = now.weekday()
 
     weekdays = {
@@ -446,16 +450,16 @@ def home(request, location="arlington"):
             submitted = True
             
             
-    now = datetime.now()
+    now = datetime.datetime.now()
     current_year = now.year
     current_day = now.day
     current_month = now.month
     current_weekday = now.weekday()
-    time_of_day = get_time_of_day()
-    day = None
+    day = get_time_of_day()[0]
+    time_of_day = get_time_of_day()[1]
     days_ahead = get_next_day()
     d1, d2, d3, d4, d5, d6 = days_ahead
-    
+
     if time_of_day == "Morning" or time_of_day == "Afternoon" or time_of_day == "Evening":
         day = True
     else:
