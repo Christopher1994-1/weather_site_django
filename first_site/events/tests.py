@@ -299,9 +299,14 @@ current_weekday = "Thursday"
 
 # function to call to determine night or day
 def get_time_of_day():
-    now = datetime.now()
-    day = now.hour
-    return day, now
+    epoch = time.time()
+    date_time = str(datetime.fromtimestamp(epoch)).split(" ")
+    the_date = date_time[0]
+    the_time = str(date_time[1])
+    
+    format_data = "%Y-%m-%d"
+    date = datetime.strptime(the_date, format_data)
+    return date, the_time
 
 
 
