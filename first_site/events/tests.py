@@ -201,6 +201,13 @@ def weather_next_few_hours(lat, lon, units="imperial"):
 
 
 
+
+
+
+cc_lon = "-97.10"
+cc_lat = "32.73"
+
+
 # current_day_weather = get_current_day_weather()[0]
 # current_day_temp = get_current_day_weather()[1]
 # current_day_min_temp = get_current_day_weather()[2]
@@ -282,12 +289,31 @@ def coming_days(lat, lon, units="imperial"):
     
 
 
+# next_things = coming_days(cc_lat, cc_lon)['day1']
 
+# print(next_things)
 
 
 current_weekday = "Thursday"
 
 
-next_things = get_next_day()
+# function to call to determine night or day
+def get_time_of_day():
+    now = datetime.now()
+    day = now.hour
+    return day, now
 
-print(next_things)
+
+
+time_of_day = get_time_of_day()
+# day = None
+# if (time_of_day == "Morning") or (time_of_day == "Afternoon"):
+#     day = True
+# elif time_of_day == "Evening":
+#     day = True
+# else:
+#     day = False
+    
+    
+# print(day)
+print(time_of_day)

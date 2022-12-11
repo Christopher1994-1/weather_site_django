@@ -1,10 +1,12 @@
 /* Main container for the weekly forecast div */
 .weekly-forecast-container {
-    border: 2px solid black;
     width: 670px;
     padding: 5px;
     text-align: center;
     margin: auto;
+    position: relative;
+    display: flex;
+    left: 45px;
 }
 
 /* All of the h1's inside of the main container */
@@ -23,12 +25,45 @@
 .weekly-forecast-container .one-day {
     border: 2px solid black;
     display: inline-block;
-    margin-left: 25px;
+    margin-left: 15px;
     width: 130px;
+    background: rgb(36, 36, 36);
+    border-radius: 15px;
+    height: 300px;
 }
+/* css class for day of the week h1 */
 .weekly-forecast-container .one-day h1 {
     border-bottom: 2px solid black;
+    background: white;
+    border-radius: 15px;
+    color: black;
 }
+/* css class first day weather description icon */
+.one-day .weekly-forecast-icons-d1 {
+    position: absolute;
+    right: 540px;
+    border: 2px solid black;
+    bottom: 190px;
+
+}
+/* css class for first day weather description */
+.weekly-forecast-container .one-day h2 {
+    font-size: 15px;
+    color: white;
+    width: 125px;
+    border: 2px solid black;
+    bottom: 125px;
+    position: absolute;
+
+}
+.weekly-forecast-container .day-one-h3 h3{
+    color: black;
+    font-size: 30px;
+    border: 2px solid black;
+    position: relative;
+    top: 160px;
+}
+
 
 
 
@@ -36,15 +71,42 @@
 
 
 /* DAY TWO */
-/* main container for the second day in the weekly forecast */
+/* main container for the first day in the weekly forecast */
 .weekly-forecast-container .two-day {
     border: 2px solid black;
     display: inline-block;
-    margin-left: 25px;
+    margin-left: 15px;
     width: 130px;
+    background: rgb(36, 36, 36);
+    border-radius: 15px;
+    height: 300px;
 }
+/* css class for day of the week h1 */
 .weekly-forecast-container .two-day h1 {
     border-bottom: 2px solid black;
+    background: white;
+    border-radius: 15px;
+    color: black;
+}
+/* css class first day weather description icon */
+.two-day .weekly-forecast-icons-d1 {
+    border: 2px solid black;
+    width: 100px;
+    background: rgba(196, 196, 196, 0.4);
+    margin: auto;
+    border-radius: 75px;
+}
+/* css class for first day weather description */
+.weekly-forecast-container .two-day h2 {
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background: rgba(196, 196, 196, 0.4);
+    text-shadow: 1px 1px rgb(56, 56, 56);
+    border-radius: 20px;
+    font-size: 15px;
+}
+.weekly-forecast-container .day-two-h3 h3{
+    color: black;
 }
 
 
@@ -57,13 +119,39 @@
 .weekly-forecast-container .three-day {
     border: 2px solid black;
     display: inline-block;
-    margin-left: 25px;
+    margin-left: 15px;
     width: 130px;
+    background: rgb(36, 36, 36);
+    border-radius: 15px;
+    height: 300px;
 }
+/* css class for day of the week h1 */
 .weekly-forecast-container .three-day h1 {
     border-bottom: 2px solid black;
+    background: white;
+    border-radius: 15px;
+    color: black;
 }
-
+/* css class third day weather description icon */
+.three-day .weekly-forecast-icons-d1 {
+    border: 2px solid black;
+    width: 100px;
+    background: rgba(196, 196, 196, 0.4);
+    margin: auto;
+    border-radius: 75px;
+}
+/* css class for third day weather description */
+.weekly-forecast-container .three-day h2 {
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background: rgba(196, 196, 196, 0.4);
+    text-shadow: 1px 1px rgb(56, 56, 56);
+    border-radius: 20px;
+    font-size: 15px;
+}
+.weekly-forecast-container .day-three-h3 h3{
+    color: black;
+}
 
 
 
@@ -73,9 +161,15 @@
 .weekly-forecast-container .four-day {
     border: 2px solid black;
     display: inline-block;
-    margin-left: 25px;
+    margin-left: 15px;
     width: 130px;
+    background: black;
+    border-radius: 15px;
+    height: 300px;
 }
 .weekly-forecast-container .four-day h1 {
     border-bottom: 2px solid black;
+    background: white;
+    border-radius: 15px;
+    color: black;
 }

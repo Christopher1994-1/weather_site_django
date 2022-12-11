@@ -113,19 +113,74 @@
     <div class="one-day">
         <h1 id="day-one-h1">{{ next_day_one }}</h1>
 
+        {% include 'weekly_forecast_day_one.html' %}
+
+        <h2 id="day-one-h2">{{ weekly_description_d1 }}</h2>
+
+        {% if unit_value == '0' %}
+            <div class="day-one-h3">
+                <h3>High: {{ weekly_d1_max_temp }}</h3>
+                <h3>Low: {{ weekly_d1_min_temp }}</h3>
+            </div>
+        {% else %}
+            <div class="day-one-h3">
+                <h3>High: {{ weekly_d1_metric_max }}</h3>
+            </div>
+
+            <div class="day-one-h3">
+                <h3>Low: {{ weekly_d1_metric_min }}</h3>
+            </div>
+        {% endif %}
     </div>
+
 
     <!-- Div for day two container -->
     <div class="two-day">
         <h1 id="day-one-h1">{{ next_day_two }}</h1>
 
+        {% include 'weekly_forecast_day_two.html' %}
+
+        <h2 id="day-two-h2">{{ weekly_description_d2 }}</h2>
+
+        {% if unit_value == '0' %}
+            <div class="day-two-h3">
+                <h3>High: {{ weekly_d2_max_temp }}</h3>
+                <h3>Low: {{ weekly_d2_min_temp }}</h3>
+            </div>
+        {% else %}
+            <div class="day-two-h3">
+                <h3>High: {{ weekly_d2_metric_max }}</h3>
+                <h3>Low: {{ weekly_d2_metric_min }}</h3>
+            </div>
+        {% endif %}
+
     </div>
+
+
+
 
     <!-- Div for day three container -->
     <div class="three-day">
         <h1 id="day-one-h1">{{ next_day_three }}</h1>
 
+        {% include 'weekly_forecast_day_three.html' %}
+
+        <h2 id="day-three-h2">{{ weekly_description_d3 }}</h2>
+
+        {% if unit_value == '0' %}
+            <div class="day-three-h3">
+                <h3>High: {{ weekly_d3_max_temp }}</h3>
+                <h3>Low: {{ weekly_d3_min_temp }}</h3>
+            </div>
+        {% else %}
+            <div class="day-three-h3">
+                <h3>High: {{ weekly_d3_metric_max }}</h3>
+                <h3>Low: {{ weekly_d3_metric_min }}</h3>
+            </div>
+        {% endif %}
+
     </div>
+
 
     <!-- Div for day four container -->
     <div class="four-day">
@@ -138,6 +193,6 @@
 
 
 <div class="news-container">
-    <h1>news goes here {{ time_of_day2 }} //// </h1>
+    <h1>news goes here {{ time_of_day2 }} //// {{ time_of_day }}</h1>
 </div>
 {% endblock %}

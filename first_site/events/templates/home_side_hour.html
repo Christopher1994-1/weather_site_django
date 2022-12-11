@@ -14,23 +14,23 @@
 
 
         <div class="side-hour-date">
-            <h1>11/28: {{ day_of_the_week }}</h1>
+            <h1>{{ side_forecast_month }}/{{ side_forecast_day }}: {{ day_of_the_week }}</h1>
         </div>
 
 
         {% include 'home_icon_h1.html' %}
 
         <div class="side-hour-max-min">
-            <h1>Max: 104</h1>
-            <h1>Min: 87</h1>
+            <h1>Max: {{ first_hour_max }}</h1>
+            <h1>Min: {{ first_hour_min }}</h1>
         </div>
 
         <div class="side-hour-weather-d">
-            <h1>light intensity shower rain</h1>
+            <h1>{{ first_hour_description }}</h1>
         </div>
 
         <div class="side-hour-time">
-            <h1>13:00:pm</h1>
+            <h1>{{ first_hour_time }}</h1>
 
         </div>
 
@@ -47,23 +47,23 @@
 
 
         <div class="side-hour-date2">
-            <h1>11/28: {{ day_of_the_week }}</h1>
+            <h1>{{ second_hour_month }}/{{ second_hour_day }}: {{ day_of_the_week }}</h1>
         </div>
 
 
         {% include 'home_icon_h2.html' %}
 
         <div class="side-hour-max-min2">
-            <h1>Max: 14</h1>
-            <h1>Min: 87</h1>
+            <h1>Max: {{ second_hour_max }}</h1>
+            <h1>Min: {{ second_hour_min }}</h1>
         </div>
 
         <div class="side-hour-weather-d2">
-            <h1>thunderstorm</h1>
+            <h1>{{ second_hour_description }}</h1>
         </div>
 
         <div class="side-hour-time2">
-            <h1>16:00:pm</h1>
+            <h1>{{ second_hour_time }}</h1>
 
         </div>
 
@@ -80,23 +80,23 @@
 
 
         <div class="side-hour-date3">
-            <h1>11/28: {{ day_of_the_week }}</h1>
+            <h1>{{ third_hour_month }}/{{ third_hour_day }}: {{ day_of_the_week }}</h1>
         </div>
 
 
         {% include 'home_icon_h3.html' %}
 
         <div class="side-hour-max-min3">
-            <h1>Max: 14</h1>
-            <h1>Min: 87</h1>
+            <h1>Max: {{ third_hour_max }}</h1>
+            <h1>Min: {{ third_hour_min }}</h1>
         </div>
 
         <div class="side-hour-weather-d3">
-            <h1>clear sky</h1>
+            <h1>{{ third_hour_description }}</h1>
         </div>
 
         <div class="side-hour-time3">
-            <h1>19:00:pm</h1>
+            <h1>{{ third_hour_time }}</h1>
 
         </div>
 

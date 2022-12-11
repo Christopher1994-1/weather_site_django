@@ -8,6 +8,7 @@ from os import environ
 import requests
 
 
+# function to call to determine night or day
 def get_time_of_day():
     now = datetime.now()
     day = now.hour
@@ -22,7 +23,7 @@ def get_time_of_day():
 
 
 
-
+# function to call to get the next few weekdays 
 def get_next_day():
     
     now = datetime.now()
@@ -65,7 +66,7 @@ def get_next_day():
 
 
 
-
+# function to call to get data on the current forecast
 def get_current_day_weather(city="Arlington", units="imperial"):
     BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
     API_KEY = environ.get("CEJ_Weather_API")
@@ -133,7 +134,9 @@ def get_current_day_weather(city="Arlington", units="imperial"):
         
     return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date, city_name, wd, visual
         
+        
 
+# function to call to get data on the next few hours forecast
 def weather_next_few_hours(lat, lon, units="imperial"):
     api_key = environ.get("CEJ_Weather_API")
     LAT = lat
@@ -208,6 +211,8 @@ def weather_next_few_hours(lat, lon, units="imperial"):
             [dt_9pm_month, dt_9pm_day, convert_dt9, today_9pm_max_temp, today_9pm_min_temp, today_9pm_weather],]
 
 
+
+# function to call to get data on the weekly forecast
 def coming_days(lat, lon, units="imperial"):
     api_key = environ.get("CEJ_Weather_API")
     LAT = lat
@@ -297,7 +302,7 @@ def home(request, location="arlington"):
     
     # city_name = str(get_current_day_weather()[10])
     city_name = "Bonadelle Ranchos-Madera Ranchos"
-    wd = "Rain"
+    wd = "Clear Sky"
     # weather_description = str(get_current_day_weather()[11])
     weather_description = "clear sky"
     # min_temp = str(get_current_day_weather()[2]).split(".")[0]
@@ -336,17 +341,63 @@ def home(request, location="arlington"):
     first_hour_d = 'light intensity shower rain'
     
     # API call for the first hour side weather widget
-    f_h_month = "11"
-    f_h_day = "30"
-    f_h_time = "3:00"
-    f_h_max = "58"
-    f_h_min = "34"
-    
     # f_h_month, f_h_day, f_h_time, f_h_max, f_h_min, f_h_des = weather_next_few_hours(cc_lat, cc_lon)[0]
+    f_h_month, f_h_day, f_h_time, f_h_des, f_h_max, f_h_min = ("11", "30", "3:01:pm", "light rain", "101", "91")
+    
     # API call for the second hour side weather widget
     # s_h_month, s_h_day, s_h_time, s_h_max, s_h_min, s_h_des = weather_next_few_hours(cc_lat, cc_lon)[1]
+    s_h_month, s_h_day, s_h_time, s_h_des, s_h_max, s_h_min = ("11", "30", "6:00:pm", "clear sky", "102", "92")
+    
     # API call for the third hour side weather widget
     # t_h_month, t_h_day, t_h_time, t_h_max, t_h_min, t_h_des = weather_next_few_hours(cc_lat, cc_lon)[2]
+    t_h_month, t_h_day, t_h_time, t_h_des, t_h_max, t_h_min = ('11', '30', '9:00:pm', 'rain', '103', '93')
+
+
+    # API call for the first weekly forecast day
+    # weekly_d1_des, weekly_d1_max, weekly_d1_min, weekly_d1_date, weekly_d1_day  = coming_days(cc_lat, cc_lon)['day1']
+    weekly_d1_des, weekly_d1_max, weekly_d1_min, weekly_d1_date, weekly_d1_day  = ('clear sky', '101', '91', 'date', 'idk')
+    # for converting day one max imperial to metric 
+    weekly_d1_max_metric = (int(weekly_d1_max) - 32) * 5/9
+    weekly_d1_max_metric_str = str(weekly_d1_max_metric).split('.')[0]
+    # for converting day one max metric to imperial
+    weekly_d1_min_metric = (int(weekly_d1_min) - 32) * 5/9
+    weekly_d1_min_metric_str = str(weekly_d1_min_metric).split('.')[0]
+    
+    
+    # API call for the second weekly forecast day
+    # weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = coming_days(cc_lat, cc_lon)['day2']
+    weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = ('clear sky', '102', '92', 'date', 'idk')
+    # for converting day one max imperial to metric 
+    weekly_d2_max_metric = (int(weekly_d2_max) - 32) * 5/9
+    weekly_d2_max_metric_str = str(weekly_d2_max_metric).split('.')[0]
+    # for converting day one max metric to imperial
+    weekly_d2_min_metric = (int(weekly_d2_min) - 32) * 5/9
+    weekly_d2_min_metric_str = str(weekly_d2_min_metric).split('.')[0]
+    
+    
+    # API call for the third weekly forecast day
+    # weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_date, weekly_d3_day  = coming_days(cc_lat, cc_lon)['day3']
+    weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_date, weekly_d3_day  = ('thunderstorm', '103', '93', 'date', 'idk')
+    # for converting day one max imperial to metric 
+    weekly_d3_max_metric = (int(weekly_d3_max) - 32) * 5/9
+    weekly_d3_max_metric_str = str(weekly_d3_max_metric).split('.')[0]
+    # for converting day one max metric to imperial
+    weekly_d3_min_metric = (int(weekly_d3_min) - 32) * 5/9
+    weekly_d3_min_metric_str = str(weekly_d3_min_metric).split('.')[0]
+    
+    
+    # API call for the fourth weekly forecast day
+    # weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_date, weekly_d4_day  = coming_days(cc_lat, cc_lon)['day4']
+    weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_date, weekly_d4_day  = ('light rain', '104', '94', 'date', 'idk')
+    # for converting day one max imperial to metric 
+    weekly_d4_max_metric = (int(weekly_d4_max) - 32) * 5/9
+    weekly_d4_max_metric_str = str(weekly_d4_max_metric).split('.')[0]
+    # for converting day one max metric to imperial
+    weekly_d4_min_metric = (int(weekly_d4_min) - 32) * 5/9
+    weekly_d4_min_metric_str = str(weekly_d4_min_metric).split('.')[0]
+    
+    
+    
     
     
     # Second Hour variables
@@ -440,11 +491,65 @@ def home(request, location="arlington"):
         "humidity" : humidity,
         "wind_speed" : wind_speed,
         "wind_dir" : wind_dir,
+        
+        # first side hour variables
         "side_forecast_month" : f_h_month,
         "side_forecast_day" : f_h_day,
         "first_hour_time" : f_h_time,
+        "first_hour_description" : f_h_des,
         "first_hour_max" : f_h_max,
         "first_hour_min" : f_h_min,
+
+        # second side hour variables
+        "second_hour_max" : s_h_max,
+        "second_hour_min" : s_h_min,
+        "second_hour_month" : s_h_month,
+        "second_hour_day": s_h_day,
+        "second_hour_description" : s_h_des,
+        "second_hour_time" : s_h_time,
+        
+        # third side hour variables
+        "third_hour_max" : t_h_max,
+        "third_hour_min" : t_h_min,
+        "third_hour_month" : s_h_month,
+        "third_hour_day" : t_h_day,
+        "third_hour_time" : t_h_time,
+        "third_hour_description" : t_h_des,
+        
+        
+        # weekly forecast day 1 variables
+        "weekly_description_d1" : weekly_d1_des,
+        "weekly_d1_max_temp" : weekly_d1_max,
+        "weekly_d1_min_temp" : weekly_d1_min,
+        "weekly_d1_metric_max" : weekly_d1_max_metric_str,
+        "weekly_d1_metric_min" : weekly_d1_min_metric_str,
+        
+        
+        # weekly forecast day 2 variables
+        "weekly_description_d2" : weekly_d2_des,
+        "weekly_d2_max_temp" : weekly_d2_max,
+        "weekly_d2_min_temp" : weekly_d2_min,
+        "weekly_d2_metric_max" : weekly_d2_max_metric_str,
+        "weekly_d2_metric_min" : weekly_d2_min_metric_str,
+        
+        
+        # weekly forecast day 3 variables
+        "weekly_description_d3" : weekly_d3_des,
+        "weekly_d3_max_temp" : weekly_d3_max,
+        "weekly_d3_min_temp" : weekly_d3_min,
+        "weekly_d3_metric_max" : weekly_d3_max_metric_str,
+        "weekly_d3_metric_min" : weekly_d3_min_metric_str,
+        
+        
+        # weekly forecast day 4 variables
+        "weekly_description_d4" : weekly_d4_des,
+        "weekly_d4_max_temp" : weekly_d4_max,
+        "weekly_d4_min_temp" : weekly_d4_min,
+        "weekly_d4_metric_max" : weekly_d4_max_metric_str,
+        "weekly_d4_metric_min" : weekly_d4_min_metric_str,
+        
+        
+        
         "time_of_day" : day,
         "time_of_day2" : time_of_day,
         "first_hour_d" : first_hour_d,

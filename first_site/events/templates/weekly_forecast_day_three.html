@@ -1,0 +1,159 @@
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
+<link rel="stylesheet" href="{% static 'css/weekly_forecast.css' %}">
+
+
+
+<!-- Checking if clear sky and time of day is morning/afternoon -->
+{% if weekly_description_d3 == 'clear sky' %} <!-- day == True means day -->
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/sunny-black.png' %}" alt="" width="80" height="65">
+    </div>
+''
+<!-- Checking if light clouds  -->
+{% elif weekly_description_d3 == 'overcast clouds' or weekly_description_d3 == 'broken clouds' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/cloudy2.png' %}" alt="" width="90" height="75">
+    </div>
+    
+
+<!-- Checking if heavy clouds  -->
+{% elif weekly_description_d3 == 'few clouds' or weekly_description_d3 == 'scattered clouds' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/few-clouds-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+<!-- Checking if light rain  -->
+{% elif weekly_description_d3 == 'light rain' or weekly_description_d3 == 'moderate rain' or weekly_description_d3 == 'light intensity shower rain' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/light-rain-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+<!-- Checking if drizzle -->
+{% elif weekly_description_d3 == 'light intensity drizzle' or weekly_description_d3 == 'drizzle' or weekly_description_d3 == 'heavy intensity drizzle' or weekly_description_d3 == 'light intensity drizzle rain' or weekly_description_d3 == 'drizzle rain' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/light-rain-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+<!-- Checking if drizzle 2 -->
+{% elif weekly_description_d3 == 'heavy intensity drizzle rain' or weekly_description_d3 == 'shower rain and drizzle' or weekly_description_d3 == 'heavy shower rain and drizzle' or weekly_description_d3 == 'shower drizzle' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/light-rain-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+
+<!-- Checking if freezing rain  -->
+{% elif weekly_description_d3 == 'freezing rain' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/freezing-rain.png' %}" alt="" width="90" height="75">
+    </div>
+
+    
+<!-- Checking if heavy rain  -->
+{% elif weekly_description_d3 == 'heavy intensity rain' or weekly_description_d3 == 'very heavy rain' or weekly_description_d3 == 'very heavy rain' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/heavy-rain-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+<!-- Checking if heavy rain 2 -->
+{% elif weekly_description_d3 == 'extreme rain' or weekly_description_d3 == 'shower rain' or weekly_description_d3 == 'heavy intensity shower rain' or weekly_description_d3 == 'ragged shower rain' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/heavy-rain-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+
+
+
+
+
+<!-- Checking if light snow -->
+{% elif weekly_description_d3 == 'light snow' or weekly_description_d3 == 'snow' or weekly_description_d3 == 'Light shower snow' or weekly_description_d3 == 'shower sleet' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/light-snow.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+<!-- Checking if sleet snow -->
+{% elif weekly_description_d3 == 'sleet' or weekly_description_d3 == 'light rain and snow' or weekly_description_d3 == 'rain and snow' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/sleet.png' %}" alt="" width="60" height="55">
+    </div>
+
+
+<!-- Checking if heavy snow -->
+{% elif weekly_description_d3 == 'heavy snow' or weekly_description_d3 == 'shower sleet' or weekly_description_d3 == 'shower snow' or weekly_description_d3 == 'heavy shower snow' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/heavy-snow-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+
+
+
+
+
+
+
+<!-- Checking if thunderstorm with rain -->
+{% elif weekly_description_d3 == 'thunderstorm with light rain' or weekly_description_d3 == 'thunderstorm with rain' or weekly_description_d3 == 'thunderstorm with heavy rain' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/thunderstorm-with-rain.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+<!-- Checking if thunderstorm with rain -->
+{% elif weekly_description_d3 == 'thunderstorm with light drizzle' or weekly_description_d3 == 'thunderstorm with drizzle' or weekly_description_d3 == 'thunderstorm with heavy drizzle' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/thunderstorm-with-rain.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+<!-- Checking if heavy thunderstorm -->
+{% elif weekly_description_d3 == 'heavy thunderstorm' or weekly_description_d3 == 'ragged thunderstorm' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/heavy-thunder-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+<!-- Checking if light thunderstorm -->
+{% elif weekly_description_d3 == 'light thunderstorm' or weekly_description_d3 == 'thunderstorm' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/light-thunder-black.png' %}" alt="" width="90" height="75">
+    </div>
+
+<!-- Checking if Atmosphere -->
+{% elif weekly_description_d3 == 'mist' or weekly_description_d3 == 'Smoke' or weekly_description_d3 == 'Haze' or weekly_description_d3 == 'sand/ dust whirls' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/mist.png' %}" alt="" width="90" height="75">
+    </div>
+
+<!-- Checking if Atmosphere 2 -->
+{% elif weekly_description_d3 == 'fog' or weekly_description_d3 == 'sand' or weekly_description_d3 == 'dust' or weekly_description_d3 == 'volcanic ash' %}
+<div class="weekly-forecast-icons-d1">
+    <img src="{% static 'images/mist.png' %}" alt="" width="90" height="75">
+</div>
+
+<!-- Checking if  Atmosphere 3 -->
+{% elif weekly_description_d3 == 'squalls' or weekly_description_d3 == 'tornado' %}
+    <div class="weekly-forecast-icons-d1">
+        <img src="{% static 'images/torando.png' %}" alt="" width="90" height="75">
+    </div>
+
+
+{% endif %}
+
+
+
+
+
+
+
+{% endblock %}
