@@ -303,23 +303,92 @@ current_weekday = "Thursday"
 def get_time_of_day():
     currentDateAndTime = datetime.datetime.now()
     datetime_convert = str(datetime.datetime.strftime(currentDateAndTime, "%I:%p:%A")).split(":")
-    day_of_the_week = datetime_convert[2]
     
-    day_cycle = ['06', '07', '08', '09', '10', '11', '12', '01', '02', '03', '04', '05']
+    hour, ampm, day_of_the_week = datetime_convert
+    
+    day_ampm = hour + ampm
+    
+    day_cycle_list = ['06AM', '07AM', '08AM', '09AM', '10AM', '11AM', '12PM', '01PM', '02PM', '03PM', '04PM', '05PM']
+    night_cycle_list = ['06PM', '07PM', '08PM', '09PM', '10PM', '11PM', '12AM', '01AM', '02AM', '03AM', '04AM', '05AM']
+    
+    morning_cycle = ['05AM','06AM', '07AM', '08AM', '09AM', '10AM', '11AM']
+    afternoon_cycle = ['12PM', '01PM', '02PM', '03PM', '04PM']
+    evening_cycle = ['04PM', '05PM', '06PM', '07PM']
+    night_cycle = [ '08PM', '09PM', '10PM', '11PM', '12AM', '01AM', '02AM', '03AM', '04AM']
     
     day = None
     
-    if datetime_convert[1] in day_cycle and datetime_convert[2] == "pm":
+    
+    if day_ampm in day_cycle_list:
         day = True
-    else:
+    elif day_ampm in night_cycle_list:
         day = False
         
+    dayTime = ''
+    if day_ampm in morning_cycle:
+        dayTime = 'Morning'
+    elif day_ampm in afternoon_cycle:
+        dayTime = 'Afternoon'
+    elif day_ampm in evening_cycle:
+        dayTime = 'Evening'
+    elif day_ampm in night_cycle:
+        dayTime = 'Night'
+        
+
+        
     
-    return day, day_of_the_week
+    return day, dayTime, day_of_the_week
+
+
+# function to call to get the next few weekdays 
+def get_next_day(weekday):
+    
+    next_day = weekday
+    
+    if next_day == "Monday":
+        next_five_days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        
+    elif next_day == "Tuesday":
+        next_five_days = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"]
+        
+    elif next_day == "Wednesday":
+        next_five_days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"]
+        
+    elif next_day == "Thursday":
+        next_five_days = ["Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"]
+
+    elif next_day == "Friday":
+        next_five_days = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]
+        
+    elif next_day == "Saturday":
+        next_five_days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+        
+    elif next_day == "Sunday":
+        next_five_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        
+    return next_five_days
 
 
 
-time_of_day = get_time_of_day()
 
 
-print(time_of_day)
+def afternoon():
+    now = datetime.datetime.now()
+    timeNow = now.hour
+    if timeNow < 12:
+        return "Morning"
+    elif timeNow < 16:
+        return "Afternoon"
+    elif timeNow < 19:
+        return "Evening"
+    else:
+        return "Night"
+    
+
+
+k = "Monday"
+    
+ne = get_next_day(k)
+
+
+print(ne)

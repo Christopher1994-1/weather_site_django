@@ -9,41 +9,65 @@ from os import environ
 import requests
 
 
+def afternoon():
+    now = datetime.datetime.now()
+    timeNow = now.hour
+    if timeNow < 12:
+        return "Morning"
+    elif timeNow < 16:
+        return "Afternoon"
+    elif timeNow < 19:
+        return "Evening"
+    else:
+        return "Night"
+
+
 # function to call to determine night or day
 def get_time_of_day():
     currentDateAndTime = datetime.datetime.now()
     datetime_convert = str(datetime.datetime.strftime(currentDateAndTime, "%I:%p:%A")).split(":")
-    day_of_the_week = datetime_convert[2]
     
-    day_cycle = ['06', '07', '08', '09', '10', '11', '12', '01', '02', '03', '04', '05']
+    hour, ampm, day_of_the_week = datetime_convert
+    
+    day_ampm = hour + ampm
+    
+    day_cycle_list = ['06AM', '07AM', '08AM', '09AM', '10AM', '11AM', '12PM', '01PM', '02PM', '03PM', '04PM', '05PM']
+    night_cycle_list = ['06PM', '07PM', '08PM', '09PM', '10PM', '11PM', '12AM', '01AM', '02AM', '03AM', '04AM', '05AM']
+    
+    morning_cycle = ['05AM','06AM', '07AM', '08AM', '09AM', '10AM', '11AM']
+    afternoon_cycle = ['12PM', '01PM', '02PM', '03PM', '04PM']
+    evening_cycle = ['04PM', '05PM', '06PM', '07PM']
+    night_cycle = [ '08PM', '09PM', '10PM', '11PM', '12AM', '01AM', '02AM', '03AM', '04AM']
+    
     day = None
     
-    if datetime_convert[1] in day_cycle and datetime_convert[2] == "pm":
+    
+    if day_ampm in day_cycle_list:
         day = True
-    else:
+    elif day_ampm in night_cycle_list:
         day = False
         
+    dayTime = ''
+    if day_ampm in morning_cycle:
+        dayTime = 'Morning'
+    elif day_ampm in afternoon_cycle:
+        dayTime = 'Afternoon'
+    elif day_ampm in evening_cycle:
+        dayTime = 'Evening'
+    elif day_ampm in night_cycle:
+        dayTime = 'Night'
+        
+
+        
     
-    return day, day_of_the_week
+    return day, dayTime, day_of_the_week
+
 
 
 # function to call to get the next few weekdays 
-def get_next_day():
+def get_next_day(weekday):
     
-    now = datetime.datetime.now()
-    current_weekday = now.weekday()
-
-    weekdays = {
-        0 : 'Monday', 
-        1 : 'Tuesday', 
-        2 : 'Wednesday',
-        3 : 'Thursday',
-        4 : 'Friday',
-        5 : 'Saturday',
-        6 : 'Sunday'
-    }
-
-    next_day = weekdays[current_weekday]
+    next_day = weekday
     
     if next_day == "Monday":
         next_five_days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -370,7 +394,7 @@ def home(request, location="arlington"):
     
     # API call for the second weekly forecast day
     # weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = coming_days(cc_lat, cc_lon)['day2']
-    weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = ('clear sky', '102', '92', 'date', 'idk')
+    weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = ('light rain', '102', '92', 'date', 'idk')
     # for converting day one max imperial to metric 
     weekly_d2_max_metric = (int(weekly_d2_max) - 32) * 5/9
     weekly_d2_max_metric_str = str(weekly_d2_max_metric).split('.')[0]
@@ -455,15 +479,22 @@ def home(request, location="arlington"):
     current_day = now.day
     current_month = now.month
     current_weekday = now.weekday()
-    day = get_time_of_day()[0]
-    time_of_day = get_time_of_day()[1]
-    days_ahead = get_next_day()
+    
+    
+    day_time = get_time_of_day()[0] # False/True
+    time_of_day = get_time_of_day()[2] # Day of the week
+    
+    days_ahead = get_next_day(time_of_day)
     d1, d2, d3, d4, d5, d6 = days_ahead
+    
+    
+    timesOfDay = get_time_of_day()[1]
 
-    if time_of_day == "Morning" or time_of_day == "Afternoon" or time_of_day == "Evening":
-        day = True
+    day1 = None
+    if day_time == True:
+        day1 = True
     else:
-        day = False
+        day1 = False
 
     weekdays = {
         0 : 'Monday', 
@@ -554,8 +585,8 @@ def home(request, location="arlington"):
         
         
         
-        "time_of_day" : day,
-        "time_of_day2" : time_of_day,
+        "time_of_day" : day1,
+        "time_of_day2" : timesOfDay, # variable for good 'moring' on home page
         "first_hour_d" : first_hour_d,
         "second_hour_d" : second_hour_d,
         "third_hour_d" : third_hour_d,

@@ -10,18 +10,19 @@
 }
 
 /* All of the h1's inside of the main container */
-#day-one-h1 {
+#weekly-day-h1 {
     font-size: 20px;
 }
 
 
 
+/* ########################################################################## */
 
 
 
 
 /* DAY ONE */
-/* main container for the first day in the weekly forecast */
+/* ~MAIN CONTAINER~ for the first day in the weekly forecast */
 .weekly-forecast-container .one-day {
     border: 2px solid black;
     display: inline-block;
@@ -31,47 +32,55 @@
     border-radius: 15px;
     height: 300px;
 }
-/* css class for day of the week h1 */
+/* css class for ~DAY OF THE WEEK~ h1 */
 .weekly-forecast-container .one-day h1 {
     border-bottom: 2px solid black;
     background: white;
     border-radius: 15px;
     color: black;
 }
-/* css class first day weather description icon */
+/* css class first day weather description ~ICON~ */
 .one-day .weekly-forecast-icons-d1 {
     position: absolute;
-    right: 540px;
-    border: 2px solid black;
+    right: 545px;
     bottom: 190px;
 
 }
-/* css class for first day weather description */
+/* css class for first day ~WEATHER DESCRIPTION~ */
 .weekly-forecast-container .one-day h2 {
     font-size: 15px;
     color: white;
     width: 125px;
-    border: 2px solid black;
-    bottom: 125px;
+    bottom: 135px;
     position: absolute;
 
 }
-.weekly-forecast-container .day-one-h3 h3{
-    color: black;
+/* css class for the first day ~HIGH TEMP~ h3 */
+.day-one-max-temp h3{
+    font-size: 29px;
+    left: 25px;
+    color: white;
+    position: absolute;
+    top: 200px;
+}
+/* css class for the first day ~LOW TEMP~ h3 */
+.weekly-forecast-container .day-one2-h3 h3{
     font-size: 30px;
-    border: 2px solid black;
-    position: relative;
-    top: 160px;
+    left: 35px;
+    color: white;
+    position: absolute;
+    top: 240px;
 }
 
 
 
+/* ########################################################################## */
 
 
 
 
 /* DAY TWO */
-/* main container for the first day in the weekly forecast */
+/* ~MAIN CONTAINER~ for the second day in the weekly forecast */
 .weekly-forecast-container .two-day {
     border: 2px solid black;
     display: inline-block;
@@ -81,41 +90,54 @@
     border-radius: 15px;
     height: 300px;
 }
-/* css class for day of the week h1 */
+/* css class for ~DAY OF THE WEEK~ h1 */
 .weekly-forecast-container .two-day h1 {
     border-bottom: 2px solid black;
     background: white;
     border-radius: 15px;
     color: black;
 }
-/* css class first day weather description icon */
-.two-day .weekly-forecast-icons-d1 {
-    border: 2px solid black;
-    width: 100px;
-    background: rgba(196, 196, 196, 0.4);
-    margin: auto;
-    border-radius: 75px;
+/* css class second day weather description ~ICON~ */
+.weekly-forecast-icons-d2 {
+    position: absolute;
+    right: 396px;
+    top: 50px;
+
 }
-/* css class for first day weather description */
+/* css class for second day ~WEATHER DESCRIPTION~ */
 .weekly-forecast-container .two-day h2 {
-    border: 2px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
-    background: rgba(196, 196, 196, 0.4);
-    text-shadow: 1px 1px rgb(56, 56, 56);
-    border-radius: 20px;
     font-size: 15px;
+    color: white;
+    width: 125px;
+    bottom: 135px;
+    position: absolute;
+
 }
-.weekly-forecast-container .day-two-h3 h3{
-    color: black;
+/* css class for the second day ~HIGH TEMP~ h3 */
+.day-two-max-temp h3{
+    font-size: 29px;
+    right:378px;
+    color: white;
+    position: absolute;
+    top: 200px;
+}
+/* css class for the second day ~LOW TEMP~ h3 */
+.day-two-min-temp h3{
+    font-size: 30px;
+    color: white;
+    right: 388px;
+    top: 240px;
+    position: absolute;
 }
 
 
 
+/* ########################################################################## */
 
 
 
 /* DAY THREE */
-/* main container for the third day in the weekly forecast */
+/* ~MAIN CONTAINER~ for the % THREE DAY % in the weekly forecast */
 .weekly-forecast-container .three-day {
     border: 2px solid black;
     display: inline-block;
@@ -125,45 +147,59 @@
     border-radius: 15px;
     height: 300px;
 }
-/* css class for day of the week h1 */
+/* css class for ~DAY OF THE WEEK~ h1 */
 .weekly-forecast-container .three-day h1 {
     border-bottom: 2px solid black;
     background: white;
     border-radius: 15px;
     color: black;
 }
-/* css class third day weather description icon */
-.three-day .weekly-forecast-icons-d1 {
-    border: 2px solid black;
-    width: 100px;
-    background: rgba(196, 196, 196, 0.4);
-    margin: auto;
-    border-radius: 75px;
+/* css class three day weather description ~ICON~ */
+.weekly-forecast-icons-d3 {
+    position: absolute;
+    right: 250px;
+    top: 50px;
 }
-/* css class for third day weather description */
+/* css class for three day ~WEATHER DESCRIPTION~ */
 .weekly-forecast-container .three-day h2 {
-    border: 2px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
-    background: rgba(196, 196, 196, 0.4);
-    text-shadow: 1px 1px rgb(56, 56, 56);
-    border-radius: 20px;
     font-size: 15px;
+    color: white;
+    width: 125px;
+    bottom: 135px;
+    position: absolute;
+
 }
-.weekly-forecast-container .day-three-h3 h3{
-    color: black;
+/* css class for the three day ~HIGH TEMP~ h3 */
+.day-three-max-temp h3{
+    font-size: 29px;
+    color: white;
+    right: 233px;
+    top: 200px;
+    position: absolute;
+}
+/* css class for the three day ~LOW TEMP~ h3 */
+.day-three-min-temp h3{
+    font-size: 30px;
+    top: 240px;
+    left: 325px;
+    color: white;
+    position: absolute;
 }
 
+
+
+/* ########################################################################## */
 
 
 
 /* DAY FOUR */
-/* main container for the fourth day in the weekly forecast */
+/* ~MAIN CONTAINER~ for the % FOURTH DAY % in the weekly forecast */
 .weekly-forecast-container .four-day {
     border: 2px solid black;
     display: inline-block;
     margin-left: 15px;
     width: 130px;
-    background: black;
+    background: rgb(36, 36, 36);
     border-radius: 15px;
     height: 300px;
 }
@@ -172,4 +208,36 @@
     background: white;
     border-radius: 15px;
     color: black;
+}
+
+/* css class four day weather description ~ICON~ */
+.weekly-forecast-icons-d4 {
+    position: absolute;
+    right: 105px;
+    bottom: 185px;
+}
+/* css class for four day ~WEATHER DESCRIPTION~ */
+.weekly-forecast-container .four-day h2 {
+    font-size: 15px;
+    color: white;
+    position: absolute;
+    top: 150px;
+    right: 120px;
+
+}
+/* css class for the four day ~HIGH TEMP~ h3 */
+.day-four-max-temp h3{
+    font-size: 29px;
+    color: white;
+    right: 88px;
+    top: 200px;
+    position: absolute;
+}
+/* css class for the four day ~LOW TEMP~ h3 */
+.day-four-min-temp h3{
+    font-size: 30px;
+    color: white;
+    position: absolute;
+    top: 240px;
+    right: 95px;
 }
