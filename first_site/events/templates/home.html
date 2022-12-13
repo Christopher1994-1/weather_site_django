@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
 <link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
 <link rel="stylesheet" href="{% static 'css/weekly_forecast.css' %}">
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+<link rel="stylesheet" href="{% static 'css/live_feeds.css' %}">
 
 
 <!-- Search bar and button -->
@@ -236,6 +238,100 @@
 
 
 <div class="news-container">
-    <h1>news goes here {{ time_of_day2 }} //// {{ time_of_day }}</h1>
+    <h1 id="main-news-header">News</h1>
+
+
+    <!-- First news story div container -->
+        <div class="first-news-story">
+
+            <div class="first-title">
+                <h1>Nationwide winter storm set to bring everything from blizzard conditions to tornadoes.</h1>
+            </div>
+
+            <div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo deserunt distinctio dolorum earum voluptas nostrum quaerat nam cum tempore rem ipsam ipsa est nesciunt neque necessitatibus, architecto rerum. Delectus, totam.</p>
+            </div>
+
+            <div class="first-button-and-date">
+
+                <div class="first-news-button">
+                    <a href="https://en.wikipedia.org/wiki/Lorem_ipsum" target="_blank">
+                        <button type="button" class="btn btn-success">Read More</button></a>
+                </div>
+
+                <div class="first-news-date">
+                    <small>April/20/2022</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    <!-- Second news story div container -->
+    <div class="second-news-story">
+
+        <div class="second-title">
+            <h1>Nationwide winter storm set to bring everything from blizzard conditions to tornadoes.</h1>
+        </div>
+
+        <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo deserunt distinctio dolorum earum voluptas nostrum quaerat nam cum tempore rem ipsam ipsa est nesciunt neque necessitatibus, architecto rerum. Delectus, totam.</p>
+        </div>
+
+        <div class="second-button-and-date">
+
+            <div class="second-news-button">
+                <a href="https://en.wikipedia.org/wiki/Lorem_ipsum" target="_blank">
+                    <button type="button" class="btn btn-success">Read More</button></a>
+            </div>
+
+            <div class="second-news-date">
+                <small>April/20/2022</small>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Third news story div container -->
+    <div class="third-news-story">
+
+        <div class="third-title">
+            <h1>Nationwide winter storm set to bring everything from blizzard conditions to tornadoes.</h1>
+        </div>
+
+        <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo deserunt distinctio dolorum earum voluptas nostrum quaerat nam cum tempore rem ipsam ipsa est nesciunt neque necessitatibus, architecto rerum. Delectus, totam.</p>
+        </div>
+
+        <div class="third-button-and-date">
+
+            <div class="third-news-button">
+                <a href="https://en.wikipedia.org/wiki/Lorem_ipsum" target="_blank"><button type="button" class="btn btn-success">Read More</button></a>
+            </div>
+
+            <div class="third-news-date">
+                <small>April/20/2022</small>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<br><br>
+
+
+
+
+<div class="live-cameras-container">
+    <h1 id="main-live-feeds-header">Live Feeds</h1>
+
 </div>
 {% endblock %}

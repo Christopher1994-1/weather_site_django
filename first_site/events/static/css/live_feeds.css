@@ -1,0 +1,13 @@
+.live-cameras-container {
+    border: 2px solid black;
+    margin: auto;
+    width: 800px;
+    text-align: center;
+}
+
+
+#main-live-feeds-header {
+    border-bottom: 1px solid white;
+    width: 500px;
+    margin: auto;
+}

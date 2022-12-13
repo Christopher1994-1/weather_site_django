@@ -1,0 +1,178 @@
+/* ~Main Container~ for the entire news container */
+.news-container {
+    border: 2px solid rgba(33,37,41,255);
+    width: 800px;
+    height: 315px;
+    margin: auto;
+    text-align: center;
+    background:rgba(33,37,41,255);
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+/* ~Main News Header~ */
+#main-news-header {
+    color: white;
+    border-bottom: 1px solid black;
+    width: 500px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+
+
+#hr-under-title {
+    width: 150px;
+    color: white;
+    margin: auto;
+}
+
+
+
+
+
+/* FIRST NEWS story ~Main Container~ */
+.first-news-story {
+    border: 2px solid black;
+    display: inline-block;
+    background: rgba(245, 245, 245);
+    padding: 5px;
+    box-shadow: 2px 2px black;
+    height: 243px;
+    border-radius: 10px;
+}
+/* FIRST NEWS story ~Title H1~ */
+.first-news-story h1 {
+    font-size: 15px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+    width: 220px;
+}
+/* FIRST NEWS story ~Paragraph H1~ */
+.first-news-story p {
+    font-size: 10px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    text-align: left;
+    width: 220px;
+}
+/* ~Main container~ for first news button and date */
+.first-button-and-date {
+    display: flex;
+}
+/* FIRST NEWS date container */
+.first-news-button {
+    display: inline-block;
+}
+/* FIRST NEWS date container */
+.first-news-date {
+    display: inline-block;
+    position: relative;
+    left: 20px;
+    top: 5px;
+}
+
+
+
+
+
+
+
+
+/* SECOND NEWS story ~Main Container~ */
+.second-news-story {
+    border: 2px solid black;
+    display: inline-block;
+    background: rgba(245, 245, 245);
+    padding: 5px;
+    margin-left: 15px;
+    box-shadow: 2px 2px black;
+    height: 243px;
+    border-radius: 10px;
+}
+/* SECOND NEWS story ~Title H1~ */
+.second-news-story h1 {
+    font-size: 15px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+    width: 220px;
+}
+/* SECOND NEWS story ~Paragraph H1~ */
+.second-news-story p {
+    font-size: 10px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    text-align: left;
+    width: 220px;
+}
+/* ~Main container~ for second news button and date */
+.second-button-and-date {
+    display: flex;
+}
+/* SECOND NEWS button container */
+.second-news-button {
+    display: inline-block;
+}
+/* SECOND NEWS date container */
+.second-news-date {
+    display: inline-block;
+    position: relative;
+    left: 20px;
+    top: 5px;
+}
+
+
+
+
+
+
+
+
+
+/* THIRD NEWS story ~Main Container~ */
+.third-news-story {
+    border: 2px solid black;
+    display: inline-block;
+    background: rgba(245, 245, 245);
+    padding: 5px;
+    margin-left: 15px;
+    box-shadow: 2px 2px black;
+    height: 243px;
+    border-radius: 10px;
+}
+/* THIRD NEWS story ~Title H1~ */
+.third-news-story h1 {
+    font-size: 15px;
+    border-bottom: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+    width: 220px;
+}
+/* THIRD NEWS story ~Paragraph H1~ */
+.third-news-story p {
+    font-size: 10px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    text-align: left;
+    width: 220px;
+}
+/* ~Main container~ for third news button and date */
+.third-button-and-date {
+    display: flex;
+}
+/* THIRD NEWS button container */
+.third-news-button {
+    display: inline-block;
+}
+/* THIRD NEWS date container */
+.third-news-date {
+    display: inline-block;
+    position: relative;
+    left: 20px;
+    top: 5px;
+}
