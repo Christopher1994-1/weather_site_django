@@ -20,10 +20,18 @@
 
         {% include 'home_icon_h1.html' %}
 
-        <div class="side-hour-max-min">
-            <h1>Max: {{ first_hour_max }}</h1>
-            <h1>Min: {{ first_hour_min }}</h1>
-        </div>
+        {% if unit_value == '0'%}
+            <div class="side-hour-max-min">
+                <h1>Max: {{ first_hour_max }}</h1>
+                <h1>Min: {{ first_hour_min }}</h1>
+            </div>
+        {% else %}
+            <div class="side-hour-max-min">
+                <h1>Max: {{ metric_first_hour_max }}</h1>
+                <h1>Min: {{ metric_first_hour_min }}</h1>
+            </div>
+        {% endif%}
+
 
         <div class="side-hour-weather-d">
             <h1>{{ first_hour_description }}</h1>
@@ -53,10 +61,17 @@
 
         {% include 'home_icon_h2.html' %}
 
-        <div class="side-hour-max-min2">
-            <h1>Max: {{ second_hour_max }}</h1>
-            <h1>Min: {{ second_hour_min }}</h1>
-        </div>
+        {% if unit_value == '0'%}
+            <div class="side-hour-max-min2">
+                <h1>Max: {{ second_hour_max }}</h1>
+                <h1>Min: {{ second_hour_min }}</h1>
+            </div>
+        {% else %}
+            <div class="side-hour-max-min2">
+                <h1>Max: {{ metric_second_hour_max }}</h1>
+                <h1>Min: {{ metric_second_hour_min }}</h1>
+            </div>
+        {% endif %}
 
         <div class="side-hour-weather-d2">
             <h1>{{ second_hour_description }}</h1>
@@ -86,10 +101,17 @@
 
         {% include 'home_icon_h3.html' %}
 
-        <div class="side-hour-max-min3">
-            <h1>Max: {{ third_hour_max }}</h1>
-            <h1>Min: {{ third_hour_min }}</h1>
-        </div>
+        {% if unit_value == '0'%}
+            <div class="side-hour-max-min3">
+                <h1>Max: {{ third_hour_max }}</h1>
+                <h1>Min: {{ third_hour_min }}</h1>
+            </div>
+        {% else %}
+            <div class="side-hour-max-min3">
+                <h1>Max: {{ metric_third_hour_max }}</h1>
+                <h1>Min: {{ metric_third_hour_min }}</h1>
+            </div>
+        {% endif %}
 
         <div class="side-hour-weather-d3">
             <h1>{{ third_hour_description }}</h1>

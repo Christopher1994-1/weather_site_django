@@ -1,5 +1,6 @@
 from django.test import TestCase
 from datetime import *
+import random
 from datetime import datetime
 from calendar import *
 import datetime
@@ -386,9 +387,23 @@ def afternoon():
     
 
 
-k = "Monday"
+def shuffle_live_cameras():
+    """Simple shuffle function that has the names of the places of live feeds and shuffles them so whenever
+    the user refreshes the home page, the order of the live feeds will be shuffled
+
+    Returns:
+        list: the shuffled list
+    """
     
-ne = get_next_day(k)
+    live_title = ["Dallas, TX", "Tampa, FL", "Venice Beach, CA"]
+    
+    random.shuffle(live_title)
+    
+    return live_title
+    
 
 
-print(ne)
+LF1, LF2, LF3 = shuffle_live_cameras()
+
+
+print(LF1)

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from datetime import *
 from .forms import SubListForm
 from django.http import HttpResponseRedirect
+import random
 from django.contrib import messages
 import json
 import datetime
@@ -320,7 +321,28 @@ def imperial_button(request):
 
 
 
+def shuffle_live_cameras():
+    """Simple shuffle function that has the names of the places of live feeds and shuffles them so whenever
+    the user refreshes the home page, the order of the live feeds will be shuffled
+
+    Returns:
+        list: the shuffled list
+    """
+    
+    live_title = ["Dallas, TX", "Tampa, FL", "Venice Beach, CA", "Leavenworth, WA"]
+    
+    random.shuffle(live_title)
+    
+    return live_title
+    
+
+
+
 def home(request, location="arlington"):
+    # Section for LIVE CAMERAS 
+    LF1, LF2, LF3, LF4 = shuffle_live_cameras()
+    
+    
     # weather calls 
     # current_weather = str(get_current_day_weather()[1]).split(".")[0]
     current_weather = "65"
@@ -368,20 +390,42 @@ def home(request, location="arlington"):
     
     first_hour_d = 'light intensity shower rain'
     
-    # API call for the first hour side weather widget
+    # API call for the ~FIRST HOUR~ side weather widget
     # f_h_month, f_h_day, f_h_time, f_h_max, f_h_min, f_h_des = weather_next_few_hours(cc_lat, cc_lon)[0]
     f_h_month, f_h_day, f_h_time, f_h_des, f_h_max, f_h_min = ("11", "30", "3:01:pm", "light rain", "101", "91")
+    # Metric convert for side first hour
+    toIntFirst = int(f_h_max) 
+    convert_f_h = (toIntFirst - 32) * 5/9
+    metric_first_hour_max = str(convert_f_h).split('.')[0]
+    toIntFirst2 = int(f_h_max) 
+    convert_f_h2 = (toIntFirst2 - 32) * 5/9
+    metric_first_hour_min = str(convert_f_h2).split('.')[0]
     
-    # API call for the second hour side weather widget
+    
+    # API call for the ~SECOND HOUR~ side weather widget
     # s_h_month, s_h_day, s_h_time, s_h_max, s_h_min, s_h_des = weather_next_few_hours(cc_lat, cc_lon)[1]
     s_h_month, s_h_day, s_h_time, s_h_des, s_h_max, s_h_min = ("11", "30", "6:00:pm", "clear sky", "102", "92")
+    # Metric convert for side first hour 
+    toIntSecond = int(s_h_max) 
+    convert_s_h = (toIntSecond - 32) * 5/9
+    metric_second_hour_max = str(convert_s_h).split('.')[0]
+    toIntSecond2 = int(s_h_min) 
+    convert_s_h2 = (toIntSecond2 - 32) * 5/9
+    metric_second_hour_min = str(convert_s_h2).split('.')[0]
     
-    # API call for the third hour side weather widget
+    
+    # API call for the ~THIRD HOUR~ side weather widget
     # t_h_month, t_h_day, t_h_time, t_h_max, t_h_min, t_h_des = weather_next_few_hours(cc_lat, cc_lon)[2]
     t_h_month, t_h_day, t_h_time, t_h_des, t_h_max, t_h_min = ('11', '30', '9:00:pm', 'rain', '103', '93')
+    toIntThird = int(t_h_max)
+    convert_t_h = (toIntThird - 32) * 5/9
+    metric_third_hour_max = str(convert_t_h).split('.')[0]
+    toIntThird2 = int(t_h_min)
+    convert_t_h2 = (toIntThird2 - 32) * 5/9
+    metric_third_hour_min = str(convert_t_h2).split('.')[0]
 
 
-    # API call for the first weekly forecast day
+    # API call for the FIRST weekly forecast DAY
     # weekly_d1_des, weekly_d1_max, weekly_d1_min, weekly_d1_date, weekly_d1_day  = coming_days(cc_lat, cc_lon)['day1']
     weekly_d1_des, weekly_d1_max, weekly_d1_min, weekly_d1_date, weekly_d1_day  = ('clear sky', '101', '91', 'date', 'idk')
     # for converting day one max imperial to metric 
@@ -392,7 +436,7 @@ def home(request, location="arlington"):
     weekly_d1_min_metric_str = str(weekly_d1_min_metric).split('.')[0]
     
     
-    # API call for the second weekly forecast day
+    # API call for the SECOND weekly forecast DAY
     # weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = coming_days(cc_lat, cc_lon)['day2']
     weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = ('light rain', '102', '92', 'date', 'idk')
     # for converting day one max imperial to metric 
@@ -403,7 +447,7 @@ def home(request, location="arlington"):
     weekly_d2_min_metric_str = str(weekly_d2_min_metric).split('.')[0]
     
     
-    # API call for the third weekly forecast day
+    # API call for the THIRD weekly forecast DAY
     # weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_date, weekly_d3_day  = coming_days(cc_lat, cc_lon)['day3']
     weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_date, weekly_d3_day  = ('thunderstorm', '103', '93', 'date', 'idk')
     # for converting day one max imperial to metric 
@@ -414,7 +458,7 @@ def home(request, location="arlington"):
     weekly_d3_min_metric_str = str(weekly_d3_min_metric).split('.')[0]
     
     
-    # API call for the fourth weekly forecast day
+    # API call for the FOURTH weekly forecast DAY
     # weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_date, weekly_d4_day  = coming_days(cc_lat, cc_lon)['day4']
     weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_date, weekly_d4_day  = ('light rain', '104', '94', 'date', 'idk')
     # for converting day one max imperial to metric 
@@ -534,6 +578,8 @@ def home(request, location="arlington"):
         "first_hour_description" : f_h_des,
         "first_hour_max" : f_h_max,
         "first_hour_min" : f_h_min,
+        "metric_first_hour_max" : metric_first_hour_max,
+        "metric_first_hour_min" : metric_first_hour_min,
 
         # second side hour variables
         "second_hour_max" : s_h_max,
@@ -542,6 +588,8 @@ def home(request, location="arlington"):
         "second_hour_day": s_h_day,
         "second_hour_description" : s_h_des,
         "second_hour_time" : s_h_time,
+        "metric_second_hour_max" : metric_second_hour_max,
+        "metric_second_hour_min" : metric_second_hour_min,
         
         # third side hour variables
         "third_hour_max" : t_h_max,
@@ -550,6 +598,8 @@ def home(request, location="arlington"):
         "third_hour_day" : t_h_day,
         "third_hour_time" : t_h_time,
         "third_hour_description" : t_h_des,
+        "metric_third_hour_max" : metric_third_hour_max,
+        "metric_third_hour_min" : metric_third_hour_min,
         
         
         # weekly forecast day 1 variables
@@ -598,6 +648,12 @@ def home(request, location="arlington"):
         "next_day_two" : d2,
         "next_day_three" : d3,
         "next_day_four" : d4,
+        
+        
+        # live camera variables
+        "lf1" : LF1,
+        "lf2" : LF2,
+        "lf3" : LF3,
     })
 
 

@@ -1,0 +1,35 @@
+{% block content%}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
+<link rel="stylesheet" href="{% static 'css/live_feeds.css' %}">
+
+
+<!-- Checking if live feed one equals a value -->
+{% if lf1 == "Venice Beach, CA" %} 
+    <h1>{{ lf1 }}</h1>
+    <img src="{% static 'images/venice_beach.jpg' %}" alt="" width="270" height="160">
+    <a href="https://www.youtube.com/watch?v=vvOjJoSEFM0&ab_channel=Teleport.camera" target="_blank"><button type="button" class="btn btn-light">Watch Live</button></a>
+
+{% elif lf1 == "Dallas, TX" %}
+    <h1>{{ lf1 }}</h1>
+    <img src="{% static 'images/dallas.jpg' %}" alt="" width="270" height="160">
+    <a href="https://www.youtube.com/watch?v=6Qqwd-h0fKA&ab_channel=AxisExperienceCenterSouthCentral" target="_blank"><button type="button" class="btn btn-light">Watch Live</button></a>
+
+{% elif lf1 == "Tampa, FL" %}
+    <h1>{{ lf1 }}</h1>
+    <img src="{% static 'images/tampa.jpg' %}" alt="" width="270" height="160">
+    <a href="https://www.youtube.com/watch?v=qYuhzlVYz4o&ab_channel=UTVideoChannel" target="_blank"><button type="button" class="btn btn-light">Watch Live</button></a>
+
+{% elif lf1 == "Leavenworth, WA" %}
+    <h1>{{ lf1 }}</h1>
+    <img src="{% static 'images/leavenwood.jpg' %}" alt="" width="270" height="160">
+    <a href="https://www.youtube.com/watch?v=TmtVbezZaqg&ab_channel=VisitLeavenworth" target="_blank"><button type="button" class="btn btn-light">Watch Live</button></a>
+
+
+{% endif %}
+
+
+
+{% endblock %}

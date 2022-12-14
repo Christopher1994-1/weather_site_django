@@ -1,13 +1,64 @@
 .live-cameras-container {
-    border: 2px solid black;
     margin: auto;
-    width: 800px;
-    text-align: center;
+    width: 900px;
+    text-align: left
 }
 
 
 #main-live-feeds-header {
     border-bottom: 1px solid white;
     width: 500px;
-    margin: auto;
+    color: white;
+}
+
+
+.first-live-cam {
+    width: 280px;
+    display: inline-block;
+}
+
+.first-live-cam h1 {
+    font-size: 20px;
+    color: white;
+}
+
+.first-live-cam button {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+
+
+
+
+.second-live-cam {
+    width: 280px;
+    display: inline-block;
+}
+
+.second-live-cam h1 {
+    font-size: 20px;
+    color: white;
+}
+
+.second-live-cam button {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+
+
+.third-live-cam {
+    width: 280px;
+    display: inline-block;
+}
+
+.third-live-cam h1 {
+    font-size: 20px;
+    color: white;
+}
+
+.third-live-cam button {
+    margin-top: 5px;
+    font-weight: bold;
 }

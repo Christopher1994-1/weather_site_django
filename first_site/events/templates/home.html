@@ -331,7 +331,26 @@
 
 
 <div class="live-cameras-container">
-    <h1 id="main-live-feeds-header">Live Feeds</h1>
+    <h1 id="main-live-feeds-header">Live Cameras</h1>
+    <br>
+
+    <div class="first-live-cam">
+        {% include 'live_feed_one.html' %}
+    </div>
+
+
+    <div class="second-live-cam">
+        {% include 'live_feed_two.html' %}
+    </div>
+
+
+    <div class="third-live-cam">
+        {% include 'live_feed_three.html' %}
+    </div>
+
+    <br>
 
 </div>
+
+<br>
 {% endblock %}
