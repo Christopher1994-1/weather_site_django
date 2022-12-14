@@ -15,4 +15,5 @@ urlpatterns = [
     path('searched/', views.searched, name="searched"),
     path('metric_button', views.metric_button, name="metric_button"),
     path('imperial_button', views.imperial_button, name="imperial_button"),
+    path('about/', views.about, name="about"),
 ]

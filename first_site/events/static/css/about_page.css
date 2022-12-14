@@ -1,0 +1,7 @@
+.main {
+    border: 2px solid black;
+    margin: auto;
+    width: 1000px;
+    text-align: center;
+    border-radius: 25px;
+}

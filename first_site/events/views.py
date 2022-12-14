@@ -310,7 +310,8 @@ def coming_days(lat, lon, units="imperial"):
 
 def metric_button():
     k = 1
-    return redirect('home', {"k": k})
+    page_title = "Weather Page"
+    return redirect('home', {"k": k, "page_title" : page_title})
         
 
 def imperial_button(request):
@@ -339,6 +340,7 @@ def shuffle_live_cameras():
 
 
 def home(request, location="arlington"):
+    page_title = "Weather Site"
     # Section for LIVE CAMERAS 
     LF1, LF2, LF3, LF4 = shuffle_live_cameras()
     
@@ -552,6 +554,7 @@ def home(request, location="arlington"):
     
     form = SubListForm    
     return render(request, 'home.html', {
+        "page_tite": page_title,
         "length_cw" : length_cw,
         "current_year": current_year,
         "form": form,
@@ -663,9 +666,23 @@ def home(request, location="arlington"):
 
 
 
-def searched(request):    
+def searched(request):   
+    page_title = "Weather Site - Searched" 
     if request.method == "POST":
         searched = request.POST["searched-location"]
-        return render(request, 'searched.html', {'searched_location': searched})
+        return render(request, 'searched.html', {
+            'searched_location': searched,
+            'page_title' : page_title,
+            })
     else:
-        return render(request, 'searched.html', {})
+        return render(request, 'searched.html', {
+            "page_title" : page_title,
+        })
+    
+    
+
+
+
+def about(request):
+    page_title = "Weather Site - About"
+    return render(request, 'about.html', {"page_title" : page_title})
