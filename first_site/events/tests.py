@@ -176,7 +176,7 @@ def getting_all_info(city):
         current_call = get_current_day_weather(city)
         (main_weather, weather_description, current_temp, min_temp, 
         max_temp, humidity, wind_speed, compassDir, lon, lat, visual, city_name) = current_call
-    
+
     # current_weather = "65"
     # length_cw = len(current_weather)
     # cw_int = (int(current_weather) - 32) * 5/9

@@ -333,7 +333,7 @@ def shuffle_live_cameras():
         list: the shuffled list
     """
     
-    live_title = ["Dallas, TX", "Tampa, FL", "Venice Beach, CA", "Leavenworth, WA"]
+    live_title = ["Dallas, TX", "Tampa, FL", "Venice Beach, CA", "Leavenworth, WA", "Brooklyn Bridge, NY"]
     
     random.shuffle(live_title)
     
@@ -344,7 +344,7 @@ def shuffle_live_cameras():
 
 def home(request, location="arlington"):
     # Section for LIVE CAMERAS 
-    LF1, LF2, LF3, LF4 = shuffle_live_cameras()
+    LF1, LF2, LF3, LF4, LF5 = shuffle_live_cameras()
     
     
     # weather calls 
