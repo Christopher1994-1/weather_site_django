@@ -1,178 +1,159 @@
-{% extends 'base.html' %}
-
-    
 {% block content %}
-<title>Weather Site | Home</title>
 
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
-<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
-<link rel="stylesheet" href="{% static 'css/weekly_forecast.css' %}">
-<link rel="stylesheet" href="{% static 'css/news.css' %}">
-<link rel="stylesheet" href="{% static 'css/live_feeds.css' %}">
+    <h1 id="no-search-result">No Search Results for {{ searched_location }}</h1>
+
+    <form action="{% url 'searched' %}" method="POST">
+        {% csrf_token %}
+        <div class="searched-container">
+
+            <div class="searched-box-box">
+                <input type="search" name="searched-location" id="" placeholder="Find Your Loctation...">
+            </div>
+
+            <div class="searched-button-btn">
+                <input type="submit" name="" id="" value="Find">
+            </div>
+        </div>
+    </form>
 
 
-<!-- Search bar and button -->
 
-<form action="{% url 'searched' %}" method="POST">
-    {% csrf_token %}
-    <div class="searched-container">
+    <!-- Switch buttons -->
+    <div class="switch-btns">
 
-        <div class="searched-box-box">
-            <input type="search" name="searched-location" id="" placeholder="Find Your Loctation...">
+        <div class="first-switch-btn">
+            <form action="{% url 'metric_button' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" name="metric" value="0">Metric</button>
+            </form>
         </div>
 
-        <div class="searched-button-btn">
-            <input type="submit" name="" id="" value="Find">
+
+        <div class="second-switch-btn">
+            <form action="{% url 'imperial_button' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" name="imperial" value="1">Imperial</button>
+            </form>
         </div>
-    </div>
-</form>
 
-
-
- <!-- Switch buttons -->
-<div class="switch-btns">
-
-    <div class="first-switch-btn">
-        <form action="{% url 'metric_button' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" name="metric" value="0">Metric</button>
-        </form>
     </div>
 
 
-    <div class="second-switch-btn">
-        <form action="{% url 'imperial_button' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" name="imperial" value="1">Imperial</button>
-        </form>
-    </div>
+    <h1 id="good-morning-header">Good {{ time_of_the_day_s }}!</h1>
 
-</div>
+    {% if unit_value == '0' %} <!-- logic to figure out if its in imperial or metric -->
+
+        {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
+
+            {% include 'home_weather_cloudy.html' %}
+
+        {% elif weather_main_report == 'Rain' %}
+
+            {% include 'home_weather_rain.html' %}
+
+        {% elif weather_main_report == 'Clear Sky' and time_of_day == True %}
+
+            {% include 'home_weather_sunny.html' %}
+
+        {% elif weather_main_report == 'Clear Sky' and time_of_day == False %}
+
+            {% include 'home_weather_night.html' %}
+
+        {% endif %}
 
 
+    {% else %} <!-- logic to figure out if its in imperial or metric -->
 
+        {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
 
+            {% include 'home_weather_cloudy.html' %}
 
-<h1 id="good-morning-header">Good {{ time_of_day2 }}!</h1>
+        {% elif weather_main_report == 'Rain' %}
 
-{% if unit_value == '0' %} <!-- logic to figure out if its in imperial or metric -->
+            {% include 'home_weather_rain.html' %}
 
-    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
+        {% elif weather_main_report == 'Clear Sky' and time_of_day == True %}
 
-        {% include 'home_weather_cloudy.html' %}
+            {% include 'home_weather_sunny.html' %}
 
-    {% elif weather_main_report == 'Rain' %}
+        {% elif weather_main_report == 'Clear Sky' and time_of_day == False %}
 
-        {% include 'home_weather_rain.html' %}
-    
-    {% elif weather_main_report == 'Clear Sky' and time_of_day == True %}
+            {% include 'home_weather_night.html' %}
 
-        {% include 'home_weather_sunny.html' %}
-    
-    {% elif weather_main_report == 'Clear Sky' and time_of_day == False %}
-
-        {% include 'home_weather_night.html' %}
+        {% endif %}
 
     {% endif %}
 
+    <br> <br>
+    <h1 id="hourly-weather">Hourly Forecast:</h1>
 
-{% else %} <!-- logic to figure out if its in imperial or metric -->
+    {% include 'home_side_hour.html' %}
+    
+    
+    
+    <!-- Div for weekly forecast container -->
+    <div class="weekly-forecast-container">
+    
+        <!-- Div for DAY ONE container -->
+        <div class="one-day">
+            <h1 id="weekly-day-h1">{{ next_day_one }}</h1>
+    
+            {% include 'weekly_forecast_day_one.html' %}
+    
+            <h2 id="day-one-h2">{{ weekly_description_d1 }}</h2>
+    
+            {% if unit_value == '0' %}
+    
+                <div class="day-one-max-temp">
+                    <h3>High: {{ weekly_d1_max_temp }}</h3>
+                </div>
+                <div class="day-one2-h3">
+                    <h3>Low: {{ weekly_d1_min_temp }}</h3>
+                </div>
+    
+            {% else %}
+                <div class="day-one-max-temp">
+                    <h3>High: {{ weekly_d1_metric_max }}</h3>
+                </div>
+    
+                <div class="day-one2-h3">
+                    <h3>Low: {{ weekly_d1_metric_min }}</h3>
+                </div>
+            {% endif %}
+        </div>
+    
+    
+        <!-- Div for DAY TWO container -->
+        <div class="two-day">
+            <h1 id="weekly-day-h1">{{ next_day_two }}</h1>
+    
+            {% include 'weekly_forecast_day_two.html' %}
+    
+            <h2 id="day-two-h2">{{ weekly_description_d2 }}</h2>
+    
+            {% if unit_value == '0' %}
+    
+                <div class="day-two-max-temp">
+                    <h3>High: {{ weekly_d2_max_temp }}</h3>
+                </div>
+    
+                <div class="day-two-min-temp">
+                    <h3>Low: {{ weekly_d2_min_temp }}</h3>
+                </div>
+    
+            {% else %}
+                <div class="day-two-max-temp">
+                    <h3>High: {{ weekly_d2_metric_max }}</h3>
+                </div>
+    
+                <div class="day-two-min-temp">
+                    <h3>Low: {{ weekly_d2_metric_min }}</h3>
+                </div>
+            {% endif %}
+    
+        </div>
 
-    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
-
-        {% include 'home_weather_cloudy.html' %}
-
-    {% elif weather_main_report == 'Rain' %}
-
-        {% include 'home_weather_rain.html' %}
-
-    {% elif weather_main_report == 'Clear Sky' and time_of_day == True %}
-
-        {% include 'home_weather_sunny.html' %}
-
-    {% elif weather_main_report == 'Clear Sky' and time_of_day == False %}
-
-        {% include 'home_weather_night.html' %}
-
-    {% endif %}
-
-
-{% endif %}
-
-
-<br><br>
-
-<h1 id="hourly-weather">Hourly Forecast:</h1>
-
-{% include 'home_side_hour.html' %}
-
-
-
-<!-- Div for weekly forecast container -->
-<div class="weekly-forecast-container">
-
-    <!-- Div for DAY ONE container -->
-    <div class="one-day">
-        <h1 id="weekly-day-h1">{{ next_day_one }}</h1>
-
-        {% include 'weekly_forecast_day_one.html' %}
-
-        <h2 id="day-one-h2">{{ weekly_description_d1 }}</h2>
-
-        {% if unit_value == '0' %}
-
-            <div class="day-one-max-temp">
-                <h3>High: {{ weekly_d1_max_temp }}</h3>
-            </div>
-            <div class="day-one2-h3">
-                <h3>Low: {{ weekly_d1_min_temp }}</h3>
-            </div>
-
-        {% else %}
-            <div class="day-one-max-temp">
-                <h3>High: {{ weekly_d1_metric_max }}</h3>
-            </div>
-
-            <div class="day-one2-h3">
-                <h3>Low: {{ weekly_d1_metric_min }}</h3>
-            </div>
-        {% endif %}
-    </div>
-
-
-    <!-- Div for DAY TWO container -->
-    <div class="two-day">
-        <h1 id="weekly-day-h1">{{ next_day_two }}</h1>
-
-        {% include 'weekly_forecast_day_two.html' %}
-
-        <h2 id="day-two-h2">{{ weekly_description_d2 }}</h2>
-
-        {% if unit_value == '0' %}
-
-            <div class="day-two-max-temp">
-                <h3>High: {{ weekly_d2_max_temp }}</h3>
-            </div>
-
-            <div class="day-two-min-temp">
-                <h3>Low: {{ weekly_d2_min_temp }}</h3>
-            </div>
-
-        {% else %}
-            <div class="day-two-max-temp">
-                <h3>High: {{ weekly_d2_metric_max }}</h3>
-            </div>
-
-            <div class="day-two-min-temp">
-                <h3>Low: {{ weekly_d2_metric_min }}</h3>
-            </div>
-        {% endif %}
-
-    </div>
-
-
-
+        
 
     <!-- Div for DAY THREE container -->
     <div class="three-day">
@@ -235,6 +216,8 @@
     </div>
 
 </div>
+
+
 
 
 
@@ -326,10 +309,7 @@
 
 
 
-<br><br>
-
-
-
+<br>
 
 <div class="live-cameras-container">
     <h1 id="main-live-feeds-header">Live Cameras</h1>
@@ -349,9 +329,6 @@
         {% include 'live_feed_three.html' %}
     </div>
 
-    <br>
-
 </div>
 
-<br>
 {% endblock %}

@@ -1,0 +1,7 @@
+#no-search-result {
+    position: absolute;
+    color: red;
+    font-size: 13px;
+    left: 610px;
+    top: 73px;
+}

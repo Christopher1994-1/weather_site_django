@@ -6,25 +6,27 @@
 
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
+<link rel="stylesheet" href="{% static 'css/weekly_forecast.css' %}">
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+<link rel="stylesheet" href="{% static 'css/live_feeds.css' %}">
+<link rel="stylesheet" href="{% static 'css/searched.css' %}">
 
 
 
 
 
 {% if searched_location %}
-<h1>You searched for {{ searched_location }}</h1>
 
-{% else %} 
-<h1>No Search results</h1>
+    {% include 'searched_result_true.html' %}
+
+{% else %}
+
+    {% include 'searched_result_none.html' %}
 
 {% endif %}
 
-
-<div class="main-weather-output-container">
-
-
-
-</div>
+<br>
 
 
 

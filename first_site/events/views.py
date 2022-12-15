@@ -107,61 +107,64 @@ def get_current_day_weather(city="Arlington", units="imperial"):
     response1 = requests.get(first_api_call).json()
     response1_prettyprint = json.dumps(response1, indent=3)
     
-    get_weather_report = response1["weather"][0]["main"] # Clouds
-    current_temp = response1["main"]['temp'] # current temperature
-    min_temp = response1["main"]["temp_min"] # temperature low
-    max_temp = response1["main"]["temp_max"] # temperature high
-    humidity = response1["main"]["humidity"] # humidity
-    wind_speed = str(response1["wind"]["speed"]).split(".")[0] # wind speed
-    wind_direction = int(response1["wind"]["deg"]) # wind direction in degrees, pass into calculate_wind()
-    city_name = response1["name"]
-    wd = response1["weather"][0]["description"]
-    visual = response1["visibility"]
-    
-    
-    sector = {
-        1 : "N",
-        2 : "NNE",
-        3 : "NE",
-        4 : "ENE",
-        5 : "E",
-        6 : "ESE",
-        7 : "SE",
-        8 : "SSE",
-        9 : "S",
-        10 : "SSW",
-        11 : "SW",
-        12 : "WSW",
-        13 : "W",
-        14 : "WNW",
-        15 : "NW",
-        16 : "NNW",
-        17 : "N",        
-        }
-    degrees = wind_direction
-    Index = int(degrees) % 360
-    Index = round(Index/ 22.5,0) + 1
-    CompassDir = sector[Index]
-    
-    
-    
-    LAT = len(str(response1['coord']['lat']))
-    if LAT == 7:
-        LAT = str(response1['coord']['lat'])[0:5]
-    else:
-        LAT = str(response1['coord']['lat'])[0:6]
+    try:
+        get_weather_report = response1["weather"][0]["description"] # Clouds
+        current_temp = response1["main"]['temp'] # current temperature
+        min_temp = response1["main"]["temp_min"] # temperature low
+        max_temp = response1["main"]["temp_max"] # temperature high
+        humidity = response1["main"]["humidity"] # humidity
+        wind_speed = str(response1["wind"]["speed"]).split(".")[0] # wind speed
+        wind_direction = int(response1["wind"]["deg"]) # wind direction in degrees, pass into calculate_wind()
+        city_name = response1["name"]
+        visual = response1["visibility"]
+
         
-    LON = len(str(response1["coord"]["lon"]))
-    if LON == 7:
-        LON = str(response1["coord"]["lon"])[0:5]
-    else:
-        LON = str(response1["coord"]["lon"])[0:6]
+        sector = {
+            1 : "North",
+            2 : "North North East",
+            3 : "North East",
+            4 : "East North East",
+            5 : "East",
+            6 : "East South East",
+            7 : "South East",
+            8 : "South South East",
+            9 : "South",
+            10 : "South South West",
+            11 : "South West",
+            12 : "West South West",
+            13 : "West",
+            14 : "West North West",
+            15 : "North West",
+            16 : "North North West",
+            17 : "North",        
+            }
         
-    current_date = get_next_day()[1]
+        degrees = wind_direction
+        Index = int(degrees) % 360
+        Index = round(Index/ 22.5,0) + 1
+        CompassDir = sector[Index]
+        
+        LAT = len(str(response1['coord']['lat']))
+        if LAT == 7:
+            LAT = str(response1['coord']['lat'])[0:5]
+        else:
+            LAT = str(response1['coord']['lat'])[0:6]
+            
+        LON = len(str(response1["coord"]["lon"]))
+        if LON == 7:
+            LON = str(response1["coord"]["lon"])[0:5]
+        else:
+            LON = str(response1["coord"]["lon"])[0:6]
+            
+    except KeyError:
+        'none'
+    
         
         
-        
-    return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, current_date, city_name, wd, visual
+    try:
+        return get_weather_report, current_temp, min_temp, max_temp, humidity, wind_speed, CompassDir, LON, LAT, visual
+    except UnboundLocalError:
+        return "None"
         
         
 
@@ -340,7 +343,6 @@ def shuffle_live_cameras():
 
 
 def home(request, location="arlington"):
-    page_title = "Weather Site"
     # Section for LIVE CAMERAS 
     LF1, LF2, LF3, LF4 = shuffle_live_cameras()
     
@@ -554,7 +556,6 @@ def home(request, location="arlington"):
     
     form = SubListForm    
     return render(request, 'home.html', {
-        "page_tite": page_title,
         "length_cw" : length_cw,
         "current_year": current_year,
         "form": form,
@@ -666,23 +667,50 @@ def home(request, location="arlington"):
 
 
 
-def searched(request):   
-    page_title = "Weather Site - Searched" 
+def searched(request):
     if request.method == "POST":
         searched = request.POST["searched-location"]
+        
+        #****************************#
+        # testing to see if the user has made the change to either metric or imperial
+        units_value = '0'
+        imperial_value = request.POST.get('imperial')
+        metric_value = request.POST.get('metric')
+    
+        if metric_value == '0':
+            units_value = '1'
+        elif metric_value == '1':
+            units_value = '0'
+        #****************************#
+        
+        
+        
+        submitted = False
+        if request.method == "POST":
+            form = SubListForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.info(request, 'Your email was saved successully')
+                return HttpResponseRedirect('/home?submitted=True')
+        else:
+            form = SubListForm()
+        if 'submitted' in request.GET:
+            submitted = True
+            
+        
+    
         return render(request, 'searched.html', {
-            'searched_location': searched,
-            'page_title' : page_title,
+            "units_value" : units_value,
+            "searched_location" : searched,
             })
+        
+    
     else:
-        return render(request, 'searched.html', {
-            "page_title" : page_title,
-        })
+        return render(request, 'searched.html', {})
     
     
 
 
 
 def about(request):
-    page_title = "Weather Site - About"
-    return render(request, 'about.html', {"page_title" : page_title})
+    return render(request, 'about.html', {})

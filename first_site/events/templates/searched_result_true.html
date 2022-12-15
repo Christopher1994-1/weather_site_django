@@ -1,17 +1,4 @@
-{% extends 'base.html' %}
-
-    
 {% block content %}
-<title>Weather Site | Home</title>
-
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/home_page.css' %}">
-<link rel="stylesheet" href="{% static 'css/home_w_d_cs.css' %}">
-<link rel="stylesheet" href="{% static 'css/weekly_forecast.css' %}">
-<link rel="stylesheet" href="{% static 'css/news.css' %}">
-<link rel="stylesheet" href="{% static 'css/live_feeds.css' %}">
-
-
 <!-- Search bar and button -->
 
 <form action="{% url 'searched' %}" method="POST">
@@ -354,4 +341,5 @@
 </div>
 
 <br>
+
 {% endblock %}
