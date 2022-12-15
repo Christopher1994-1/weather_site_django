@@ -169,21 +169,21 @@ def getting_all_info(city):
     current_call = get_current_day_weather(city)
     
     if current_call == "None":
-        current_call = get_current_day_weather("Arlington")
+        # current_call = get_current_day_weather("Arlington")
+        current_call = ['Clear', 'clear sky', '37.8', '35.58', '41.56', '69', '9', 'North West', '-97.10', '32.73', '10000', 'Arlington']
         (main_weather, weather_description, current_temp, min_temp, 
         max_temp, humidity, wind_speed, compassDir, lon, lat, visual, city_name) = current_call
     else:
-        current_call = get_current_day_weather(city)
+        # current_call = get_current_day_weather(city)
+        current_call = ['Clear', 'clear sky', '37.8', '35.58', '41.56', '69', '9', 'North West', '-97.10', '32.73', '10000', 'Arlington']
         (main_weather, weather_description, current_temp, min_temp, 
         max_temp, humidity, wind_speed, compassDir, lon, lat, visual, city_name) = current_call
 
-    # current_weather = "65"
-    # length_cw = len(current_weather)
-    # cw_int = (int(current_weather) - 32) * 5/9
-    # cw_int = str(cw_int).split('.')[0]
+
+    length_cw = len(current_temp)
+    cw_int = (int(current_temp) - 32) * 5/9
+    cw_int = str(cw_int).split('.')[0]
     
-    # # city_name = str(get_current_day_weather()[10])
-    # city_name = "Bonadelle Ranchos-Madera Ranchos"
     # wd = "Clear Sky"
     # # weather_description = str(get_current_day_weather()[11])
     # weather_description = "clear sky"
@@ -357,7 +357,7 @@ def getting_all_info(city):
     #     5 : 'Saturday',
     #     6 : 'Sunday'
     #     }
-    return main_weather, city_name
+    return current_call
 
 
 
