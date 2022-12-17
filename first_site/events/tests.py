@@ -51,7 +51,18 @@ def compass_directions(direction):
     return new_direction
 
 
+
+
+
 def get_next_day():
+    """Returns a list of the next five weekdays after the current day.
+    
+    Returns:
+        list: A list of strings representing the next five weekdays. The list
+              will start with the current day and end with the fourth day after
+              the current day. For example, if it is currently Wednesday, the
+              returned list will be ['Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].
+    """
     
     now = datetime.now()
     current_weekday = now.weekday()
@@ -118,12 +129,9 @@ def get_current_day_weather(city="Arlington", units="imperial"):
         city_name = response1["name"]
         visual = response1["visibility"]
         
-        
-        # converting current temp to metric 
-        spilt_current_temp = str(current_temp).split('.')[0]
-        toInt_cw = int(spilt_current_temp)
-        toInt_cw2 = (toInt_cw - 32) * 5/9
-        metric_current_temp = str(toInt_cw2).split('.')[0]
+        # converting CURRENT TEMP from Fahrenheit to Celsius
+        convert_current_temp = int(str(current_temp).split('.')[0])
+        metric_current_temp = str((convert_current_temp - 32) * 5/9).split('.')[0]
         
         
         # converting min temp to metric 
