@@ -365,58 +365,82 @@ def coming_days(lat, lon, units="imperial"):
     
     
     
-    # Tomorrows Weather Forcast
+    # Tomorrows Weather Forcast API Call
     current_day_plus_1 = response['list'][3]
+    # Tomorrows Min Temp
     tomorrow_min_temp = str(current_day_plus_1['main']['temp_min']).split('.')[0]
+    # Converting First Day min temp to celisus 
+    convert_to_celisus_day1 = int(tomorrow_min_temp); day1_calculations = (convert_to_celisus_day1 - 32) * 5/9
+    day1_min_metric = str(day1_calculations).split('.')[0]
+    # Tomorrows Max Temp
     tomorrow_max_temp = str(current_day_plus_1['main']['temp_max']).split('.')[0]
+    # Converting First Day max temp to celisus 
+    convert_to_celisus_day1_max = int(tomorrow_min_temp); day1_calculations_max = (convert_to_celisus_day1_max - 32) * 5/9
+    day1_max_metric = str(day1_calculations_max).split('.')[0]
+    # Getting Tomorrows weather description
     tomorrow_weather = str(current_day_plus_1['weather'][0]['description'])
-    tomorrows_date = str(current_day_plus_1['dt_txt'])
-    tomorrows_day = get_next_day()[0][0]
 
         
+    
     # Two days from current dates forcast
     current_day_plus_2 = response['list'][11]
+    # Day 2 Min Temp
     day2_min_temp = str(current_day_plus_2['main']['temp_min']).split('.')[0]
+    # Converting Second Day min temp to celisus 
+    convert_to_celisus_day2 = int(day2_min_temp); day2_calculations = (convert_to_celisus_day2 - 32) * 5/9
+    day2_min_metric = str(day2_calculations).split('.')[0]
+    # Day 2 Max Temp
     day2_max_temp = str(current_day_plus_2['main']['temp_max']).split('.')[0]
+    # Converting Second Day max temp to celisus 
+    convert_to_celisus_day2_max = int(day2_max_temp); day2_calculations_max = (convert_to_celisus_day2_max - 32) * 5/9
+    day2_max_metric = str(day2_calculations_max).split('.')[0]
+    # Getting Day 2 weather description
     day2_weather = str(current_day_plus_2['weather'][0]['description'])
-    day2_date = str(current_day_plus_2['dt_txt'])
-    day2_day = get_next_day()[0][1]
+    
+    
     
     
     # Three days from current dates forcast
     current_day_plus_3 = response['list'][19]
+    # Day 3 Min Temp
     day3_min_temp = str(current_day_plus_3['main']['temp_min']).split('.')[0]
+    # Converting Third Day min temp to celisus 
+    convert_to_celisus_day3 = int(day3_min_temp); day3_calculations = (convert_to_celisus_day3 - 32) * 5/9
+    day3_min_metric = str(day3_calculations).split('.')[0]
+    # Day 3 Max Temp
     day3_max_temp = str(current_day_plus_3['main']['temp_max']).split('.')[0]
+    # Converting Second Day max temp to celisus 
+    convert_to_celisus_day3_max = int(day3_max_temp); day3_calculations_max = (convert_to_celisus_day3_max - 32) * 5/9
+    day3_max_metric = str(day3_calculations_max).split('.')[0]
+    # Getting Day 3 weather description
     day3_weather = str(current_day_plus_3['weather'][0]['description'])
-    day3_date = str(current_day_plus_3['dt_txt'])
-    day3_day = get_next_day()[0][2]
     
     
     # Four days from current dates forcast
     current_day_plus_4 = response['list'][27]
+    # Day 4 min temp
     day4_min_temp = str(current_day_plus_4['main']['temp_min']).split('.')[0]
+    # Converting Third Day min temp to celisus 
+    convert_to_celisus_day4 = int(day4_min_temp); day4_calculations = (convert_to_celisus_day4 - 32) * 5/9
+    day4_min_metric = str(day4_calculations).split('.')[0]
+    # Day 4 max temp
     day4_max_temp = str(current_day_plus_4['main']['temp_max']).split('.')[0]
+    # Converting Second Day max temp to celisus 
+    convert_to_celisus_day4_max = int(day4_max_temp); day4_calculations_max = (convert_to_celisus_day4_max - 32) * 5/9
+    day4_max_metric = str(day4_calculations_max).split('.')[0]
+    # Getting Day 4 weather decription
     day4_weather = str(current_day_plus_4['weather'][0]['description'])
-    day4_date = str(current_day_plus_4['dt_txt'])
-    day4_day = get_next_day()[0][3]
     
     
-    # Five days from current dates forcast
-    current_day_plus_5 = response['list'][35]
-    day5_min_temp = str(current_day_plus_5['main']['temp_min']).split('.')[0]
-    day5_max_temp = str(current_day_plus_5['main']['temp_max']).split('.')[0]
-    day5_weather = str(current_day_plus_5['weather'][0]['description'])
-    day5_date = str(current_day_plus_5['dt_txt'])
-    day5_day = get_next_day()[0][4]
-    
+
     return {
-        "day1": [tomorrow_weather, tomorrow_max_temp, tomorrow_min_temp, tomorrows_date, tomorrows_day],
-        "day2": [day2_weather, day2_max_temp, day2_min_temp, day2_date, day2_day],
-        "day3": [day3_weather, day3_max_temp, day3_min_temp, day3_date, day3_day],
-        "day4": [day4_weather, day4_max_temp, day4_min_temp, day4_date, day4_day],
-        "day5": [day5_weather, day5_max_temp, day5_min_temp, day5_date, day5_day],
+        "day1": [tomorrow_weather, tomorrow_max_temp, tomorrow_min_temp, day1_min_metric, day1_max_metric],
+        "day2": [day2_weather, day2_max_temp, day2_min_temp, day2_min_metric, day2_max_metric],
+        "day3": [day3_weather, day3_max_temp, day3_min_temp, day3_min_metric, day3_max_metric],
+        "day4": [day4_weather, day4_max_temp, day4_min_temp, day4_min_metric, day4_max_metric],
         }
     
+
 
 
 def metric_button():
@@ -484,47 +508,25 @@ def home(request, location="arlington"):
 
 
     # API call for the FIRST weekly forecast DAY
-    # weekly_d1_des, weekly_d1_max, weekly_d1_min, weekly_d1_date, weekly_d1_day  = coming_days(cc_lat, cc_lon)['day1']
-    weekly_d1_des, weekly_d1_max, weekly_d1_min, weekly_d1_date, weekly_d1_day  = ('clear sky', '101', '91', 'date', 'idk')
-    # for converting day one max imperial to metric 
-    weekly_d1_max_metric = (int(weekly_d1_max) - 32) * 5/9
-    weekly_d1_max_metric_str = str(weekly_d1_max_metric).split('.')[0]
-    # for converting day one max metric to imperial
-    weekly_d1_min_metric = (int(weekly_d1_min) - 32) * 5/9
-    weekly_d1_min_metric_str = str(weekly_d1_min_metric).split('.')[0]
-    
+    # (weekly_d1_des, weekly_d1_max, weekly_d1_min, weekly_d1_metric_min, weekly_d1_metric_max) = coming_days(cc_lat, cc_lon)['day1']
+    (weekly_d1_des, weekly_d1_max, weekly_d1_min, weekly_d1_metric_min, weekly_d1_metric_max)  = ('clear sky', '101', '91', '-9', '-8')
+
     
     # API call for the SECOND weekly forecast DAY
-    # weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = coming_days(cc_lat, cc_lon)['day2']
-    weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = ('light rain', '102', '92', 'date', 'idk')
-    # for converting day one max imperial to metric 
-    weekly_d2_max_metric = (int(weekly_d2_max) - 32) * 5/9
-    weekly_d2_max_metric_str = str(weekly_d2_max_metric).split('.')[0]
-    # for converting day one max metric to imperial
-    weekly_d2_min_metric = (int(weekly_d2_min) - 32) * 5/9
-    weekly_d2_min_metric_str = str(weekly_d2_min_metric).split('.')[0]
-    
+    # (weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_metric_min, weekly_d2_metric_max) = coming_days(cc_lat, cc_lon)['day2']
+    (weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_metric_min, weekly_d2_metric_max) = ('light rain', '102', '92', '2', '2')
+
     
     # API call for the THIRD weekly forecast DAY
-    # weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_date, weekly_d3_day  = coming_days(cc_lat, cc_lon)['day3']
-    weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_date, weekly_d3_day  = ('thunderstorm', '103', '93', 'date', 'idk')
-    # for converting day one max imperial to metric 
-    weekly_d3_max_metric = (int(weekly_d3_max) - 32) * 5/9
-    weekly_d3_max_metric_str = str(weekly_d3_max_metric).split('.')[0]
-    # for converting day one max metric to imperial
-    weekly_d3_min_metric = (int(weekly_d3_min) - 32) * 5/9
-    weekly_d3_min_metric_str = str(weekly_d3_min_metric).split('.')[0]
+    # (weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_metric_min, weekly_d3_metric_max) = coming_days(cc_lat, cc_lon)['day3']
+    (weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_metric_min, weekly_d3_metric_max) = ('thunderstorm', '103', '93', '-11', '-1')
     
     
     # API call for the FOURTH weekly forecast DAY
-    # weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_date, weekly_d4_day  = coming_days(cc_lat, cc_lon)['day4']
-    weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_date, weekly_d4_day  = ('light rain', '104', '94', 'date', 'idk')
-    # for converting day one max imperial to metric 
-    weekly_d4_max_metric = (int(weekly_d4_max) - 32) * 5/9
-    weekly_d4_max_metric_str = str(weekly_d4_max_metric).split('.')[0]
-    # for converting day one max metric to imperial
-    weekly_d4_min_metric = (int(weekly_d4_min) - 32) * 5/9
-    weekly_d4_min_metric_str = str(weekly_d4_min_metric).split('.')[0]
+    # (weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_metric_min, weekly_d4_metric_max) = coming_days(cc_lat, cc_lon)['day4']
+    (weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_metric_min, weekly_d4_metric_max)  = ('light rain', '104', '94', '-7', '4')
+    
+    
     
     
     units_value = '0'
@@ -647,32 +649,32 @@ def home(request, location="arlington"):
         "weekly_description_d1" : weekly_d1_des,
         "weekly_d1_max_temp" : weekly_d1_max,
         "weekly_d1_min_temp" : weekly_d1_min,
-        "weekly_d1_metric_max" : weekly_d1_max_metric_str,
-        "weekly_d1_metric_min" : weekly_d1_min_metric_str,
+        "weekly_d1_metric_max" : weekly_d1_metric_max,
+        "weekly_d1_metric_min" : weekly_d1_metric_min,
         
         
         # weekly forecast day 2 variables
         "weekly_description_d2" : weekly_d2_des,
         "weekly_d2_max_temp" : weekly_d2_max,
         "weekly_d2_min_temp" : weekly_d2_min,
-        "weekly_d2_metric_max" : weekly_d2_max_metric_str,
-        "weekly_d2_metric_min" : weekly_d2_min_metric_str,
+        "weekly_d2_metric_max" : weekly_d2_metric_max,
+        "weekly_d2_metric_min" : weekly_d2_metric_min,
         
         
         # weekly forecast day 3 variables
         "weekly_description_d3" : weekly_d3_des,
         "weekly_d3_max_temp" : weekly_d3_max,
         "weekly_d3_min_temp" : weekly_d3_min,
-        "weekly_d3_metric_max" : weekly_d3_max_metric_str,
-        "weekly_d3_metric_min" : weekly_d3_min_metric_str,
+        "weekly_d3_metric_max" : weekly_d3_metric_max,
+        "weekly_d3_metric_min" : weekly_d3_metric_min,
         
         
         # weekly forecast day 4 variables
         "weekly_description_d4" : weekly_d4_des,
         "weekly_d4_max_temp" : weekly_d4_max,
         "weekly_d4_min_temp" : weekly_d4_min,
-        "weekly_d4_metric_max" : weekly_d4_max_metric_str,
-        "weekly_d4_metric_min" : weekly_d4_min_metric_str,
+        "weekly_d4_metric_max" : weekly_d4_metric_max,
+        "weekly_d4_metric_min" : weekly_d4_metric_min,
         
         
         

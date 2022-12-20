@@ -370,10 +370,6 @@ cc_lon = "-97.10"
 cc_lat = "32.73"
 
 
-j = weather_next_few_hours(cc_lat, cc_lat)
-print(j)
-
-
 
 def coming_days(lat, lon, units="imperial"):
     api_key = environ.get("CEJ_Weather_API")
@@ -387,40 +383,79 @@ def coming_days(lat, lon, units="imperial"):
     
     
     
-    # Tomorrows Weather Forcast
+    # Tomorrows Weather Forcast API Call
     current_day_plus_1 = response['list'][3]
+    # Tomorrows Min Temp
     tomorrow_min_temp = str(current_day_plus_1['main']['temp_min']).split('.')[0]
+    # Converting First Day min temp to celisus 
+    convert_to_celisus_day1 = int(tomorrow_min_temp); day1_calculations = (convert_to_celisus_day1 - 32) * 5/9
+    day1_min_metric = str(day1_calculations).split('.')[0]
+    # Tomorrows Max Temp
     tomorrow_max_temp = str(current_day_plus_1['main']['temp_max']).split('.')[0]
+    # Converting First Day max temp to celisus 
+    convert_to_celisus_day1_max = int(tomorrow_min_temp); day1_calculations_max = (convert_to_celisus_day1_max - 32) * 5/9
+    day1_max_metric = str(day1_calculations_max).split('.')[0]
+    # Getting Tomorrows weather description
     tomorrow_weather = str(current_day_plus_1['weather'][0]['description'])
 
         
+    
     # Two days from current dates forcast
     current_day_plus_2 = response['list'][11]
+    # Day 2 Min Temp
     day2_min_temp = str(current_day_plus_2['main']['temp_min']).split('.')[0]
+    # Converting Second Day min temp to celisus 
+    convert_to_celisus_day2 = int(day2_min_temp); day2_calculations = (convert_to_celisus_day2 - 32) * 5/9
+    day2_min_metric = str(day2_calculations).split('.')[0]
+    # Day 2 Max Temp
     day2_max_temp = str(current_day_plus_2['main']['temp_max']).split('.')[0]
+    # Converting Second Day max temp to celisus 
+    convert_to_celisus_day2_max = int(day2_max_temp); day2_calculations_max = (convert_to_celisus_day2_max - 32) * 5/9
+    day2_max_metric = str(day2_calculations_max).split('.')[0]
+    # Getting Day 2 weather description
     day2_weather = str(current_day_plus_2['weather'][0]['description'])
+    
+    
     
     
     # Three days from current dates forcast
     current_day_plus_3 = response['list'][19]
+    # Day 3 Min Temp
     day3_min_temp = str(current_day_plus_3['main']['temp_min']).split('.')[0]
+    # Converting Third Day min temp to celisus 
+    convert_to_celisus_day3 = int(day3_min_temp); day3_calculations = (convert_to_celisus_day3 - 32) * 5/9
+    day3_min_metric = str(day3_calculations).split('.')[0]
+    # Day 3 Max Temp
     day3_max_temp = str(current_day_plus_3['main']['temp_max']).split('.')[0]
+    # Converting Second Day max temp to celisus 
+    convert_to_celisus_day3_max = int(day3_max_temp); day3_calculations_max = (convert_to_celisus_day3_max - 32) * 5/9
+    day3_max_metric = str(day3_calculations_max).split('.')[0]
+    # Getting Day 3 weather description
     day3_weather = str(current_day_plus_3['weather'][0]['description'])
     
     
     # Four days from current dates forcast
     current_day_plus_4 = response['list'][27]
+    # Day 4 min temp
     day4_min_temp = str(current_day_plus_4['main']['temp_min']).split('.')[0]
+    # Converting Third Day min temp to celisus 
+    convert_to_celisus_day4 = int(day4_min_temp); day4_calculations = (convert_to_celisus_day4 - 32) * 5/9
+    day4_min_metric = str(day4_calculations).split('.')[0]
+    # Day 4 max temp
     day4_max_temp = str(current_day_plus_4['main']['temp_max']).split('.')[0]
+    # Converting Second Day max temp to celisus 
+    convert_to_celisus_day4_max = int(day4_max_temp); day4_calculations_max = (convert_to_celisus_day4_max - 32) * 5/9
+    day4_max_metric = str(day4_calculations_max).split('.')[0]
+    # Getting Day 4 weather decription
     day4_weather = str(current_day_plus_4['weather'][0]['description'])
     
     
 
     return {
-        "day1": [tomorrow_weather, tomorrow_max_temp, tomorrow_min_temp],
-        "day2": [day2_weather, day2_max_temp, day2_min_temp],
-        "day3": [day3_weather, day3_max_temp, day3_min_temp],
-        "day4": [day4_weather, day4_max_temp, day4_min_temp],
+        "day1": [tomorrow_weather, tomorrow_max_temp, tomorrow_min_temp, day1_min_metric, day1_max_metric],
+        "day2": [day2_weather, day2_max_temp, day2_min_temp, day2_min_metric, day2_max_metric],
+        "day3": [day3_weather, day3_max_temp, day3_min_temp, day3_min_metric, day3_max_metric],
+        "day4": [day4_weather, day4_max_temp, day4_min_temp, day4_min_metric, day4_max_metric],
         }
     
 
