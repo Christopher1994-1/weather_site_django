@@ -58,7 +58,7 @@
 
 {% if unit_value == '0' %} <!-- logic to figure out if its in imperial or metric -->
 
-    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
+    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' or weather_main_report == 'Mist' %}
 
         {% include 'home_weather_cloudy.html' %}
 
@@ -79,7 +79,7 @@
 
 {% else %} <!-- logic to figure out if its in imperial or metric -->
 
-    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
+    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' or weather_main_report == 'Mist' %}
 
         {% include 'home_weather_cloudy.html' %}
 

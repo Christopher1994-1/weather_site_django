@@ -107,6 +107,28 @@ def get_next_day():
 
 
 def get_current_day_weather(city="Arlington", units="imperial"):
+    """
+    Retrieve current weather data for a given city and return it in either imperial or metric units.
+
+    Parameters:
+    - city (str): The name of the city for which to retrieve weather data. Default is "Arlington".
+    - units (str): The units in which to return the weather data. Can be either "imperial" (default) or "metric".
+
+    Returns:
+    - A dictionary containing the following weather data for the specified city:
+        - Main weather condition (str)
+        - Weather description (str)
+        - Current temperature (str)
+        - Minimum temperature (str)
+        - Maximum temperature (str)
+        - Humidity (str)
+        - Wind speed (str)
+        - Wind direction (str)
+        - City name (str)
+        - Visibility (str)
+        - Latitude (str)
+        - Longitude (str)
+    """
     BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
     API_KEY = environ.get("CEJ_Weather_API")
     CITY = city
@@ -129,23 +151,26 @@ def get_current_day_weather(city="Arlington", units="imperial"):
         city_name = response1["name"]
         visual = response1["visibility"]
         
+        
+        
         # converting CURRENT TEMP from Fahrenheit to Celsius
         convert_current_temp = int(str(current_temp).split('.')[0])
         metric_current_temp = str((convert_current_temp - 32) * 5/9).split('.')[0]
+        current_temp_str = str(current_temp).split('.')[0]
         
         
-        # converting min temp to metric 
-        spilt_min_temp = str(min_temp).split('.')[0]
-        toInt_min = int(spilt_min_temp)
-        toInt_min2 = (toInt_min - 32) * 5/9
-        metric_min_temp = str(toInt_min2).split('.')[0]
+        
+        # converting MIN TEMP from Fahrenheit to Celsius
+        convert_min_temp = int(str(min_temp).split('.')[0])
+        metric_min_temp = str((convert_min_temp - 32) * 5/9).split('.')[0]
+        min_temp_str = str(min_temp).split('.')[0]
         
         
-        # converting max temp to metric 
-        spilt_max_temp = str(max_temp).split('.')[0]
-        toInt_max = int(spilt_max_temp)
-        toInt_max2 = (toInt_max - 32) * 5/9
-        metric_max_temp = str(toInt_max2).split('.')[0]
+        # converting MAX TEMP from Fahrenheit to Celsius
+        convert_max_temp = int(str(max_temp).split('.')[0])
+        metric_max_temp = str((convert_max_temp - 32) * 5/9).split('.')[0]
+        max_temp_str = str(max_temp).split('.')[0]
+        
         
         
         # converting wind speed to metric
@@ -154,6 +179,8 @@ def get_current_day_weather(city="Arlington", units="imperial"):
         
         
         # converting visibility to mph/k
+        visual_in_miles = str(int(visual) / 1609.34).split('.')[0]
+        visual_in_kilo = str(int(visual_in_miles) * 1.60934).split('.')[0]
         
         
 
@@ -201,20 +228,17 @@ def get_current_day_weather(city="Arlington", units="imperial"):
         
         
     try:
-        return (get_main, get_weather_des, current_temp, min_temp, max_temp, 
-                humidity, wind_speed, CompassDir, LON, LAT, visual, city_name, metric_current_temp, 
-                metric_min_temp, metric_max_temp, wind_speed_metric)
+        return [get_main, get_weather_des, current_temp_str, min_temp_str, max_temp_str, humidity, wind_speed,
+                CompassDir, LON, LAT, visual_in_miles, visual_in_kilo, city_name, metric_current_temp,
+                metric_min_temp, metric_max_temp, wind_speed_metric]
     except UnboundLocalError:
         return "None"
         
-
-j = get_current_day_weather()
-
-print(j)
+        
 
 
-# k = get_current_day_weather()
-# print(k)    
+
+
 
 
 def weather_next_few_hours(lat, lon, units="imperial"):
@@ -242,6 +266,7 @@ def weather_next_few_hours(lat, lon, units="imperial"):
     dt_3pm_hr = dt_3pm_time.split(':')[0]
     dt_3pm_min = dt_3pm_time.split(':')[1]
     CON3 = dt_3pm_hr + ":" + dt_3pm_min
+    
     
     convert_dt3 = datetime.datetime.strptime(CON3,'%H:%M').strftime('%I:%M %p') # thing to return
     
@@ -273,23 +298,66 @@ def weather_next_few_hours(lat, lon, units="imperial"):
     
     
     
-    
+    # Getting the min temp for the first hour 
     today_3pm_min_temp = str(today_3pm['main']['temp_min']).split('.')[0]
+    
+    # converting the first hour min temp from Fahrenheit to Celsius
+    covert_dt_3pm_min = int(today_3pm_min_temp); m3pm = (covert_dt_3pm_min - 32) * 5/9
+    metric_dt_3pm_min = str(m3pm).split('.')[0]
+    
+    # Getting the max temp for the first hour
     today_3pm_max_temp = str(today_3pm['main']['temp_max']).split('.')[0]
+    
+    # converting the first hour min temp from Fahrenheit to Celsius
+    covert_dt_3pm_max = int(today_3pm_max_temp); max3pm = (covert_dt_3pm_max - 32) * 5/9
+    metric_dt_3pm_max = str(max3pm).split('.')[0]
+    
+    # Getting the weather description
     today_3pm_weather = str(today_3pm['weather'][0]['description'])
     
+    ######################################################
+    
+    # Getting the min temp for the second hour 
     today_6pm_min_temp = str(today_6pm['main']['temp_min']).split('.')[0]
+    
+    # converting the second hour min temp from Fahrenheit to Celsius
+    covert_dt_6pm_min = int(today_6pm_min_temp); m6pm = (covert_dt_6pm_min - 32) * 5/9
+    metric_dt_6pm_min = str(m6pm).split('.')[0]
+    
+    
+    # Getting the max temp for the second hour 
     today_6pm_max_temp = str(today_6pm['main']['temp_max']).split('.')[0]
+    
+    # converting the second hour max temp from Fahrenheit to Celsius
+    covert_dt_6pm_max = int(today_6pm_max_temp); max6pm = (covert_dt_6pm_max - 32) * 5/9
+    metric_dt_6pm_max = str(max6pm).split('.')[0]
+    
+    # Getting the weather description
     today_6pm_weather = str(today_6pm['weather'][0]['description'])
     
+    ####################################################################
+    
+    # Getting the min temp for the third hour 
     today_9pm_min_temp = str(today_9pm['main']['temp_min']).split('.')[0]
+    
+    # converting the second hour min temp from Fahrenheit to Celsius
+    covert_dt_9pm_min = int(today_9pm_min_temp); m9pm = (covert_dt_9pm_min - 32) * 5/9
+    metric_dt_9pm_min = str(m9pm).split('.')[0]
+    
+    # Getting the max temp for the third hour 
     today_9pm_max_temp = str(today_9pm['main']['temp_max']).split('.')[0]
+    
+    # converting the second hour max temp from Fahrenheit to Celsius
+    covert_dt_9pm_max = int(today_9pm_max_temp); max9pm = (covert_dt_9pm_max - 32) * 5/9
+    metric_dt_9pm_max = str(max9pm).split('.')[0]
+    
+    # Getting the weather description
     today_9pm_weather = str(today_9pm['weather'][0]['description'])
 
     
-    return [[dt_3pm_month, dt_3pm_day, convert_dt3, today_3pm_max_temp, today_3pm_min_temp, today_3pm_weather],
-            [dt_6pm_month, dt_6pm_day, convert_dt6, today_6pm_max_temp, today_6pm_min_temp, today_6pm_weather],
-            [dt_9pm_month, dt_9pm_day, convert_dt9, today_9pm_max_temp, today_9pm_min_temp, today_9pm_weather],]
+    return [[dt_3pm_month, dt_3pm_day, convert_dt3, today_3pm_max_temp, today_3pm_min_temp, today_3pm_weather, metric_dt_3pm_min, metric_dt_3pm_max],
+            [dt_6pm_month, dt_6pm_day, convert_dt6, today_6pm_max_temp, today_6pm_min_temp, today_6pm_weather, metric_dt_6pm_min, metric_dt_6pm_max],
+            [dt_9pm_month, dt_9pm_day, convert_dt9, today_9pm_max_temp, today_9pm_min_temp, today_9pm_weather, metric_dt_9pm_min, metric_dt_9pm_max],]
 
 
 
@@ -302,6 +370,8 @@ cc_lon = "-97.10"
 cc_lat = "32.73"
 
 
+j = weather_next_few_hours(cc_lat, cc_lat)
+print(j)
 
 
 
@@ -345,20 +415,33 @@ def coming_days(lat, lon, units="imperial"):
     day4_weather = str(current_day_plus_4['weather'][0]['description'])
     
     
-    # Five days from current dates forcast
-    current_day_plus_5 = response['list'][35]
-    day5_min_temp = str(current_day_plus_5['main']['temp_min']).split('.')[0]
-    day5_max_temp = str(current_day_plus_5['main']['temp_max']).split('.')[0]
-    day5_weather = str(current_day_plus_5['weather'][0]['description'])
-    
+
     return {
         "day1": [tomorrow_weather, tomorrow_max_temp, tomorrow_min_temp],
         "day2": [day2_weather, day2_max_temp, day2_min_temp],
         "day3": [day3_weather, day3_max_temp, day3_min_temp],
         "day4": [day4_weather, day4_max_temp, day4_min_temp],
-        "day5": [day5_weather, day5_max_temp, day5_min_temp],
         }
     
+
+
+
+
+
+
+
+j = coming_days(cc_lat, cc_lon)
+
+print(j)
+
+
+
+
+
+
+
+
+
 
 # function to call to determine night or day
 def get_time_of_day():
@@ -463,284 +546,5 @@ def shuffle_live_cameras():
     
 
 
-
-
-
-
-
-def getting_all_info(city):
-    
-    now = datetime.datetime.now()
-    current_weekday = now.weekday()
-
-    days = {
-        0 : "Sunday",
-        1 : "Monday",
-        2 : "Tuesday",
-        3 : "Wednesday",
-        4 : "Thursday",
-        5 : "Friday",
-        6 : "Saturday",
-    }
-
-
-    today = days[current_weekday]
-    next_days = get_next_day(today)
-    
-    
-    # Section for LIVE CAMERAS 
-    LF1, LF2, LF3, LF4, LF5 = shuffle_live_cameras()
-    
-    
-    # GETTING CURRENT WEATHER API CALLS
-    current_call = get_current_day_weather(city)
-    
-    if current_call == "None":
-        current_call = get_current_day_weather("Arlington")
-        # current_call = ['Clear', 'clear sky', '37.8', '35.58', '41.56', '69', '9', 'North West', '-97.10', '32.73', '10000', 'Arlington']
-        (main_weather, weather_description, current_temp, min_temp, 
-        max_temp, humidity, wind_speed, compassDir, lon, lat, visual, city_name) = current_call
-    else:
-        current_call = get_current_day_weather(city)
-        # current_call = ['Clear', 'clear sky', '37.8', '35.58', '41.56', '69', '9', 'North West', '-97.10', '32.73', '10000', 'Arlington']
-        (main_weather, weather_description, current_temp, min_temp, 
-        max_temp, humidity, wind_speed, compassDir, lon, lat, visual, city_name) = current_call
-
-
-    # SPLITING ~CURRENT WEATHER~ FROM FLOAT TO INT
-    convert_current_weather = str(current_temp).split('.')[0]
-    
-    
-    
-    # CHECKING THE LENGTH OF CURRENT TEMPERATURE 
-    current_weather_length = len(convert_current_weather)
-    
-    
-    # CONVERTING ~CURRENT TEMP~ TO METIRC
-    current_temp_int = (int(convert_current_weather) - 32) * 5/9
-    current_temp_metric = str(current_temp_int).split('.')[0]
-    
-
-    # CONVERTING ~MIN~ TEMPERATURE TO METRIC
-    convert_min_temp = str(min_temp).split('.')[0]
-    str_minTemp = (int(convert_min_temp) - 32) * 5/9
-    min_temp_metric = str(str_minTemp).split('.')[0]
-    
- 
-    # CONVERTING ~MAX~ TEMPERATURE TO METRIC 
-    convert_max_temp = str(max_temp).split('.')[0]
-    str_maxTemp = (int(convert_max_temp) - 32) * 5/9
-    max_temp_metric = str(str_maxTemp).split('.')[0]
-    
-    # ADDING % TO THE END OF HUMIDITY VARIABLE
-    new_humidity = str(humidity) + "%"
-    
-    
-    # CONVERTING ~WIND SPEED~ TEMPERATURE TO METRIC
-    str_windSpeed = (int(wind_speed) * 1.609)
-    met_windSpeed = str(str_windSpeed).split('.')[0]
-    
-    
-    # CONVERTING ~VISUAL TO MILES~
-    convert_wind = int(visual) // 1609
-    visual = str(convert_wind)
-    
-    str_visual = (int(visual) * 1.609)
-    met_visual = str(str_visual).split('.')[0]
-    
-    
-    # GETTING COMPASS DIRECTION 
-    new_direction = compass_directions(compassDir)
-    
-
-    # API CALLS FOR THE SIDE HOURS ###########################
-
-    # # # API call for the ~FIRST HOUR~ side weather widget
-    (first_hour_month, first_hour_day, first_hour_time, 
-     first_hour_max, first_hour_min, first_hour_description) = weather_next_few_hours(lat, lon)[0]
-    # f_h_month, f_h_day, f_h_time, f_h_des, f_h_max, f_h_min = ("11", "30", "3:01:pm", "light rain", "101", "91")
-    
-    # ~FIRST HOUR~ METRIC CONVERTION FOR ~MAX HOUR~
-    convert_first_hour_max = int(first_hour_max)
-    f_h_max_metric = (convert_first_hour_max - 32) * 5/9
-    first_hour_max_metric = str(f_h_max_metric).split('.')[0]
-    
-    
-    # ~FIRST HOUR~ METRIC CONVERTION FOR ~MIN HOUR~
-    convert_first_hour_min = int(first_hour_min)
-    f_h_min_metric = (convert_first_hour_min - 32) * 5/9
-    first_hour_min_metric = str(f_h_min_metric).split('.')[0]
-    
-    
-    
-    
-    
-    # API call for the ~SECOND HOUR~ side weather widget
-    (second_hour_month, second_hour_day, second_hour_time, 
-     second_hour_max, second_hour_min, second_hour_description) = weather_next_few_hours(lat, lon)[1]
-    # s_h_month, s_h_day, s_h_time, s_h_des, s_h_max, s_h_min = ("11", "30", "6:00:pm", "clear sky", "102", "92")
-    
-    
-    # ~SECOND HOUR~ METRIC CONVERTION FOR ~MIN HOUR~
-    convert_second_hour_min = int(second_hour_min)
-    second_hour_min_metric = (convert_second_hour_min - 32) * 5/9
-    second_hour_min_metric = str(second_hour_min_metric).split('.')[0]
-    
-    
-    # ~SECOND HOUR~ METRIC CONVERTION FOR ~MAX HOUR~
-    convert_second_hour_max = int(second_hour_max)
-    second_hour_max_metric = (convert_second_hour_max - 32) * 5/9
-    second_hour_max_metric = str(second_hour_max_metric).split('.')[0]
-    
-    
-    
-    
-    
-    
-    
-    # API call for the ~THIRD HOUR~ side weather widget
-    (third_hour_month, third_hour_day, third_hour_time, third_hour_max, 
-     third_hour_min, third_hour_description) = weather_next_few_hours(lat, lon)[2]
-    # t_h_month, t_h_day, t_h_time, t_h_des, t_h_max, t_h_min = ('11', '30', '9:00:pm', 'rain', '103', '93')
-
-
-    # ~THIRD HOUR~ METRIC CONVERTION FOR ~MIN HOUR~
-    convert_third_hour_min = int(third_hour_min)
-    third_hour_min_metric = (convert_third_hour_min - 32) * 5/9
-    third_hour_min_metric = str(third_hour_min_metric).split('.')[0]
-    
-    
-    # ~THIRD HOUR~ METRIC CONVERTION FOR ~MAX HOUR~
-    convert_third_hour_max = int(third_hour_max)
-    third_hour_max_metric = (convert_third_hour_max - 32) * 5/9
-    third_hour_max_metric = str(third_hour_max_metric).split('.')[0]
-
-
-
-
-
-    # ##################################################################
-
-
-    # # # API call for the FIRST weekly forecast DAY
-    (weekly_d1_descripton, weekly_d1_max, weekly_d1_min) = coming_days(lat, lon)['day1']
-    # weekly_d1_descripton, weekly_d1_max, weekly_d1_min  = ('clear sky', '101', '91', 'date', 'idk')
-
-    # ~FIRST DAY~ METRIC CONVERTION FOR ~MIN HOUR~
-    convert_first_day_min = int(weekly_d1_min)
-    first_day_min = (convert_first_day_min - 32) * 5/9
-    first_day_min_metric = str(first_day_min).split('.')[0]
-    
-    
-    # ~FIRST DAY~ METRIC CONVERTION FOR ~MAX HOUR~
-    convert_first_day_max = int(weekly_d1_max)
-    first_day_max = (convert_first_day_max - 32) * 5/9
-    first_day_max_metric = str(first_day_max).split('.')[0]
-    
-    
-    # GETTING ~WEEKDAY~ DAY FOR ~FIRST DAY~
-    first_day_weekday = next_days[0]
-    
-    
-    
-    
-    
-    # # # API call for the SECOND weekly forecast DAY
-    (weekly_d2_desription, weekly_d2_max, weekly_d2_min)  = coming_days(lat, lon)['day2']
-    # weekly_d2_des, weekly_d2_max, weekly_d2_min, weekly_d2_date, weekly_d2_day  = ('light rain', '102', '92', 'date', 'idk')
-
-    
-    # ~SECOND DAY~ METRIC CONVERTION FOR ~MIN HOUR~
-    convert_second_day_min = int(weekly_d2_min)
-    second_day_min = (convert_second_day_min - 32) * 5/9
-    second_day_min_metric = str(second_day_min).split('.')[0]
-    
-    
-    # ~SECOND DAY~ METRIC CONVERTION FOR ~MAX HOUR~
-    convert_second_day_max = int(weekly_d2_max)
-    second_day_max = (convert_second_day_max - 32) * 5/9
-    second_day_max_metric = str(second_day_max).split('.')[0]
-    
-    
-    # GETTING ~WEEKDAY~ DAY FOR ~SECOND DAY~
-    second_day_weekday = next_days[1]
-    
-    
-    
-    # # # API call for the THIRD weekly forecast DAY
-    # # # weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_date, weekly_d3_day  = coming_days(cc_lat, cc_lon)['day3']
-    # weekly_d3_des, weekly_d3_max, weekly_d3_min, weekly_d3_date, weekly_d3_day  = ('thunderstorm', '103', '93', 'date', 'idk')
-
-    
-    
-    # # # API call for the FOURTH weekly forecast DAY
-    # # # weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_date, weekly_d4_day  = coming_days(cc_lat, cc_lon)['day4']
-    # weekly_d4_des, weekly_d4_max, weekly_d4_min, weekly_d4_date, weekly_d4_day  = ('light rain', '104', '94', 'date', 'idk')
-    # # for converting day one max imperial to metric 
-    # weekly_d4_max_metric = (int(weekly_d4_max) - 32) * 5/9
-    # weekly_d4_max_metric_str = str(weekly_d4_max_metric).split('.')[0]
-    # # for converting day one max metric to imperial
-    # weekly_d4_min_metric = (int(weekly_d4_min) - 32) * 5/9
-    # weekly_d4_min_metric_str = str(weekly_d4_min_metric).split('.')[0]
-    
-    
-            
-    # now = datetime.datetime.now()
-    # current_year = now.year
-    # current_day = now.day
-    # current_month = now.month
-    # current_weekday = now.weekday()
-    
-    
-    # day_time = get_time_of_day()[0] # False/True
-    # time_of_day = get_time_of_day()[2] # Day of the week
-    
-    # days_ahead = get_next_day(time_of_day)
-    # d1, d2, d3, d4, d5, d6 = days_ahead
-    
-    
-    # timesOfDay = get_time_of_day()[1]
-
-    # day1 = None
-    # if day_time == True:
-    #     day1 = True
-    # else:
-    #     day1 = False
-
-    # weekdays = {
-    #     0 : 'Monday', 
-    #     1 : 'Tuesday', 
-    #     2 : 'Wednesday',
-    #     3 : 'Thursday',
-    #     4 : 'Friday',
-    #     5 : 'Saturday',
-    #     6 : 'Sunday'
-    #     }
-    
-    
-    
-    return {"main_weather" : [main_weather, weather_description, convert_current_weather, current_weather_length, current_temp_metric,
-                               min_temp_metric, max_temp_metric, new_humidity, wind_speed, met_windSpeed, visual, met_visual, new_direction, city_name],
-            "first_hour": [first_hour_month, first_hour_day, first_hour_time, first_hour_max, first_hour_min, first_hour_description, first_hour_max_metric, first_hour_min_metric],
-            "second_hour": [second_hour_month, second_hour_day, second_hour_time, second_hour_max, second_hour_min,
-                     second_hour_description, second_hour_max_metric, second_hour_min_metric],
-            "third_hour": [third_hour_month, third_hour_day, third_hour_time, third_hour_max, third_hour_min,
-                     third_hour_description, third_hour_max_metric, third_hour_min_metric],
-            "first_day": [weekly_d1_descripton, weekly_d1_max, weekly_d1_min, first_day_min_metric, first_day_max_metric, first_day_weekday],
-            "second day": [weekly_d2_desription, weekly_d2_max, weekly_d2_min, second_day_min_metric, second_day_max_metric, second_day_weekday],
-            }
-
-
-
-# city = input("> ")
-
-# test = getting_all_info(city)
-
-# print(f"The type Returned: {type(test)}")
-
-# print()
-
-
-# print(test)
 
 
