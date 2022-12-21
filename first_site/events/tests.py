@@ -106,7 +106,7 @@ def get_next_day():
 
 
 
-def get_current_day_weather(city="Arlington", units="imperial"):
+def get_current_day_weather(city="Arlington"):
     """
     Retrieve current weather data for a given city and return it in either imperial or metric units.
 
@@ -132,112 +132,115 @@ def get_current_day_weather(city="Arlington", units="imperial"):
     BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
     API_KEY = environ.get("CEJ_Weather_API")
     CITY = city
-    UNITS = units
+    city_name = ''
+    UNITS = "imperial"
     
     first_api_call = f"https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units={UNITS}"
     
     response1 = requests.get(first_api_call).json()
     response1_prettyprint = json.dumps(response1, indent=3)
     
-    try:
-        get_main = response1["weather"][0]["main"]
-        get_weather_des = response1["weather"][0]["description"] # clear sky
-        current_temp = response1["main"]['temp'] # current temperature
-        min_temp = response1["main"]["temp_min"] # temperature low
-        max_temp = response1["main"]["temp_max"] # temperature high
-        humidity = response1["main"]["humidity"] # humidity
-        wind_speed = str(response1["wind"]["speed"]).split(".")[0] # wind speed
-        wind_direction = int(response1["wind"]["deg"]) # wind direction in degrees, pass into calculate_wind()
-        city_name = response1["name"]
-        visual = response1["visibility"]
+
+    get_main = response1["weather"][0]["main"] # Main weather report 'Clouds'
+    get_weather_des = response1["weather"][0]["description"] # clear sky
+    current_temp = response1["main"]['temp'] # current temperature
+    current_temp_length = len(str(current_temp).split('.')[0]) # length of current temperature
+    min_temp = response1["main"]["temp_min"] # temperature low
+    max_temp = response1["main"]["temp_max"] # temperature high
+    humidity = response1["main"]["humidity"] # humidity
+    wind_speed = str(response1["wind"]["speed"]).split(".")[0] # wind speed
+    wind_direction = int(response1["wind"]["deg"]) # wind direction in degrees, pass into calculate_wind()
+    city_name = response1["name"]
+    visual = response1["visibility"]
         
         
         
-        # converting CURRENT TEMP from Fahrenheit to Celsius
-        convert_current_temp = int(str(current_temp).split('.')[0])
-        metric_current_temp = str((convert_current_temp - 32) * 5/9).split('.')[0]
-        current_temp_str = str(current_temp).split('.')[0]
+    # converting CURRENT TEMP from Fahrenheit to Celsius
+    convert_current_temp = int(str(current_temp).split('.')[0])
+    metric_current_temp = str((convert_current_temp - 32) * 5/9).split('.')[0]
+    current_temp_str = str(current_temp).split('.')[0]
         
         
         
-        # converting MIN TEMP from Fahrenheit to Celsius
-        convert_min_temp = int(str(min_temp).split('.')[0])
-        metric_min_temp = str((convert_min_temp - 32) * 5/9).split('.')[0]
-        min_temp_str = str(min_temp).split('.')[0]
-        
-        
-        # converting MAX TEMP from Fahrenheit to Celsius
-        convert_max_temp = int(str(max_temp).split('.')[0])
-        metric_max_temp = str((convert_max_temp - 32) * 5/9).split('.')[0]
-        max_temp_str = str(max_temp).split('.')[0]
-        
-        
-        
-        # converting wind speed to metric
-        toIntWind = int(wind_speed) * 1.609
-        wind_speed_metric = str(toIntWind).split('.')[0]
-        
-        
-        # converting visibility to mph/k
-        visual_in_miles = str(int(visual) / 1609.34).split('.')[0]
-        visual_in_kilo = str(int(visual_in_miles) * 1.60934).split('.')[0]
+    # converting MIN TEMP from Fahrenheit to Celsius
+    convert_min_temp = int(str(min_temp).split('.')[0])
+    metric_min_temp = str((convert_min_temp - 32) * 5/9).split('.')[0]
+    min_temp_str = str(min_temp).split('.')[0]
+    
+    
+    # converting MAX TEMP from Fahrenheit to Celsius
+    convert_max_temp = int(str(max_temp).split('.')[0])
+    metric_max_temp = str((convert_max_temp - 32) * 5/9).split('.')[0]
+    max_temp_str = str(max_temp).split('.')[0]
+    
+    
+    
+    # converting wind speed to metric
+    toIntWind = int(wind_speed) * 1.609
+    wind_speed_metric = str(toIntWind).split('.')[0]
+    
+    
+    # converting visibility to mph/k
+    visual_in_miles = str(int(visual) / 1609.34).split('.')[0]
+    visual_in_kilo = str(int(visual_in_miles) * 1.60934).split('.')[0]
         
         
 
+    
+    sector = {
+        1 : "N",
+        2 : "NNE",
+        3 : "NE",
+        4 : "ENE",
+        5 : "E",
+        6 : "SSE",
+        7 : "SE",
+        8 : "SSE",
+        9 : "S",
+        10 : "SSW",
+        11 : "SW",
+        12 : "WSW",
+        13 : "W",
+        14 : "WNW",
+        15 : "NW",
+        16 : "NNW",
+        17 : "N",        
+        }
+    
+    degrees = wind_direction
+    Index = int(degrees) % 360
+    Index = round(Index/ 22.5,0) + 1
+    CompassDir = sector[Index]
+    
+    LAT = len(str(response1['coord']['lat']))
+    if LAT == 7:
+        LAT = str(response1['coord']['lat'])[0:5]
+    else:
+        LAT = str(response1['coord']['lat'])[0:6]
         
-        sector = {
-            1 : "N",
-            2 : "NNE",
-            3 : "NE",
-            4 : "ENE",
-            5 : "E",
-            6 : "SSE",
-            7 : "SE",
-            8 : "SSE",
-            9 : "S",
-            10 : "SSW",
-            11 : "SW",
-            12 : "WSW",
-            13 : "W",
-            14 : "WNW",
-            15 : "NW",
-            16 : "NNW",
-            17 : "N",        
-            }
-        
-        degrees = wind_direction
-        Index = int(degrees) % 360
-        Index = round(Index/ 22.5,0) + 1
-        CompassDir = sector[Index]
-        
-        LAT = len(str(response1['coord']['lat']))
-        if LAT == 7:
-            LAT = str(response1['coord']['lat'])[0:5]
-        else:
-            LAT = str(response1['coord']['lat'])[0:6]
-            
-        LON = len(str(response1["coord"]["lon"]))
-        if LON == 7:
-            LON = str(response1["coord"]["lon"])[0:5]
-        else:
-            LON = str(response1["coord"]["lon"])[0:6]
-            
-    except KeyError:
-        'none'
+    LON = len(str(response1["coord"]["lon"]))
+    if LON == 7:
+        LON = str(response1["coord"]["lon"])[0:5]
+    else:
+        LON = str(response1["coord"]["lon"])[0:6]
     
         
         
     try:
         return [get_main, get_weather_des, current_temp_str, min_temp_str, max_temp_str, humidity, wind_speed,
                 CompassDir, LON, LAT, visual_in_miles, visual_in_kilo, city_name, metric_current_temp,
-                metric_min_temp, metric_max_temp, wind_speed_metric]
+                metric_min_temp, metric_max_temp, wind_speed_metric, current_temp_length]
     except UnboundLocalError:
         return "None"
         
         
 
 
+searched = ""
 
+j = get_current_day_weather(searched)
+
+print(j)
 
 
 
@@ -464,10 +467,6 @@ def coming_days(lat, lon, units="imperial"):
 
 
 
-
-j = coming_days(cc_lat, cc_lon)
-
-print(j)
 
 
 

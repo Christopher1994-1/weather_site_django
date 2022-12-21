@@ -16,15 +16,16 @@
 
 
 
-{% if searched_location %}
+{% if search_value == "True" %}
 
     {% include 'searched_result_true.html' %}
 
-{% else %}
+{% elif search_value == "False" %}
 
     {% include 'searched_result_none.html' %}
 
 {% endif %}
+
 
 <br>
 

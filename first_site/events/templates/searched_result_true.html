@@ -45,19 +45,19 @@
 
 {% if unit_value == '0' %} <!-- logic to figure out if its in imperial or metric -->
 
-    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
+    {% if main_report == 'Clouds' or main_report == 'Thunderstorm' or main_report == 'Mist' %}
 
         {% include 'home_weather_cloudy.html' %}
 
-    {% elif weather_main_report == 'Rain' %}
+    {% elif main_report == 'Rain' %}
 
         {% include 'home_weather_rain.html' %}
     
-    {% elif weather_main_report == 'Clear Sky' and time_of_day == True %}
+    {% elif main_report == 'Clear Sky' and time_of_day == True %}
 
         {% include 'home_weather_sunny.html' %}
     
-    {% elif weather_main_report == 'Clear Sky' and time_of_day == False %}
+    {% elif main_report == 'Clear Sky' and time_of_day == False %}
 
         {% include 'home_weather_night.html' %}
 
@@ -66,19 +66,19 @@
 
 {% else %} <!-- logic to figure out if its in imperial or metric -->
 
-    {% if weather_main_report == 'Clouds' or weather_main_report == 'Thunderstorm' %}
+    {% if main_report == 'Clouds' or main_report == 'Thunderstorm' or main_report == 'Mist' %}
 
         {% include 'home_weather_cloudy.html' %}
 
-    {% elif weather_main_report == 'Rain' %}
+    {% elif main_report == 'Rain' %}
 
         {% include 'home_weather_rain.html' %}
 
-    {% elif weather_main_report == 'Clear Sky' and time_of_day == True %}
+    {% elif main_report == 'Clear Sky' and time_of_day == True %}
 
         {% include 'home_weather_sunny.html' %}
 
-    {% elif weather_main_report == 'Clear Sky' and time_of_day == False %}
+    {% elif main_report == 'Clear Sky' and time_of_day == False %}
 
         {% include 'home_weather_night.html' %}
 
@@ -341,5 +341,7 @@
 </div>
 
 <br>
+
+<h1>searched_result_true</h1>
 
 {% endblock %}
