@@ -1,6 +1,10 @@
 {% block content %}
 
-    <h1 id="no-search-result">No Search Results for "{{ searched_location }}"</h1>
+    {% if search_value == '' %}
+        <h1 id="no-search-result">No Search Results for "None"</h1>
+    {% else %}
+        <h1 id="no-search-result">No Search Results for "{{ search_value }}"</h1>
+    {% endif %}
 
     <form action="{% url 'searched' %}" method="POST">
         {% csrf_token %}

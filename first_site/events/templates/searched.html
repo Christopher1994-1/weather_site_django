@@ -16,11 +16,11 @@
 
 
 
-{% if search_value == "True" %}
+{% if none_result == 'True' %}
 
     {% include 'searched_result_true.html' %}
 
-{% elif search_value == "False" %}
+{% elif none_result == 'None' %}
 
     {% include 'searched_result_none.html' %}
 

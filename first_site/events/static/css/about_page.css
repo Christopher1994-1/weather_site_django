@@ -1,7 +1,53 @@
 .main {
-    border: 2px solid black;
     margin: auto;
     width: 1000px;
+    background: rgb(82, 82, 82);
+    padding: 20px;
     text-align: center;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     border-radius: 25px;
+}
+
+
+.main h1 {
+    color: white;
+}
+
+
+.main p {
+    color: white;
+}
+
+
+
+
+
+.about-links {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+  }
+  
+  #github-link, #website-link {
+    display: block;
+    margin-bottom: 10px;
+    width: 200px;
+    margin: auto;
+  }
+
+
+
+.main .about-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+}
+
+
+.main .about-links a:hover {
+    text-decoration: underline;
+    text-shadow: 1px 1px white;
+    color: rgb(0, 0, 0);
 }

@@ -16,4 +16,9 @@ urlpatterns = [
     path('metric_button', views.metric_button, name="metric_button"),
     path('imperial_button', views.imperial_button, name="imperial_button"),
     path('about/', views.about, name="about"),
+    path('news/', views.news, name="news"),
+    path('live_cameras/', views.live_cameras, name="live_cameras"),
 ]
+
+
+
