@@ -9,6 +9,44 @@
 <link rel="stylesheet" href="{% static 'css/live_cameras.css' %}">
 
 
+<div class="live-cameras-container">
+    <h1 id="main-live-feeds-header">Live Cameras</h1>
+    <br>
+
+    <div class="first-live-cam">
+        {% include 'live_feed_one.html' %}
+    </div>
+
+
+    <div class="second-live-cam">
+        {% include 'live_feed_two.html' %}
+    </div>
+
+
+    <div class="third-live-cam">
+        {% include 'live_feed_three.html' %}
+    </div>
+
+
+    <div class="first-live-cam">
+        {% include 'live_feed_one.html' %}
+    </div>
+
+
+    <div class="second-live-cam">
+        {% include 'live_feed_two.html' %}
+    </div>
+
+
+    <div class="third-live-cam">
+        {% include 'live_feed_three.html' %}
+    </div>
+
+    <br>
+
+</div>
+
+<br>
 
 
 {% endblock %}

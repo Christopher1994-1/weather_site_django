@@ -176,3 +176,40 @@
     left: 20px;
     top: 5px;
 }
+
+
+
+
+
+
+
+
+/* ##############################################################################################################
+############################################################################################################ */
+
+
+
+.first-news-feed {
+    box-shadow: 2px 2px rgb(29, 29, 29);
+    width: 900px;
+    padding: 10px;
+    height: 280px;
+    border-radius: 20px;
+    background: rgb(158, 158, 158);
+    margin: auto;
+}
+
+
+.img-fluid-1 {
+    width: 400px;
+    height: 200px;
+    position: relative;
+    left: 20px;
+    box-shadow: 2px 2px black;
+    top: 25px;
+}
+
+
+.text-muted1 p {
+    color: black;
+}

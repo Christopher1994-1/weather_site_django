@@ -1144,5 +1144,12 @@ def news(request):
 
 
 def live_cameras(request):
+    LF1, LF2, LF3, LF4, LF5 = shuffle_live_cameras()
     form = SubListForm   
-    return render(request, 'live_cameras.html', {"form":form})
+    return render(request, 'live_cameras.html', {
+        "form":form,
+        # live camera variables
+        "lf1" : LF1,
+        "lf2" : LF2,
+        "lf3" : LF3,
+        })
