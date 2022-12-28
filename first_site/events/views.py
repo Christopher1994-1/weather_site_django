@@ -880,6 +880,8 @@ def home(request, location="arlington"):
         "lf1" : LF1,
         "lf2" : LF2,
         "lf3" : LF3,
+        "lf4" : LF4,
+        "lf5" : LF5,
     })
 
 

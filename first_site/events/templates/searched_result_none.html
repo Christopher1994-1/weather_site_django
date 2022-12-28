@@ -55,11 +55,11 @@
 
             {% include 'home_weather_rain.html' %}
 
-        {% elif main_report == 'Clear Sky' and time_of_day == True %}
+        {% elif main_report == 'Clear' and time_of_day == True %}
 
             {% include 'home_weather_sunny.html' %}
 
-        {% elif main_report == 'Clear Sky' and time_of_day == False %}
+        {% elif main_report == 'Clear' and time_of_day == False %}
 
             {% include 'home_weather_night.html' %}
 

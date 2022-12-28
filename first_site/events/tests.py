@@ -4,9 +4,11 @@ import random
 from datetime import datetime
 from calendar import *
 import datetime
+import pytz
 from os import environ
 import requests
 import time
+from codes import countries
 import json
 
 # Create your tests here.
@@ -23,6 +25,7 @@ def afternoon():
     else:
         return "Night"
     
+
 
 
 
@@ -105,7 +108,6 @@ def get_next_day():
 
 
 
-
 def get_current_day_weather(city="Arlington"):
     """
     Retrieve current weather data for a given city and return it in either imperial or metric units.
@@ -141,7 +143,6 @@ def get_current_day_weather(city="Arlington"):
         first_api_call = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units={UNITS}"
         
         response1 = requests.get(first_api_call).json()
-        response1_prettyprint = json.dumps(response1, indent=3)
         
 
         get_main = response1["weather"][0]["main"] # Main weather report 'Clouds'
@@ -186,6 +187,7 @@ def get_current_day_weather(city="Arlington"):
         # converting visibility to mph/k
         visual_in_miles = str(int(visual) / 1609.34).split('.')[0]
         visual_in_kilo = str(int(visual_in_miles) * 1.60934).split('.')[0]
+        
             
             
 
@@ -236,7 +238,6 @@ def get_current_day_weather(city="Arlington"):
         first_api_call = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units={UNITS}"
         
         response1 = requests.get(first_api_call).json()
-        response1_prettyprint = json.dumps(response1, indent=3)
         
         try:
             search_result_false = "True"
@@ -282,8 +283,7 @@ def get_current_day_weather(city="Arlington"):
             # converting visibility to mph/k
             visual_in_miles = str(int(visual) / 1609.34).split('.')[0]
             visual_in_kilo = str(int(visual_in_miles) * 1.60934).split('.')[0]
-                
-                
+            
 
             
             sector = {
@@ -375,8 +375,7 @@ def get_current_day_weather(city="Arlington"):
             # converting visibility to mph/k
             visual_in_miles = str(int(visual) / 1609.34).split('.')[0]
             visual_in_kilo = str(int(visual_in_miles) * 1.60934).split('.')[0]
-                
-                
+            
 
             
             sector = {
@@ -417,24 +416,70 @@ def get_current_day_weather(city="Arlington"):
                 LON = str(response1["coord"]["lon"])[0:6]
             
         
-        
     try:
-          return  [get_main, get_weather_des, current_temp_str, min_temp_str, max_temp_str, humidity, wind_speed,
-                    CompassDir, LON, LAT, visual_in_miles, visual_in_kilo, city_name, metric_current_temp,
-                  metric_min_temp, metric_max_temp, wind_speed_metric, current_temp_length, search_result_false]
+          return [get_main, get_weather_des, current_temp_str, min_temp_str, max_temp_str, humidity, wind_speed,
+                     CompassDir, LON, LAT, visual_in_miles, visual_in_kilo, city_name, metric_current_temp,
+                   metric_min_temp, metric_max_temp, wind_speed_metric, current_temp_length, search_result_false]
     except UnboundLocalError:
         return "None"
         
         
 
 
-searched = "las%20vegas"
+def convert_time(city):
+    epoch_time = int(time.time())
+    # Set the API endpoint and your GeoNames username
+    endpoint = "http://api.geonames.org/search"
+    username = "cejkirk"
+    # Set the parameters for the API request
+    params = {
+        "name": str(city),
+        "maxRows": 1,
+        "username": username,
+        "type": "json"
+    }
+    # Send the request to the API endpoint
+    response = requests.get(endpoint, params=params)
+    # Get the JSON data from the response
+    data = response.json()
+    # Get the continent from the JSON data
+    country_code = data["geonames"][0]["countryCode"]
+    
+    # pytz.exceptions.UnknownTimeZoneError: 'North America/New York'
+    # Above is the error i am getting. Maybe put in some if statement to check some stuff idk
+    
+    
+    
+    
+    # get_region = countries(country_code) + f"/{city}"
+    
+    
+    # server_time = datetime.datetime.fromtimestamp(epoch_time)
+    
+    # # Get the time zone for the city
+    # tz = pytz.timezone(get_region)
+    
+    # # Convert the server time to the local time for the city
+    # local_time = str(server_time.astimezone(tz)).split(' ')[1]
+    
+    # time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
 
-j = get_current_day_weather(searched)
+    # # Format the time as a string
+    # formatted_time = time_con.strftime("%I:%M%p")
+    
+    
+    return data
+    
 
-print(j)
 
 
+
+city = "New York"
+
+local_time = convert_time(city)
+
+
+print(local_time)
 
 def weather_next_few_hours(lat, lon, units="imperial"):
     api_key = environ.get("CEJ_Weather_API")
