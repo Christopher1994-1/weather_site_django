@@ -8,7 +8,7 @@ import pytz
 from os import environ
 import requests
 import time
-from codes import countries
+from codes import eur_codes, us_cities, aussie_cities
 import json
 
 # Create your tests here.
@@ -423,7 +423,7 @@ def get_current_day_weather(city="Arlington"):
     except UnboundLocalError:
         return "None"
         
-        
+
 
 
 def convert_time(city):
@@ -443,43 +443,77 @@ def convert_time(city):
     # Get the JSON data from the response
     data = response.json()
     # Get the continent from the JSON data
-    country_code = data["geonames"][0]["countryCode"]
+    country_code = str(data["geonames"][0]["countryCode"])
     
     # pytz.exceptions.UnknownTimeZoneError: 'North America/New York'
     # Above is the error i am getting. Maybe put in some if statement to check some stuff idk
     
     
+    formatted_time = ''
+    get_region = ''
     
-    
-    # get_region = countries(country_code) + f"/{city}"
-    
-    
-    # server_time = datetime.datetime.fromtimestamp(epoch_time)
-    
-    # # Get the time zone for the city
-    # tz = pytz.timezone(get_region)
-    
-    # # Convert the server time to the local time for the city
-    # local_time = str(server_time.astimezone(tz)).split(' ')[1]
-    
-    # time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
+    if country_code == "US":
+        # capitalize the first letter of each word in the string; example "new york" -> "New York"
+        new_city = str(city).title()
+        # getting the region of the US city
+        get_region = us_cities[new_city]
+        # getting the current time of the server running app
+        server_time = datetime.datetime.fromtimestamp(epoch_time)
+        # # Get the time zone for the city
+        tz = pytz.timezone(get_region)
+        # # Convert the server time to the local time for the city
+        local_time = str(server_time.astimezone(tz)).split(' ')[1]
+        time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
+        # # Format the time as a string
+        formatted_time = time_con.strftime("%I:%M%p")
+        
+        
+    elif country_code != "US":
+        if country_code in eur_codes.keys():
+            # capitalize the first letter of each word in the string; example "new york" -> "New York"
+            new_city = str(city).title()
+            # getting the region of the US city
+            get_region = eur_codes[new_city]
+            # getting the current time of the server running app
+            server_time = datetime.datetime.fromtimestamp(epoch_time)
+            # # Get the time zone for the city
+            tz = pytz.timezone(get_region)
+            # # Convert the server time to the local time for the city
+            local_time = str(server_time.astimezone(tz)).split(' ')[1]
+            time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
+            # # Format the time as a string
+            formatted_time = time_con.strftime("%I:%M%p")
+            
+        elif country_code == "AU":
+            new_city = str(city).title()
+            # getting the region of the US city
+            get_region = aussie_cities[new_city]
+            # getting the current time of the server running the app
+            server_time = datetime.datetime.fromtimestamp(epoch_time)
+            # # Get the time zone for the city
+            tz = pytz.timezone(get_region)
+            # # Convert the server time to the local time for the city
+            local_time = str(server_time.astimezone(tz)).split(' ')[1]
+            time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
+            # # Format the time as a string
+            formatted_time = time_con.strftime("%l:%M%p")
+            
+    if formatted_time[0] == "0":
+        formatted_time = formatted_time[1:]
 
-    # # Format the time as a string
-    # formatted_time = time_con.strftime("%I:%M%p")
     
-    
-    return data
+    return formatted_time
     
 
 
 
+a = "las vegas"
 
-city = "New York"
+k = convert_time(a)
 
-local_time = convert_time(city)
+print(k)
 
 
-print(local_time)
 
 def weather_next_few_hours(lat, lon, units="imperial"):
     api_key = environ.get("CEJ_Weather_API")
@@ -601,13 +635,6 @@ def weather_next_few_hours(lat, lon, units="imperial"):
 
 
 
-
-
-
-
-
-cc_lon = "-97.10"
-cc_lat = "32.73"
 
 
 
