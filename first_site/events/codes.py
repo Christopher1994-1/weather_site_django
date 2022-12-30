@@ -1,57 +1,7 @@
 
-eur_codes ={        
-    # all european countries
-    'AL': 'Europe',
-    'AD': 'Europe',
-    'AT': 'Europe',
-    'BY': 'Europe',
-    'BE': 'Europe',
-    'BA': 'Europe',
-    'BG': 'Europe',
-    'HR': 'Europe',
-    'CY': 'Europe',
-    'CZ': 'Europe',
-    'DK': 'Europe',
-    'EE': 'Europe',
-    'FO': 'Europe',
-    'FI': 'Europe',
-    'FR': 'Europe',
-    'DE': 'Europe',
-    'GR': 'Europe',
-    'HU': 'Europe',
-    'IS': 'Europe',
-    'IE': 'Europe',
-    'IT': 'Europe',
-    'LV': 'Europe',
-    'LI': 'Europe',
-    'LT': 'Europe',
-    'LU': 'Europe',
-    'MK': 'Europe',
-    'MT': 'Europe',
-    'MD': 'Europe',
-    'MC': 'Europe',
-    'ME': 'Europe',
-    'NL': 'Europe',
-    'NO': 'Europe',
-    'PL': 'Europe',
-    'PT': 'Europe',
-    'RO': 'Europe',
-    'RU': 'Europe',
-    'SM': 'Europe',
-    'RS': 'Europe',
-    'SK': 'Europe',
-    'SI': 'Europe',
-    'ES': 'Europe',
-    'SE': 'Europe',
-    'CH': 'Europe',
-    'UA': 'Europe',
-    'GB': 'Europe',
-    'VA': 'Europe',}
-    
-    
 
 
-us_cities = {
+all_cities = {
     # All EST Time Cities
     "New York": "US/Eastern",
     "Boston": "US/Eastern",
@@ -158,11 +108,9 @@ us_cities = {
     'Henderson' : "US/Pacific",
     'Sparks' : "US/Pacific",
     'Carson City' : "US/Pacific",
-}
-
-
-
-aussie_cities = {
+    
+    
+    # All Australian timezone
     "Brisbane": "Australia/Brisbane", #
     "Adelaide": "Australia/Adelaide", #
     "Hobart": "Australia/Hobart", #
@@ -175,6 +123,55 @@ aussie_cities = {
     "Perth" : "Australia/Perth",
     "Gold Coast" : "Australia/Brisbane",
     "Launceston" : "Australia/Adelaide",
+    
+
+    
+    # all european countries
+    'AL': 'Europe',
+    'AD': 'Europe',
+    'AT': 'Europe',
+    'BY': 'Europe',
+    'BE': 'Europe',
+    'BA': 'Europe',
+    'BG': 'Europe',
+    'HR': 'Europe',
+    'CY': 'Europe',
+    'CZ': 'Europe',
+    'DK': 'Europe',
+    'EE': 'Europe',
+    'FO': 'Europe',
+    'FI': 'Europe',
+    'FR': 'Europe',
+    'DE': 'Europe',
+    'GR': 'Europe',
+    'HU': 'Europe',
+    'IS': 'Europe',
+    'IE': 'Europe',
+    'IT': 'Europe',
+    'LV': 'Europe',
+    'LI': 'Europe',
+    'LT': 'Europe',
+    'LU': 'Europe',
+    'MK': 'Europe',
+    'MT': 'Europe',
+    'MD': 'Europe',
+    'MC': 'Europe',
+    'ME': 'Europe',
+    'NL': 'Europe',
+    'NO': 'Europe',
+    'PL': 'Europe',
+    'PT': 'Europe',
+    'RO': 'Europe',
+    'RU': 'Europe',
+    'SM': 'Europe',
+    'RS': 'Europe',
+    'SK': 'Europe',
+    'SI': 'Europe',
+    'ES': 'Europe',
+    'SE': 'Europe',
+    'CH': 'Europe',
+    'UA': 'Europe',
+    'GB': 'Europe',
+    'VA': 'Europe'
+    
 }
-
-

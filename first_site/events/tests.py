@@ -8,7 +8,7 @@ import pytz
 from os import environ
 import requests
 import time
-from codes import eur_codes, us_cities, aussie_cities
+from codes import all_cities
 import json
 
 # Create your tests here.
@@ -444,6 +444,7 @@ def convert_time(city):
     data = response.json()
     # Get the continent from the JSON data
     country_code = str(data["geonames"][0]["countryCode"])
+    region = all_cities[city_name.title()]
     
     # pytz.exceptions.UnknownTimeZoneError: 'North America/New York'
     # Above is the error i am getting. Maybe put in some if statement to check some stuff idk
@@ -453,10 +454,11 @@ def convert_time(city):
     get_region = ''
     
     if country_code == "US":
+        is_aussie = False
         # capitalize the first letter of each word in the string; example "new york" -> "New York"
         new_city = str(city).title()
         # getting the region of the US city
-        get_region = us_cities[new_city]
+        get_region = all_cities[new_city]
         # getting the current time of the server running app
         server_time = datetime.datetime.fromtimestamp(epoch_time)
         # # Get the time zone for the city
@@ -469,11 +471,12 @@ def convert_time(city):
         
         
     elif country_code != "US":
-        if country_code in eur_codes.keys():
+        if country_code in all_cities.keys():
+            is_aussie = False
             # capitalize the first letter of each word in the string; example "new york" -> "New York"
             new_city = str(city).title()
             # getting the region of the US city
-            get_region = eur_codes[new_city]
+            get_region = all_cities[new_city]
             # getting the current time of the server running app
             server_time = datetime.datetime.fromtimestamp(epoch_time)
             # # Get the time zone for the city
@@ -485,9 +488,10 @@ def convert_time(city):
             formatted_time = time_con.strftime("%I:%M%p")
             
         elif country_code == "AU":
+            is_aussie = True
             new_city = str(city).title()
             # getting the region of the US city
-            get_region = aussie_cities[new_city]
+            get_region = all_cities[new_city]
             # getting the current time of the server running the app
             server_time = datetime.datetime.fromtimestamp(epoch_time)
             # # Get the time zone for the city
@@ -496,22 +500,46 @@ def convert_time(city):
             local_time = str(server_time.astimezone(tz)).split(' ')[1]
             time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
             # # Format the time as a string
-            formatted_time = time_con.strftime("%l:%M%p")
+            formatted_time = time_con.strftime("%I:%M%p")
             
     if formatted_time[0] == "0":
         formatted_time = formatted_time[1:]
 
     
-    return formatted_time
+    return formatted_time, is_aussie, region
     
 
 
 
-a = "las vegas"
+city_name = "Arlington"
+NOW, is_aussie, country_region = convert_time(city_name)
+now = datetime.datetime.now()
+final = ''
 
-k = convert_time(a)
+if is_aussie == True:
+    current_server_time = datetime.datetime.now()
+    aus_tz = pytz.timezone('Australia/Sydney')
+    convert_current_server_time_2_aus = str(current_server_time.astimezone(aus_tz))
+    aus_date = str(convert_current_server_time_2_aus).split(' ')[0] 
+    dateDate = datetime.datetime.strptime(aus_date, "%Y-%m-%d")
+    formatted_date = str(dateDate.strftime("%A: %b. %d, %Y"))
+    final = formatted_date + " " + NOW
+else:
+    current_server_time = datetime.datetime.now()
+    current_tz = pytz.timezone(country_region)
+    convert_current_server_time_2_texas = str(current_server_time.astimezone(current_tz))
+    us_date = str(convert_current_server_time_2_texas).split(' ')[0] 
+    dateDate = datetime.datetime.strptime(us_date, "%Y-%m-%d")
+    formatted_date = str(dateDate.strftime("%A: %b. %d, %Y"))
+    final = formatted_date + " " + NOW
 
-print(k)
+
+
+
+print(final)
+print()
+print(NOW)
+print()
 
 
 
