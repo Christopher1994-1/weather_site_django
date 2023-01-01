@@ -135,7 +135,6 @@ def get_current_day_weather(city="Arlington"):
         first_api_call = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units={UNITS}"
         
         response1 = requests.get(first_api_call).json()
-        response1_prettyprint = json.dumps(response1, indent=3)
         
 
         get_main = response1["weather"][0]["main"] # Main weather report 'Clouds'
@@ -230,7 +229,6 @@ def get_current_day_weather(city="Arlington"):
         first_api_call = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units={UNITS}"
         
         response1 = requests.get(first_api_call).json()
-        response1_prettyprint = json.dumps(response1, indent=3)
         
         try:
             search_result_false = "True"
@@ -326,7 +324,8 @@ def get_current_day_weather(city="Arlington"):
             first_api_call = f"https://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={API_KEY}&units={UNITS}"
             
             response1 = requests.get(first_api_call).json()
-            response1_prettyprint = json.dumps(response1, indent=3)
+
+
             get_main = response1["weather"][0]["main"] # Main weather report 'Clouds'
             get_weather_des = response1["weather"][0]["description"] # clear sky
             current_temp = response1["main"]['temp'] # current temperature
@@ -415,7 +414,7 @@ def get_current_day_weather(city="Arlington"):
     try:
           return  [get_main, get_weather_des, current_temp_str, min_temp_str, max_temp_str, humidity, wind_speed,
                     CompassDir, LON, LAT, visual_in_miles, visual_in_kilo, city_name, metric_current_temp,
-                  metric_min_temp, metric_max_temp, wind_speed_metric, current_temp_length, search_result_false, first_api_call]
+                  metric_min_temp, metric_max_temp, wind_speed_metric, current_temp_length, search_result_false]
     except UnboundLocalError:
         return "None"
         
@@ -1013,7 +1012,7 @@ def searched(request):
         # Current Day Main Weather Report
         (weather_report, weather_description, current_temp, min_temp, max_temp, humidity, wind_speed,
             compass_dir, lon, lat, visual_in_miles, visual_in_kilo, city_name, metric_current_temp, metric_min_temp,
-            metric_max_temp, wind_speed_metric, current_temp_length, nn, l) = get_current_day_weather(new_search) #['Mist', 'mist', '43', '41', '45', '91%', '6', 'NNE', '-97.10', '32.73', '3', '4', 'Arlington', '6', '5', '7', '9', '2']
+            metric_max_temp, wind_speed_metric, current_temp_length, nn,) = get_current_day_weather(new_search) #['Mist', 'mist', '43', '41', '45', '91%', '6', 'NNE', '-97.10', '32.73', '3', '4', 'Arlington', '6', '5', '7', '9', '2']
         
         
         cc_lon = lon # longitude of the current city
@@ -1131,16 +1130,16 @@ def searched(request):
             }
         
         form = SubListForm    
-        
+        m = nn
         
         return render(request, 'searched.html', {
             "none_result": nn,
+            "type" : m,
             "form": form,
             "current_year": current_year,
             "submitted": submitted,
             "now" : now,
             "search_value": searched,
-            "ll": l,
             "NOW": final,
             
             # Current Day Weather Variables

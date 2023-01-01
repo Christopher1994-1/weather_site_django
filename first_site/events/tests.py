@@ -446,10 +446,7 @@ def convert_time(city):
     country_code = str(data["geonames"][0]["countryCode"])
     region = all_cities[city_name.title()]
     
-    # pytz.exceptions.UnknownTimeZoneError: 'North America/New York'
-    # Above is the error i am getting. Maybe put in some if statement to check some stuff idk
-    
-    
+    # strings I have to define with '' values
     formatted_time = ''
     get_region = ''
     
@@ -457,17 +454,20 @@ def convert_time(city):
         is_aussie = False
         # capitalize the first letter of each word in the string; example "new york" -> "New York"
         new_city = str(city).title()
-        # getting the region of the US city
+        # getting the region of the US city; example "US/Eastern"
         get_region = all_cities[new_city]
         # getting the current time of the server running app
         server_time = datetime.datetime.fromtimestamp(epoch_time)
-        # # Get the time zone for the city
-        tz = pytz.timezone(get_region)
-        # # Convert the server time to the local time for the city
-        local_time = str(server_time.astimezone(tz)).split(' ')[1]
-        time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
-        # # Format the time as a string
-        formatted_time = time_con.strftime("%I:%M%p")
+        # Get the time zone for your location (US)
+        local_tz = pytz.timezone(str(get_region))
+
+        # Convert the server's local time to your local time
+        local_time2 = server_time.astimezone(local_tz)
+        convert_local_time2_str = str(local_time2)
+        time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
+        day_of_the_week = time_con2.strftime("%A")
+        formatted_time = time_con2.strftime("%I:%M%p")
+        # 2022-12-31 18:46:41-05:00'
         
         
     elif country_code != "US":
@@ -494,52 +494,23 @@ def convert_time(city):
             get_region = all_cities[new_city]
             # getting the current time of the server running the app
             server_time = datetime.datetime.fromtimestamp(epoch_time)
-            # # Get the time zone for the city
-            tz = pytz.timezone(get_region)
-            # # Convert the server time to the local time for the city
-            local_time = str(server_time.astimezone(tz)).split(' ')[1]
-            time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
-            # # Format the time as a string
-            formatted_time = time_con.strftime("%I:%M%p")
+            # Get the time zone for the region AU
+            local_tz = pytz.timezone(str(get_region))
+
+            # Convert the server's local time to your local time
+            local_time2 = server_time.astimezone(local_tz)
+            convert_local_time2_str = str(local_time2)
+            time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
+            day_of_the_week = time_con2.strftime("%A")
+            formatted_time = time_con2.strftime("%I:%M%p")
             
     if formatted_time[0] == "0":
         formatted_time = formatted_time[1:]
 
     
-    return formatted_time, is_aussie, region
+    return formatted_time, is_aussie, region, day_of_the_week
     
 
-
-
-city_name = "Arlington"
-NOW, is_aussie, country_region = convert_time(city_name)
-now = datetime.datetime.now()
-final = ''
-
-if is_aussie == True:
-    current_server_time = datetime.datetime.now()
-    aus_tz = pytz.timezone('Australia/Sydney')
-    convert_current_server_time_2_aus = str(current_server_time.astimezone(aus_tz))
-    aus_date = str(convert_current_server_time_2_aus).split(' ')[0] 
-    dateDate = datetime.datetime.strptime(aus_date, "%Y-%m-%d")
-    formatted_date = str(dateDate.strftime("%A: %b. %d, %Y"))
-    final = formatted_date + " " + NOW
-else:
-    current_server_time = datetime.datetime.now()
-    current_tz = pytz.timezone(country_region)
-    convert_current_server_time_2_texas = str(current_server_time.astimezone(current_tz))
-    us_date = str(convert_current_server_time_2_texas).split(' ')[0] 
-    dateDate = datetime.datetime.strptime(us_date, "%Y-%m-%d")
-    formatted_date = str(dateDate.strftime("%A: %b. %d, %Y"))
-    final = formatted_date + " " + NOW
-
-
-
-
-print(final)
-print()
-print(NOW)
-print()
 
 
 
@@ -770,13 +741,24 @@ def coming_days(lat, lon, units="imperial"):
 
 
 # function to call to determine night or day
-def get_time_of_day():
+def get_time_of_day(city_name):
+    NOW, is_aussie, country_region, dayName = convert_time(city_name)
     currentDateAndTime = datetime.datetime.now()
     datetime_convert = str(datetime.datetime.strftime(currentDateAndTime, "%I:%p:%A")).split(":")
+    hour = ''
+    now_convert = NOW.split(':')
+    hour1, ampm2 = now_convert
     
-    hour, ampm, day_of_the_week = datetime_convert
+    ampm = ampm2[2:] # thing to return
+    
+    if len(hour1) == 2:
+        hour = hour1
+    else:
+        hour = "0" + hour1
+    
     
     day_ampm = hour + ampm
+
     
     day_cycle_list = ['06AM', '07AM', '08AM', '09AM', '10AM', '11AM', '12PM', '01PM', '02PM', '03PM', '04PM', '05PM']
     night_cycle_list = ['06PM', '07PM', '08PM', '09PM', '10PM', '11PM', '12AM', '01AM', '02AM', '03AM', '04AM', '05AM']
@@ -807,7 +789,72 @@ def get_time_of_day():
 
         
     
-    return day, dayTime, day_of_the_week
+    return dayName, dayTime, day
+
+
+
+
+
+city_name = "sydney"
+NOW, is_aussie, country_region, day_name = convert_time(city_name)
+now = datetime.datetime.now()
+final = ''
+
+if is_aussie == True:
+    current_server_time = datetime.datetime.now()
+    aus_tz = pytz.timezone('Australia/Sydney')
+    convert_current_server_time_2_aus = str(current_server_time.astimezone(aus_tz))
+    aus_date = str(convert_current_server_time_2_aus).split(' ')[0] 
+    dateDate = datetime.datetime.strptime(aus_date, "%Y-%m-%d")
+    formatted_date = str(dateDate.strftime("%A: %b. %d, %Y"))
+    final = formatted_date + " " + NOW
+    
+    
+else:
+    current_server_time = datetime.datetime.now()
+    current_tz = pytz.timezone(country_region)
+    convert_current_server_time_2_texas = str(current_server_time.astimezone(current_tz))
+    us_date = str(convert_current_server_time_2_texas).split(' ')[0] 
+    dateDate = datetime.datetime.strptime(us_date, "%Y-%m-%d")
+    formatted_date = str(dateDate.strftime("%A: %b. %d, %Y"))
+    final = formatted_date + " " + NOW
+
+
+a, b, c, d = convert_time(city_name)
+
+print("Variables returning from the function convert_time")
+print(a)
+print(b)
+print(c)
+print(d)
+
+
+print()
+
+
+
+a2, b2, c2, = get_time_of_day(city_name)
+
+
+print("Variables returning from the function get_time_of_day")
+print(a2)
+print(b2)
+print(c2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # function to call to get the next few weekdays 
