@@ -1,0 +1,5 @@
+.email-success-message {
+    position: absolute;
+    border: 1px solid black;
+    /* Now you just need to build out the css for the email box */
+}

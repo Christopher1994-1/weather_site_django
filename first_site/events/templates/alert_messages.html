@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/alert_messages.css' %}">
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="email-success-message" id="msg" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}

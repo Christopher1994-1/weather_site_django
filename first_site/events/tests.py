@@ -728,18 +728,6 @@ def coming_days(lat, lon, units="imperial"):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 # function to call to determine night or day
 def get_time_of_day(city_name):
     NOW, is_aussie, country_region, dayName = convert_time(city_name)
@@ -795,7 +783,7 @@ def get_time_of_day(city_name):
 
 
 
-city_name = "sydney"
+city_name = "las vegas"
 NOW, is_aussie, country_region, day_name = convert_time(city_name)
 now = datetime.datetime.now()
 final = ''
@@ -820,26 +808,13 @@ else:
     final = formatted_date + " " + NOW
 
 
-a, b, c, d = convert_time(city_name)
-
-print("Variables returning from the function convert_time")
-print(a)
-print(b)
-print(c)
-print(d)
-
-
-print()
 
 
 
-a2, b2, c2, = get_time_of_day(city_name)
 
+a2 = get_time_of_day(city_name)
 
-print("Variables returning from the function get_time_of_day")
-print(a2)
-print(b2)
-print(c2)
+print(final)
 
 
 
