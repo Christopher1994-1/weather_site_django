@@ -171,7 +171,7 @@ all_cities = {
     'SE': 'Europe',
     'CH': 'Europe',
     'UA': 'Europe',
-    'GB': 'Europe',
-    'VA': 'Europe'
+    'London': 'Europe',
+    'VA': 'Europe',
     
 }

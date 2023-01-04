@@ -1,5 +1,13 @@
 .email-success-message {
     position: absolute;
     border: 1px solid black;
-    /* Now you just need to build out the css for the email box */
+    border-radius: 20px;
+    width: 300px;
+    padding: 5px;
+    background: rgb(128, 128, 255);
+    text-align: center;
+    left: 535px;
+    bottom: 650px;
+    color: black;
+    font-weight: bold;
 }

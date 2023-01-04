@@ -698,13 +698,13 @@ def convert_time(city):
             server_time = datetime.datetime.fromtimestamp(epoch_time)
             # Get the time zone for the region AU
             local_tz = pytz.timezone(str(get_region))
-
             # Convert the server's local time to your local time
             local_time2 = server_time.astimezone(local_tz)
             convert_local_time2_str = str(local_time2)
             time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
             day_of_the_week = time_con2.strftime("%A")
             formatted_time = time_con2.strftime("%I:%M%p")
+            
             
     if formatted_time[0] == "0":
         formatted_time = formatted_time[1:]
@@ -768,11 +768,6 @@ def get_time_of_day(city_name):
 
 # URL function routes
 
-
-def email_success(request):
-    # maybe put some sort of if statement that counts the time and returns back home
-    
-    return render(request, 'email_success.html', {})
 
 
 def home(request, location="arlington"):
@@ -857,7 +852,8 @@ def home(request, location="arlington"):
     NOW, is_aussie, region, day_name = convert_time(city_name)
     now = datetime.datetime.now()
     final = ''
-
+    
+    
 
     current_server_time = datetime.datetime.now()
     texas_tz = pytz.timezone('US/Eastern')
@@ -903,7 +899,8 @@ def home(request, location="arlington"):
         6 : 'Sunday'
         }
     
-    form = SubListForm    
+    form = SubListForm   
+    city_name = city_name + f", {region.split('/')[0]}" 
     return render(request, 'home.html', {
         "current_year": current_year,
         "form": form,
@@ -1102,7 +1099,7 @@ def searched(request):
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Your email was saved successully')
-                return render(request, 'about.html', {})
+                return render("/home?submitted=True")
         else:
             form = SubListForm()
             if 'submitted' in request.GET:
@@ -1285,6 +1282,20 @@ def searched(request):
 
 def about(request):
     form = SubListForm   
+    
+    # Checking to see if user has enter their email
+    submitted = False
+    if request.method == "POST":
+        form = SubListForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your email was saved successully')
+            return render("/home?submitted=True")
+    else:
+        form = SubListForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    # END Checking to see if user has enter their email
     return render(request, 'about.html', {"form":form})
 
 
@@ -1293,7 +1304,20 @@ def about(request):
 
 
 def news(request):
-    form = SubListForm   
+    form = SubListForm
+    # Checking to see if user has enter their email
+    submitted = False
+    if request.method == "POST":
+        form = SubListForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your email was saved successully')
+            return render("/home?submitted=True")
+    else:
+        form = SubListForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    # END Checking to see if user has enter their email 
     return render(request, 'news.html', {"form":form})
 
 
@@ -1303,6 +1327,23 @@ def news(request):
 def live_cameras(request):
     LF1, LF2, LF3, LF4, LF5 = shuffle_live_cameras()
     form = SubListForm   
+    
+    
+    # Checking to see if user has enter their email
+    submitted = False
+    if request.method == "POST":
+        form = SubListForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your email was saved successully')
+            return render("/home?submitted=True")
+    else:
+        form = SubListForm()
+        if 'submitted' in request.GET:
+            submitted = True
+    # END Checking to see if user has enter their email
+    
+    
     return render(request, 'live_cameras.html', {
         "form":form,
         # live camera variables
