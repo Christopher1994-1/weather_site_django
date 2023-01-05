@@ -627,15 +627,15 @@ def shuffle_live_cameras():
     return live_title
     
     
-    
 def convert_time(city):
     epoch_time = int(time.time())
     # Set the API endpoint and your GeoNames username
     endpoint = "http://api.geonames.org/search"
     username = "cejkirk"
+    cap_city = city
     # Set the parameters for the API request
     params = {
-        "name": str(city),
+        "name": cap_city,
         "maxRows": 1,
         "username": username,
         "type": "json"
@@ -646,77 +646,136 @@ def convert_time(city):
     data = response.json()
     # Get the continent from the JSON data
     country_code = str(data["geonames"][0]["countryCode"])
-    region = codes.all_cities[str(city).title()]
     
     # strings I have to define with '' values
     formatted_time = ''
     get_region = ''
-    
-    if country_code == "US":
-        is_aussie = False
-        # capitalize the first letter of each word in the string; example "new york" -> "New York"
-        new_city = str(city).title()
-        # getting the region of the US city; example "US/Eastern"
-        get_region = codes.all_cities[new_city]
-        # getting the current time of the server running app
-        server_time = datetime.datetime.fromtimestamp(epoch_time)
-        # Get the time zone for your location (US)
-        local_tz = pytz.timezone(str(get_region))
-
-        # Convert the server's local time to your local time
-        local_time2 = server_time.astimezone(local_tz)
-        convert_local_time2_str = str(local_time2)
-        time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
-        day_of_the_week = time_con2.strftime("%A")
-        formatted_time = time_con2.strftime("%I:%M%p")
-        # 2022-12-31 18:46:41-05:00'
-        
-        
-    elif country_code != "US":
-        if country_code in codes.all_cities.keys():
+    is_aussie = None
+    day_of_the_week = ''
+    spilt_region = ''
+    try:
+        if country_code == "US" and cap_city in codes.us_cities.keys():
             is_aussie = False
             # capitalize the first letter of each word in the string; example "new york" -> "New York"
             new_city = str(city).title()
-            # getting the region of the US city
-            get_region = codes.all_cities[new_city]
+            # getting the region of the US city; example "US/Eastern"
+            get_region = codes.us_cities[new_city]
             # getting the current time of the server running app
             server_time = datetime.datetime.fromtimestamp(epoch_time)
-            # # Get the time zone for the city
-            tz = pytz.timezone(get_region)
-            # # Convert the server time to the local time for the city
-            local_time = str(server_time.astimezone(tz)).split(' ')[1]
-            time_con = datetime.datetime.strptime(local_time, "%H:%M:%S%z")
-            # # Format the time as a string
-            formatted_time = time_con.strftime("%I:%M%p")
-            
-        elif country_code == "AU":
-            is_aussie = True
-            new_city = str(city).title()
-            # getting the region of the US city
-            get_region = codes.all_cities[new_city]
-            # getting the current time of the server running the app
-            server_time = datetime.datetime.fromtimestamp(epoch_time)
-            # Get the time zone for the region AU
+            # Get the time zone for your location (US)
             local_tz = pytz.timezone(str(get_region))
+
             # Convert the server's local time to your local time
             local_time2 = server_time.astimezone(local_tz)
             convert_local_time2_str = str(local_time2)
             time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
             day_of_the_week = time_con2.strftime("%A")
             formatted_time = time_con2.strftime("%I:%M%p")
+            # 2022-12-31 18:46:41-05:00'
+            region = codes.us_cities[str(city).title()]
             
             
-    if formatted_time[0] == "0":
-        formatted_time = formatted_time[1:]
+        elif country_code != "US" and cap_city in codes.euro_cities.keys():
+            if cap_city in codes.uk_cities:
+                is_aussie = False
+                new_city = str(city).title()
+                get_region = codes.euro_cities[new_city]
+                server_time = datetime.datetime.fromtimestamp(epoch_time)
+                tz = pytz.timezone(get_region)
+                local_time2 = server_time.astimezone(tz)
+                convert_local_time2_str = str(local_time2)
+                time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
+                day_of_the_week = time_con2.strftime("%A")
+                formatted_time = time_con2.strftime("%I:%M%p")
+                region = codes.euro_euro_cities[str(city).title()]
+                spilt_region = codes.euro_euro_cities[str(cap_city)]
+                
+            elif cap_city in codes.fr_cities:
+                is_aussie = False
+                # capitalize the first letter of each word in the string; example "new york" -> "New York"
+                new_city = cap_city
+                
+                # getting the region of the city -> 'Europe/Paris'
+                get_region = codes.euro_cities[new_city]
+
+                # getting the current time of the server running app -> PythonAnywhere servers based in UK
+                server_time = datetime.datetime.fromtimestamp(epoch_time)
+
+                # # Get the time zone for the city
+                tz = pytz.timezone(get_region)
+
+                # Convert server_time to the time in the timezone represented by tz
+                local_time2 = server_time.astimezone(tz)
+
+                # Convert local_time2 to a string
+                convert_local_time2_str = str(local_time2)
+
+                # Parse the string back into a datetime object
+                time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
+
+                # Format time_con2 as the full name of the day of the week
+                day_of_the_week = time_con2.strftime("%A")
+
+                # Format time_con2 as the hour and minute in 12-hour format followed by AM or PM
+                formatted_time = time_con2.strftime("%I:%M%p")
+
+                region = codes.euro_cities[str(city)]
+                spilt_region = codes.euro_euro_cities[str(cap_city)]
+            
+            else:
+                is_aussie = False
+                # capitalize the first letter of each word in the string; example "new york" -> "New York"
+                new_city = str(city).title()
+                # getting the region of the city -> 'Europe/Paris'
+                get_region = codes.euro_cities[new_city]
+                # getting the current time of the server running app -> PythonAnywhere servers based in UK
+                server_time = datetime.datetime.fromtimestamp(epoch_time)
+                # # Get the time zone for the city
+                tz = pytz.timezone(get_region)
+                
+                local_time2 = server_time.astimezone(tz)
+                convert_local_time2_str = str(local_time2)
+                time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
+                day_of_the_week = time_con2.strftime("%A")
+                formatted_time = time_con2.strftime("%I:%M%p")
+                region = codes.euro_cities[str(city).title()]  
+                    
+        elif country_code != "US" and cap_city in codes.aus_cities.keys():
+            is_aussie = True
+            new_city = str(city).title()
+            # getting the region of the US city
+            get_region = codes.aus_cities[new_city]
+            # getting the current time of the server running the app
+            server_time = datetime.datetime.fromtimestamp(epoch_time)
+            # Get the time zone for the region AU
+            local_tz = pytz.timezone(str(get_region))
+
+            # Convert the server's local time to your local time
+            local_time2 = server_time.astimezone(local_tz)
+            convert_local_time2_str = str(local_time2)
+            time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
+            day_of_the_week = time_con2.strftime("%A")
+            formatted_time = time_con2.strftime("%I:%M%p")
+            region = codes.aus_cities[str(city).title()]
+
+            
+            
+        if formatted_time[0] == "0":
+            formatted_time = formatted_time[1:]
+    except:
+        return cap_city, country_code
+
 
     
-    return formatted_time, is_aussie, region, day_of_the_week
-    
+    return formatted_time, is_aussie, region, day_of_the_week, spilt_region
+
+
+  
 
 
 
 def get_time_of_day(city_name):
-    NOW, is_aussie, country_region, dayName = convert_time(city_name)
+    NOW, is_aussie, country_region, dayName, split_region = convert_time(city_name)
     currentDateAndTime = datetime.datetime.now()
     datetime_convert = str(datetime.datetime.strftime(currentDateAndTime, "%I:%p:%A")).split(":")
     hour = ''
@@ -849,7 +908,7 @@ def home(request, location="arlington"):
             
             
     now = datetime.datetime.now()
-    NOW, is_aussie, region, day_name = convert_time(city_name)
+    NOW, is_aussie, region, day_name, split_region = convert_time(city_name)
     now = datetime.datetime.now()
     final = ''
     
@@ -1109,7 +1168,7 @@ def searched(request):
                 
         now = datetime.datetime.now()
         NOW = convert_time(city_name)
-        NOW, is_aus, region, day_name = convert_time(city_name)
+        NOW, is_aus, region, day_name, spilt_region = convert_time(city_name)
         now = datetime.datetime.now()
         final = ''
 
@@ -1164,6 +1223,12 @@ def searched(request):
         
         form = SubListForm    
         m = nn
+        # getting the city name and adding country onto it -> London, UK
+        if spilt_region != '':
+            city_name = city_name + f", {spilt_region.split('/')[0]}"
+        else:
+            city_name = city_name + f", {region.split('/')[0]}"
+            
         
         return render(request, 'searched.html', {
             "none_result": nn,

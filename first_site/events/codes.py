@@ -1,7 +1,5 @@
 
-
-
-all_cities = {
+us_cities = {
     # All EST Time Cities
     "New York": "US/Eastern",
     "Boston": "US/Eastern",
@@ -109,69 +107,231 @@ all_cities = {
     'Sparks' : "US/Pacific",
     'Carson City' : "US/Pacific",
     
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# All European Countries
+euro_cities = {
+    # all european countries
     
+    
+    
+    
+    # Cities in UK
+    'London': 'Europe/London',
+    'Manchester': 'Europe/Manchester',
+    'Birmingham': 'Europe/Birmingham',
+    'Glasgow': 'Europe/Glasgow',
+    'Liverpool': 'Europe/Liverpool',
+    'Bristol': 'Europe/Bristol',
+    'Leeds': 'Europe/Leeds',
+    'Edinburgh': 'Europe/Edinburgh',
+    'Belfast': 'Europe/Belfast',
+    'Cardiff': 'Europe/Cardiff',
+    
+    # Cities in France
+    'Paris': 'Europe/Paris',
+    'Arrondissement de Marseille': 'Europe/Paris',
+    'Arrondissement de Nice': 'Europe/Paris',
+    'Arrondissement de Lyon': 'Europe/Paris',
+    'Toulouse': 'Europe/Paris',
+    'Arrondissement de Nantes': 'Europe/Paris',
+    'Montpellier': 'Europe/Paris',
+    'Strasbourg': 'Europe/Paris',
+    'Bordeaux': 'Europe/Paris',
+    'Arrondissement de Rennes': 'Europe/Paris',
+    'Arrondissement de Reims': 'Europe/Paris',
+    'Lille': 'Europe/Paris',
+    'Saint Etienne': 'Europe/Paris',
+    'Toulon': 'Europe/Paris',
+    'Arrondissement de Grenoble': 'Europe/Paris',
+    
+    
+    
+    
+    
+    # Cities in Germany 
+    'Berlin': 'Europe/Berlin',
+    'Hamburg': 'Europe/Berlin',
+    'Munich': 'Europe/Berlin',
+    'Cologne': 'Europe/Berlin',
+    'Frankfurt am Main': 'Europe/Berlin',
+    'Stuttgart': "Europe/Berlin",
+    'Düsseldorf': 'Europe/Berlin',
+    'Dortmund': 'Europe/Berlin',
+    'Essen': 'Europe/Berlin',
+    'Bremen': 'Europe/Berlin',
+    'Leipzig': 'Europe/Berlin',
+    'Dresden': 'Europe/Berlin',
+    'Nuremberg': 'Europe/Berlin',
+    
+    
+    
+    # Cities in Russia
+    'Moscow': 'Europe/Moscow', 
+    'Saint Petersburg': 'Europe/Moscow'
+}
+
+
+
+
+
+# European cities for loctation output -> 'Paris, France'
+euro_euro_cities = {
+    # Cities in UK
+    'London': 'UK/Europe',
+    'Manchester': 'UK/Europe',
+    'Birmingham': 'UK/Europe',
+    'Glasgow': 'UK/Europe',
+    'Liverpool': 'UK/Europe',
+    'Bristol': 'UK/Europe',
+    'Leeds': 'UK/Europe',
+    'Edinburgh': 'UK/Europe',
+    'Belfast': 'UK/Europe',
+    'Cardiff': 'UK/Europe',
+    
+    # Cities in France
+    'Paris': 'France/Europe',
+    'Arrondissement de Marseille': 'France/Europe',
+    'Arrondissement de Nice': 'France/Europe',
+    'Arrondissement de Lyon': 'France/Europe',
+    'Toulouse': 'France/Europe',
+    'Arrondissement de Nantes': 'France/Europe',
+    'Montpellier': 'France/Europe',
+    'Strasbourg': 'France/Europe',
+    'Bordeaux': 'France/Europe',
+    'Arrondissement de Rennes': 'France/Europe',
+    'Arrondissement de Reims': 'France/Europe',
+    'Lille': 'France/Europe',
+    'Saint Etienne': 'France/Europe',
+    'Toulon': 'France/Europe',
+    'Arrondissement de Grenoble': 'France/Europe',
+    
+    # Cities in Germany
+    'Berlin': 'Germany/Europe',
+    'Hamburg': 'Germany/Europe',
+    'Munich': 'Germany/Europe',
+    'Cologne': 'Germany/Europe',
+    'Frankfurt am Main': 'Germany/Europe',
+    'Stuttgart': "Germany/Europe",
+    'Düsseldorf': 'Germany/Berlin',
+    'Dortmund': 'Germany/Berlin',
+    'Essen': 'Germany/Berlin',
+    'Bremen': 'Germany/Berlin',
+    'Leipzig': 'Germany/Berlin',
+    'Dresden': 'Germany/Berlin',
+    'Nuremberg': 'Germany/Berlin',
+    
+    
+    
+    # Cities in Russia
+    'Moscow': 'Russia/Moscow', 
+    'Saint Petersburg': 'Russia/Moscow'
+    
+}
+
+
+
+
+# TODO add a ? think next to search to let the user to know to only put in major cities in EURO, US and AUS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+aus_cities = {
     # All Australian timezone
     "Brisbane": "Australia/Brisbane", #
     "Adelaide": "Australia/Adelaide", #
     "Hobart": "Australia/Hobart", #
     "Melbourne": "Australia/Melbourne", #
-    
-
     "Darwin": "Australia/Darwin", #
     "Sydney" : "Australia/Sydney", #
     "Newcastle" : "Australia/Sydney",
     "Perth" : "Australia/Perth",
     "Gold Coast" : "Australia/Brisbane",
     "Launceston" : "Australia/Adelaide",
-    
-
-    
-    # all european countries
-    'AL': 'Europe',
-    'AD': 'Europe',
-    'AT': 'Europe',
-    'BY': 'Europe',
-    'BE': 'Europe',
-    'BA': 'Europe',
-    'BG': 'Europe',
-    'HR': 'Europe',
-    'CY': 'Europe',
-    'CZ': 'Europe',
-    'DK': 'Europe',
-    'EE': 'Europe',
-    'FO': 'Europe',
-    'FI': 'Europe',
-    'FR': 'Europe',
-    'DE': 'Europe',
-    'GR': 'Europe',
-    'HU': 'Europe',
-    'IS': 'Europe',
-    'IE': 'Europe',
-    'IT': 'Europe',
-    'LV': 'Europe',
-    'LI': 'Europe',
-    'LT': 'Europe',
-    'LU': 'Europe',
-    'MK': 'Europe',
-    'MT': 'Europe',
-    'MD': 'Europe',
-    'MC': 'Europe',
-    'ME': 'Europe',
-    'NL': 'Europe',
-    'NO': 'Europe',
-    'PL': 'Europe',
-    'PT': 'Europe',
-    'RO': 'Europe',
-    'RU': 'Europe',
-    'SM': 'Europe',
-    'RS': 'Europe',
-    'SK': 'Europe',
-    'SI': 'Europe',
-    'ES': 'Europe',
-    'SE': 'Europe',
-    'CH': 'Europe',
-    'UA': 'Europe',
-    'London': 'Europe',
-    'VA': 'Europe',
-    
 }
+
+
+
+
+uk_cities = [
+    'London', 
+    'Manchester', 
+    'Birmingham', 
+    'Glasgow', 
+    'Liverpool', 
+    'Bristol', 
+    'Leeds', 
+    'Edinburgh', 
+    'Belfast', 
+    'Cardiff',
+]
+
+
+fr_cities = [
+    'Paris', 
+    'Arrondissement de Marseille',
+    'Arrondissement de Nice',
+    'Arrondissement de Lyon',
+    'Toulouse', 
+    'Arrondissement de Nantes', 
+    'Montpellier', 
+    'Strasbourg', 
+    'Bordeaux', 
+    'Arrondissement de Rennes', 
+    'Arrondissement de Reims',
+    'Lille', 
+    'Saint Etienne', 
+    'Toulon', 
+    'Arrondissement de Grenoble',
+]
+
+
+
+
+if __name__ == "__main__":
+    new_cities = ['Moscow', 'Saint Petersburg']
+    outline = {}
+
+
+    for city in new_cities:
+        outline[city] = "Europe/Moscow"
+    
+    
+    
+    print(outline)
