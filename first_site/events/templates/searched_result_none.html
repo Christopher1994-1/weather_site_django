@@ -9,14 +9,22 @@
     <form action="{% url 'searched' %}" method="POST">
         {% csrf_token %}
         <div class="searched-container">
-
+    
             <div class="searched-box-box">
                 <input type="search" name="searched-location" id="" placeholder="Find Your Loctation...">
             </div>
-
+    
             <div class="searched-button-btn">
                 <input type="submit" name="" id="" value="Find">
             </div>
+    
+            <div class="main-help-div">
+                <div class="help">
+                    <h1>?</h1>
+                    <span class="tooltiptext">Please only use major cities. This site is limited to Canada, Europe, US and Australia</span>
+                </div>
+            </div>
+    
         </div>
     </form>
 

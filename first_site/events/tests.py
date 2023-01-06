@@ -192,6 +192,7 @@ def convert_time(city):
 
 
 
+
 # function to call to get data on the current forecast
 def get_current_day_weather(city="Arlington"):
     """
@@ -515,8 +516,7 @@ def get_current_day_weather(city="Arlington"):
 
 
 
-city = "saint petersburg"
-
+city = "Uppsala"
 
 (weather_report, weather_description, current_temp, min_temp, max_temp, humidity, wind_speed,
     compass_dir, lon, lat, visual_in_miles, visual_in_kilo, city_name, metric_current_temp, metric_min_temp,

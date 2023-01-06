@@ -627,6 +627,9 @@ def shuffle_live_cameras():
     return live_title
     
     
+    
+    
+    
 def convert_time(city):
     epoch_time = int(time.time())
     # Set the API endpoint and your GeoNames username
@@ -653,6 +656,7 @@ def convert_time(city):
     is_aussie = None
     day_of_the_week = ''
     spilt_region = ''
+        
     try:
         if country_code == "US" and cap_city in codes.us_cities.keys():
             is_aussie = False
@@ -676,7 +680,7 @@ def convert_time(city):
             
             
         elif country_code != "US" and cap_city in codes.euro_cities.keys():
-            if cap_city in codes.uk_cities:
+            if cap_city in codes.uk_cities: # Checking for UK
                 is_aussie = False
                 new_city = str(city).title()
                 get_region = codes.euro_cities[new_city]
@@ -690,7 +694,7 @@ def convert_time(city):
                 region = codes.euro_euro_cities[str(city).title()]
                 spilt_region = codes.euro_euro_cities[str(cap_city)]
                 
-            elif cap_city in codes.fr_cities:
+            elif cap_city in codes.fr_cities: # Checking for France
                 is_aussie = False
                 # capitalize the first letter of each word in the string; example "new york" -> "New York"
                 new_city = cap_city
@@ -725,7 +729,7 @@ def convert_time(city):
             else:
                 is_aussie = False
                 # capitalize the first letter of each word in the string; example "new york" -> "New York"
-                new_city = str(city).title()
+                new_city = cap_city
                 # getting the region of the city -> 'Europe/Paris'
                 get_region = codes.euro_cities[new_city]
                 # getting the current time of the server running app -> PythonAnywhere servers based in UK
@@ -738,7 +742,8 @@ def convert_time(city):
                 time_con2 = datetime.datetime.strptime(convert_local_time2_str, "%Y-%m-%d %H:%M:%S%z")
                 day_of_the_week = time_con2.strftime("%A")
                 formatted_time = time_con2.strftime("%I:%M%p")
-                region = codes.euro_cities[str(city).title()]  
+                region = codes.euro_cities[str(city)] 
+                spilt_region = codes.euro_euro_cities[str(cap_city)] 
                     
         elif country_code != "US" and cap_city in codes.aus_cities.keys():
             is_aussie = True
@@ -762,9 +767,9 @@ def convert_time(city):
             
         if formatted_time[0] == "0":
             formatted_time = formatted_time[1:]
+            
     except:
-        return cap_city, country_code
-
+        return cap_city, country_code, new_city
 
     
     return formatted_time, is_aussie, region, day_of_the_week, spilt_region

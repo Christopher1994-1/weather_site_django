@@ -112,22 +112,6 @@ us_cities = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # All European Countries
 euro_cities = {
     # all european countries
@@ -187,7 +171,62 @@ euro_cities = {
     
     # Cities in Russia
     'Moscow': 'Europe/Moscow', 
-    'Saint Petersburg': 'Europe/Moscow'
+    'Saint Petersburg': 'Europe/Moscow',
+    
+    
+    # Cities in Canada
+    'Vancouver': 'America/Vancouver',
+    'Calgary': 'America/Edmonton',
+    'Toronto': 'America/Toronto',
+    'Montreal': 'America/Montreal',
+    'Halifax': 'America/Halifax',
+    'St. Johns': 'America/St_Johns',
+    
+    
+    # Cities in Netherlands
+    'Amsterdam': 'Europe/Amsterdam',
+    'Rotterdam': 'Europe/Amsterdam',
+    'The Hague': 'Europe/Amsterdam',
+    'Gemeente Eindhoven': 'Europe/Amsterdam',
+    'Tilburg': 'Europe/Amsterdam',
+    'Gemeente Tilburg': 'Europe/Amsterdam',
+    'Province of Groningen': 'Europe/Amsterdam',
+    'Almere Stad': 'Europe/Amsterdam',
+    'Breda di Piave': 'Europe/Amsterdam',
+    'Gemeente Nijmegen': 'Europe/Amsterdam',
+    
+    
+    # Cities in Belgium
+    'Antwerp': 'Europe/Brussels',
+    'Brussels': 'Europe/Brussels',
+    'Ghent': 'Europe/Brussels',
+    'Charleroi': 'Europe/Brussels',
+    'Bruges': 'Europe/Brussels',
+    'Namur': 'Europe/Brussels',
+    'Leuven': 'Europe/Brussels',
+    
+    
+    # Cities in Swiss
+    'Zurich': 'Europe/Zurich',
+    'Geneva': 'Europe/Zurich',
+    'Basel': 'Europe/Zurich',
+    'Bern': 'Europe/Zurich',
+    'Lausanne': 'Europe/Zurich',
+    
+    
+    # Cities in Spain
+    'Madrid': 'Europe/Madrid',
+    'Barcelona': 'Europe/Madrid',
+    'Valencia': 'Europe/Madrid',
+    'Seville': 'Europe/Madrid',
+    'Zaragoza': 'Europe/Madrid',
+    'Málaga': 'Europe/Madrid',
+    
+    
+    # Cities in Sweden
+    'Stockholm': 'Europe/Stockholm',
+    'Gothenburg': 'Europe/Stockholm',
+    'Malmo': 'Europe/Stockholm',
 }
 
 
@@ -196,6 +235,55 @@ euro_cities = {
 
 # European cities for loctation output -> 'Paris, France'
 euro_euro_cities = {
+    # Cities in Sweden
+    'Stockholm': 'Sweden/Stockholm',
+    'Gothenburg': 'Sweden/Stockholm',
+    'Malmo': 'Sweden/Stockholm',
+    
+    
+    # Cities in Spain
+    'Madrid': 'Spain/Madrid',
+    'Barcelona': 'Spain/Madrid',
+    'Valencia': 'Spain/Madrid',
+    'Seville': 'Spain/Madrid',
+    'Zaragoza': 'Spain/Madrid',
+    'Málaga': 'Spain/Madrid',
+    
+    
+    
+    # Cities in Swiss
+    'Zurich': 'Switzerland/Zurich',
+    'Geneva': 'Switzerland/Zurich',
+    'Basel': 'Switzerland/Zurich',
+    'Bern': 'Switzerland/Zurich',
+    'Lausanne': 'Switzerland/Zurich',
+    
+    
+    
+    
+    # Cities in Belgium
+    'Antwerp': 'Belgium/Brussels',
+    'Brussels': 'Belgium/Brussels',
+    'Ghent': 'Belgium/Brussels',
+    'Charleroi': 'Belgium/Brussels',
+    'Bruges': 'Belgium/Brussels',
+    'Namur': 'Belgium/Brussels',
+    'Leuven': 'Belgium/Brussels',
+    
+    
+    
+    # Cities in Netherlands
+    'Amsterdam': 'Netherlands/Amsterdam',
+    'Rotterdam': 'Netherlands/Amsterdam',
+    'The Hague': 'Netherlands/Amsterdam',
+    'Gemeente Eindhoven': 'Netherlands/Amsterdam',
+    'Gemeente Tilburg': 'Netherlands/Amsterdam',
+    'Province of Groningen': 'Netherlands/Amsterdam',
+    'Almere Stad': 'Netherlands/Amsterdam',
+    'Breda di Piave': 'Netherlands/Amsterdam',
+    'Gemeente Nijmegen': 'Netherlands/Amsterdam',
+    
+    
     # Cities in UK
     'London': 'UK/Europe',
     'Manchester': 'UK/Europe',
@@ -244,7 +332,17 @@ euro_euro_cities = {
     
     # Cities in Russia
     'Moscow': 'Russia/Moscow', 
-    'Saint Petersburg': 'Russia/Moscow'
+    'Saint Petersburg': 'Russia/Moscow',
+    
+    
+    
+    # Cities in Canada
+    'Vancouver': 'Canada/Vancouver',
+    'Calgary': 'Canada/Edmonton',
+    'Toronto': 'Canada/Toronto',
+    'Montreal': 'Canada/Montreal',
+    'Halifax': 'Canada/Halifax',
+    'St. Johns': 'Canada/St_Johns',
     
 }
 
