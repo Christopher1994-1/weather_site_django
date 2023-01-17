@@ -5,7 +5,7 @@
 Introducing my user-friendly weather web application, built with the Django framework and utilizing the latest technologies such as OpenWeather and Geo Names APIs. My application offers real-time, accurate weather information for any city, providing users with up-to-date data on current conditions, forecasts, and more. 
 
 
-![](first_site/events/static/images/weather_thing2.png)
+![](first_site/events/static/images/weather-thing2.png)
 
 
 
