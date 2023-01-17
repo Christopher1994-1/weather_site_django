@@ -8,6 +8,7 @@
     background:rgba(33,37,41,255);
     border-radius: 25px;
     margin-top: 10px;
+    display: none;
 }
 
 /* ~Main News Header~ */
@@ -212,4 +213,14 @@
 
 .text-muted1 p {
     color: black;
+}
+
+
+
+
+@media(max-width:991px) {
+    /* for weekly weather widget */
+    .news-container {
+        display: none;
+    }
 }

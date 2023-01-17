@@ -7,6 +7,7 @@
     position: relative;
     display: flex;
     left: 45px;
+    display: none;
 }
 
 /* All of the h1's inside of the main container */
@@ -240,4 +241,15 @@
     position: absolute;
     top: 240px;
     right: 113px;
+}
+
+
+
+
+
+@media(max-width:991px) {
+    /* for weekly weather widget */
+    .weekly-forecast-container {
+        display: none;
+    }
 }

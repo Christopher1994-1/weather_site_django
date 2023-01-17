@@ -1,300 +1,5 @@
 
 
-/* If weather_main_report == 'Clouds' */
-
-.main-weather-output-container-cloudy {
-    /* Main container for weather output box */
-    width: 600px;
-    position: relative;
-    top: 45px;
-    left: 240px;
-}
-
-/* If weather_main_report == 'Clouds' */
-.cloudy-weather-box {
-    /* first container for the first weather output box */
-    width: 420px;
-    background: url("https://images.unsplash.com/photo-1500740516770-92bd004b996e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3VkeXxlbnwwfHwwfHw%3D&w=1000&q=80");
-    padding: 10px;
-    border-radius: 20px;
-    border: 2px solid black;
-    height: 340px;
-    margin: auto;
-}
-
-/* City name and location icon container  */
-.city-name-location-icon-contain-cloudy {
-    /* city name and loctation icon main container div */
-    position: relative;
-    margin-bottom: 5px;
-    width: 100%;
-}
-
-/* Weather description and icon container */
-.weather-d-container-cloudy {
-    /* weather description and weather icons main container div */
-    position: relative;
-    width: 240px;
-    left: 15px;
-    margin-bottom: 8px;
-}
-
-.weather-description-cloudy {
-    /* Weather description container */
-    color: white;
-    text-shadow: 2px 2px black;
-}
-.weather-d-container-cloudy h1 {
-    /* Weather description h1 itself */
-    font-size: 15px;
-}
-
-
-
-.weather-d-icon-cloudy {
-    position: relative;
-    bottom: 6px;
-}
-
-
-.actual-weather-dcloudy {
-    position: relative;
-    width: 240px;
-    text-align: center;
-}
-
-.actual-weather-dcloudy h1 {
-    color: white;
-    text-shadow: 2px 2px black;
-    font-size: 20px;
-}
-
-.actual-weather-degrees-cloudy {
-    /* Weather degrees container */
-    background: rgba(252, 249, 249, 0.4);
-    border-radius: 20px;
-    position: absolute;
-    top: 140px;
-    width: 190px;
-}
-.actual-weather-degrees-cloudy h1 {
-    font-size: 80px;
-    color: black;
-    text-shadow: 2px 2px white;
-}
-
-
-
-/* Only active when length_cw == 2 */
-.actual-weather-degrees-cloudy-con {
-    /* Weather degrees container */
-    background: rgba(252, 249, 249, 0.4);
-    border-radius: 20px;
-    position: absolute;
-    top: 140px;
-    width: 160px;
-}
-.actual-weather-degrees-cloudy-con h1 {
-    font-size: 80px;
-    color: black;
-    text-shadow: 2px 2px white;
-}
-
-
-
-/* Weather date, day and time conatiner and itself */
-
-.weather-day-cloudy {
-    /* Weather day inside first container */
-    width: 200px;
-    text-align: center;
-    position: relative;
-    border-radius: 20px;
-    padding: 5px;
-    top: 110px;
-    background: rgba(252, 249, 249, 0.4);
-}
-
-.weather-day-cloudy h1 {
-    /* Weather day inside DATE itself */
-    font-size: 15px;
-    width: 200px;
-    right:3px;
-    position: relative;
-    text-shadow: 1px 1px white;
-    top: 4px;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-}
-
-/* If length_cw == 2 */
-.weather-day-cloudy-con {
-    /* Weather day inside first container */
-    width: 170px;
-    text-align: center;
-    position: relative;
-    border-radius: 20px;
-    padding: 5px;
-    top: 110px;
-    background: rgba(252, 249, 249, 0.4);
-}
-
-.weather-day-cloudy-con h1 {
-    /* Weather day inside DATE itself */
-    font-size: 15px;
-    width: 170px;
-    position: relative;
-    text-shadow: 1px 1px rgb(126, 126, 126);
-    top: 4px;
-    right:5px;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-}
-/* End weather date, day and time conatiner and itself */
-
-
-
-
-
-/* min and max temp div container */
-.max-min-temp-div-cloudy {
-    width: 140px;
-    text-align: center;
-    position: absolute;
-    bottom: 230px;
-    left: 330px;
-}
-
-.max-min-temp-div-cloudy h1 {
-    font-size: 15px;
-    text-shadow: 2px 2px black;
-    color: rgb(255, 255, 255);
-}
-
-
-
-
-
-
-.humidty-cloudy {
-    /* Main container for humidity stuff */
-    width: 140px;
-    text-align: center;
-    position: absolute;
-    bottom: 170px;
-    border-top: 2px solid black;
-    border-radius: 10px;
-    left: 330px;
-}
-
-.humidity-img {
-    display: inline-block;
-}
-
-.humidty-cloudy h1 {
-    position: relative;
-    top: 8px;
-    font-size: 25px;
-    right: 8px;
-    text-shadow: 2px 2px black;
-    color: rgb(255, 255, 255);
-}
-
-#humidity-h1 {
-    position: absolute;
-    left: 380px;
-    top: 120px;
-    color: white;
-    font-weight: bold;
-    font-size: 9px;
-}
-
-.humidity-percentage {
-    display: inline-block;
-}
-
-
-
-.wind-speed-cloudy {
-    /* Main container for wind speed stuff */
-    width: 140px;
-    border-radius: 10px;
-    text-align: center;
-    border-top: 2px solid black;
-    position: absolute;
-    bottom: 95px;
-    left: 330px;
-}
-
-
-.wind-speed-speed {
-    display: inline-block;
-    text-shadow: 2px 2px black;
-    color: rgb(255, 255, 255);
-}
-
-.wind-speed-speed h1 {
-    font-size: 15px;
-}
-
-.wind-speed-icon {
-    display: inline-block;
-    position: relative;
-    bottom: 20px;
-}
-
-#wind-dir-id {
-    position: relative;
-    bottom: 5px;
-}
-
-
-.visibility-container {
-    /* Main container for the visibility stuff */
-    width: 140px;
-    text-align: center;
-    border-top: 2px solid black;
-    position: absolute;
-    border-radius: 10px;
-    height: 70px;
-    bottom: 20px;
-    left: 330px;
-}
-
-
-
-
-.visibility-visibility {
-    position: relative;
-    bottom:10px;
-    left: 5px;
-}
-
-.visibility-visibility h1 {
-    font-size: 25px;
-    text-shadow: 2px 2px black;
-    color: white;
-}
-/* end of first weather box container */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* Start of side weather next few hours container box */
@@ -307,6 +12,7 @@
     border-radius: 20px;
     bottom: 380px;
     height: 110px;
+    display: none;
     width: 300px;
     padding: 15px;
     background: rgba(252, 249, 249, 0.4);
@@ -383,6 +89,7 @@
     border-radius: 20px;
     bottom: 265px;
     height: 110px;
+    display: none;
     width: 300px;
     padding: 15px;
     background: rgba(252, 249, 249, 0.4);
@@ -465,6 +172,7 @@
     border-radius: 20px;
     bottom: 150px;
     height: 110px;
+    display: none;
     width: 300px;
     padding: 15px;
     background: rgba(252, 249, 249, 0.4);
@@ -584,56 +292,6 @@
 
 
 
-/* The code below styles an element with a class of "help" 
-that contains a question mark and some hidden text. 
-When the element is hovered over, the hidden text is 
-revealed as a tooltip. */
-.main-help-div {
-    display: inline-block;
-    position: absolute;
-    left: 770px;
-}
-
-  .help {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .help h1 {
-    font-size: 20px;
-    border: 2px solid black;
-    border-radius: 100px;
-    background: white;
-    width: 20px;
-  }
-
-  
-  .help .tooltiptext {
-    visibility: hidden;
-    width: 180px;
-    background-color: rgb(54, 54, 54);
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 100%;
-    margin-top: -30px; /* Half of the height of the tooltip */
-    margin-left: 5px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .help:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
-
-
-
 
 
 
@@ -644,6 +302,7 @@ revealed as a tooltip. */
   #hourly-weather {
     position: absolute;  
     bottom: 485px;
+    display: none;
     font-size: 30px;
     left: 800px;
     color: white;
@@ -1023,3 +682,10 @@ revealed as a tooltip. */
 
 }
 
+
+
+@media(max-width:991px) {
+    .main-help-div {
+        display: none;
+    }
+}

@@ -227,7 +227,57 @@ euro_cities = {
     'Stockholm': 'Europe/Stockholm',
     'Gothenburg': 'Europe/Stockholm',
     'Malmo': 'Europe/Stockholm',
+    
+    
+    # Cities in Norway
+    'Oslo': 'Europe/Oslo',
+    'Bergen': 'Europe/Oslo',
+    'Trondheim': 'Europe/Oslo',
+    'Stavanger': 'Europe/Oslo',
+    
+    # Cities in Poland
+    'Warsaw': 'Europe/Warsaw',
+    'Krakow': 'Europe/Warsaw',
+    'Łódź': 'Europe/Warsaw',
+    'Wrocław': 'Europe/Warsaw',
+    
+    
+    # Cities in Italy
+    'Rome': 'Europe/Rome',
+    'Milan': 'Europe/Rome',
+    'Naples': 'Europe/Rome',
+    'Province of Turin': 'Europe/Rome',
+    
+    
+    # Cities in Ireland
+    'Dublin': 'Europe/Dublin',
+    'Cork': 'Europe/Dublin',
+    'Galway': 'Europe/Dublin',
+    'Limerick': 'Europe/Dublin',
+    
+    
+    # Cities in Portgual
+    'Lisbon': 'Europe/Lisbon',
+    'Porto': 'Europe/Lisbon',
+    'Amadora': 'Europe/Lisbon',
+    'Braga': 'Europe/Lisbon',
+    
+    
+    # Cities in Czech Republic
+    'Prague': 'Europe/Prague',
+    'Brno': 'Europe/Prague',
+    'Ostrava': 'Europe/Prague',
+    'Pilsen': 'Europe/Prague',
+    
+    
+    # Cities in Denmark
+    'Copenhagen': 'Europe/Copenhagen',
+    'Aarhus': 'Europe/Copenhagen',
+    'Aalborg': 'Europe/Copenhagen',
+    'Esbjerg': 'Europe/Copenhagen',
+
 }
+
 
 
 
@@ -235,6 +285,55 @@ euro_cities = {
 
 # European cities for loctation output -> 'Paris, France'
 euro_euro_cities = {
+    # Cities in Denmark
+    'Copenhagen': 'Denmark/Copenhagen',
+    'Aarhus': 'Denmark/Copenhagen',
+    'Aalborg': 'Denmark/Copenhagen',
+    'Esbjerg': 'Denmark/Copenhagen',
+    
+    
+    # Cities in Czech Republic
+    'Prague': 'Czech Republic/Prague',
+    'Brno': 'Czech Republic/Prague',
+    'Ostrava': 'Czech Republic/Prague',
+    'Pilsen': 'Czech Republic/Prague',
+    
+    
+    # Cities in Portgual
+    'Lisbon': 'Portgual/Lisbon',
+    'Porto': 'Portgual/Lisbon',
+    'Amadora': 'Portgual/Lisbon',
+    'Braga': 'Portgual/Lisbon',
+    
+    # Cities in Ireland
+    'Dublin': 'Ireland/Dublin',
+    'Cork': 'Ireland/Dublin',
+    'Galway': 'Ireland/Dublin',
+    'Limerick': 'Ireland/Dublin',
+    
+    
+    # Cities in Italy
+    'Rome': 'Italy/Rome',
+    'Milan': 'Italy/Rome',
+    'Naples': 'Italy/Rome',
+    'Province of Turin': 'Italy/Rome',
+    
+    
+    
+    # Cities in Poland
+    'Warsaw': 'Poland/Warsaw',
+    'Krakow': 'Poland/Warsaw',
+    'Łódź': 'Poland/Warsaw',
+    'Wrocław': 'Poland/Warsaw',
+    
+    
+    # Cities in Norway
+    'Oslo': 'Norway/Oslo',
+    'Bergen': 'Norway/Oslo',
+    'Trondheim': 'Norway/Oslo',
+    'Stavanger': 'Norway/Oslo',
+    
+    
     # Cities in Sweden
     'Stockholm': 'Sweden/Stockholm',
     'Gothenburg': 'Sweden/Stockholm',

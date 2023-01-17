@@ -1,6 +1,7 @@
 .live-cameras-container {
     margin: auto;
     width: 900px;
+    display: none;
     text-align: left
 }
 
@@ -61,4 +62,14 @@
 .third-live-cam button {
     margin-top: 5px;
     font-weight: bold;
+}
+
+
+
+
+@media(max-width:991px) {
+    /* for weekly weather widget */
+    .live-cameras-container {
+        display: none;
+    }
 }
